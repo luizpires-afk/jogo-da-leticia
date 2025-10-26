@@ -1,48 +1,39 @@
-from flask import Flask, render_template, request, session, redirect, url_for
-from ia import gerar_fase, resposta_ia
-from datetime import timedelta
+from flask import Flask, render_template, request, jsonify
+import ia
 
 app = Flask(__name__)
-app.secret_key = "chave-secreta-super-segura"  # troque por uma aleatória depois
-app.permanent_session_lifetime = timedelta(minutes=30)
+fase_atual = ia.gerar_fase()
+tentativas = 0
+nivel = 1
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
-    # Cria uma sessão se for o primeiro acesso
-    if "fase_atual" not in session:
-        session["numero_fase"] = 1
-        session["fase_atual"] = gerar_fase(session["numero_fase"])
-        session["tentativas"] = 0
+    return render_template("index.html", pergunta=fase_atual["pergunta"])
 
-    fase_atual = session["fase_atual"]
-    numero_fase = session["numero_fase"]
-    tentativas = session["tentativas"]
-    mensagem = ""
+@app.route("/responder", methods=["POST"])
+def responder():
+    global fase_atual, tentativas, nivel
+    data = request.get_json()
+    tentativa = data.get("resposta", "")
+    tentativas += 1
 
-    if request.method == "POST":
-        tentativa = request.form.get("senha", "").strip()
-        session["tentativas"] += 1
-
-        if tentativa == fase_atual["senha"]:
-            mensagem = resposta_ia(True)
-            session["numero_fase"] += 1
-            session["fase_atual"] = gerar_fase(session["numero_fase"])
-            session["tentativas"] = 0
-        else:
-            mensagem = resposta_ia(False, session["tentativas"])
-
-    return render_template(
-        "index.html",
-        fase=fase_atual,
-        mensagem=mensagem,
-        tentativas=session["tentativas"],
-        numero_fase=session["numero_fase"]
-    )
-
-@app.route("/reset")
-def reset():
-    session.clear()
-    return redirect(url_for("index"))
+    acertou, mensagem, _ = ia.avaliar_tentativa(fase_atual, tentativa, tentativas)
+    if acertou:
+        nivel += 1
+        fase_atual = ia.gerar_fase()
+        tentativas = 0
+        return jsonify({
+            "acertou": True,
+            "mensagem": mensagem,
+            "nova_pergunta": fase_atual["pergunta"],
+            "nivel": nivel
+        })
+    return jsonify({
+        "acertou": False,
+        "mensagem": mensagem,
+        "nova_pergunta": fase_atual["pergunta"],
+        "nivel": nivel
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)

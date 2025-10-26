@@ -2,83 +2,224 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Letícia 💻🔐</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Desafio do Luiz 🤓</title>
     <style>
         body {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .game-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            font-family: "Poppins", sans-serif;
             text-align: center;
-            animation: fadeIn 0.8s ease-in-out;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
-        .hint-box {
-            background: rgba(255, 255, 255, 0.15);
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .luiz-container {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .luiz {
+            font-size: 4rem;
+            animation: flutuar 3s ease-in-out infinite;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .balon {
+            background: #ffffff22;
+            padding: 12px 20px;
+            border-radius: 25px;
+            max-width: 340px;
+            margin-bottom: 10px;
+            position: absolute;
+            bottom: 110px;
+            animation: aparecer 0.5s ease;
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .balon::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 45px;
+            border-width: 12px;
+            border-style: solid;
+            border-color: #ffffff22 transparent transparent transparent;
+        }
+
+        @keyframes aparecer {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes flutuar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        input {
             padding: 10px;
             border-radius: 10px;
-            margin: 10px 0;
+            border: none;
+            width: 220px;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
         }
-        .message {
-            margin-top: 20px;
-            font-size: 1.2rem;
+
+        input:focus {
+            box-shadow: 0 0 10px #00bfffaa;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #00BFFF;
+            color: white;
+            cursor: pointer;
             font-weight: bold;
-            animation: fadeIn 0.5s ease-in-out;
+            transition: 0.3s;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+
+        button:hover {
+            background: #009ACD;
+            transform: scale(1.05);
         }
-        .btn-custom {
-            border-radius: 12px;
-            font-weight: 600;
+
+        .reacao-feliz .luiz {
+            transform: rotate(5deg) scale(1.2);
+            text-shadow: 0 0 12px #00ff88;
+        }
+        .reacao-zangado .luiz {
+            transform: rotate(-8deg) scale(1.15);
+            text-shadow: 0 0 12px #ff0033;
+        }
+        .reacao-confuso .luiz {
+            transform: rotate(4deg) scale(1.1);
+            text-shadow: 0 0 12px #ffff55;
+        }
+
+        .reacao-feliz .balon { background: #00ff8844; }
+        .reacao-zangado .balon { background: #ff335544; }
+        .reacao-confuso .balon { background: #ffee5544; }
+
+        #mensagem {
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        @keyframes piscar {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        #nivel-info {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            background: #ffffff22;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ddd;
         }
     </style>
 </head>
 <body>
+    <div id="nivel-info">Nível: <span id="nivel">1</span> 🎯</div>
 
-<div class="game-container">
-    <h1 class="mb-3">🔐 Jogo da Letícia</h1>
-    <p><strong>Fase:</strong> {{ numero_fase }}</p>
-    <p><strong>Tema:</strong> {{ fase.tema }}</p>
-    <p><strong>Tentativas:</strong> {{ tentativas }}</p>
-
-    <div class="mt-4">
-        <h5>Dicas da IA 🤖:</h5>
-        {% for dica in fase.dicas %}
-            <div class="hint-box">{{ dica }}</div>
-        {% endfor %}
+    <div id="luiz" class="luiz-container">
+        <div class="balon" id="pergunta">{{ pergunta }}</div>
+        <div class="luiz" id="emoji">🤓</div>
     </div>
 
-    <form method="POST" class="mt-4">
-        <input type="text" name="senha" class="form-control text-center mb-3" placeholder="Digite a senha completa" required>
-        <button type="submit" class="btn btn-success btn-custom w-100">Enviar</button>
-    </form>
+    <input id="entrada" type="text" placeholder="Digite aqui..." autocomplete="off">
+    <button onclick="enviar()">Enviar</button>
+    <div id="mensagem" class="balon" style="display:none; position:static; margin-top:15px;"></div>
 
-    {% if mensagem %}
-        <div class="message mt-3 {% if 'senha correta' in mensagem.lower() or 'excelente' in mensagem.lower() %}text-success{% else %}text-danger{% endif %}">
-            {{ mensagem }}
-        </div>
-    {% endif %}
+    <!-- Sons -->
+    <audio id="somAcerto" src="https://cdn.pixabay.com/download/audio/2021/08/09/audio_8d6c0b6a63.mp3?filename=correct-2-46134.mp3"></audio>
+    <audio id="somErro" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5e7b2a72ef.mp3?filename=error-126627.mp3"></audio>
+    <audio id="somPensando" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c48d16e06b.mp3?filename=thinking-6013.mp3"></audio>
 
-    <a href="/reset" class="btn btn-outline-light btn-sm mt-4">🔁 Reiniciar Jogo</a>
-</div>
+    <script>
+        const luizDiv = document.getElementById("luiz");
+        const emoji = document.getElementById("emoji");
+        const msgDiv = document.getElementById("mensagem");
+        const perguntaDiv = document.getElementById("pergunta");
+        const nivelSpan = document.getElementById("nivel");
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        const somAcerto = document.getElementById("somAcerto");
+        const somErro = document.getElementById("somErro");
+        const somPensando = document.getElementById("somPensando");
 
+        async function enviar() {
+            const tentativa = document.getElementById("entrada").value.trim();
+            if (!tentativa) return;
+
+            const res = await fetch("/responder", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ resposta: tentativa })
+            });
+
+            const data = await res.json();
+
+            msgDiv.style.display = "block";
+            msgDiv.innerHTML = data.mensagem;
+
+            luizDiv.classList.remove("reacao-feliz", "reacao-zangado", "reacao-confuso");
+
+            if (data.mensagem.includes("✅") || data.mensagem.includes("Boa")) {
+                luizDiv.classList.add("reacao-feliz");
+                emoji.textContent = "😎";
+                somAcerto.currentTime = 0;
+                somAcerto.play();
+            } else if (data.mensagem.includes("❌") || data.mensagem.includes("errou") || data.mensagem.includes("não")) {
+                luizDiv.classList.add("reacao-zangado");
+                emoji.textContent = "😠";
+                somErro.currentTime = 0;
+                somErro.play();
+            } else {
+                luizDiv.classList.add("reacao-confuso");
+                emoji.textContent = "😅";
+                somPensando.currentTime = 0;
+                somPensando.play();
+            }
+
+            if (data.acertou) {
+                msgDiv.style.animation = "piscar 1s ease 2";
+                setTimeout(() => {
+                    perguntaDiv.innerHTML = data.nova_pergunta;
+                    nivelSpan.textContent = data.nivel;
+                    msgDiv.style.display = "none";
+                    document.getElementById("entrada").value = "";
+                    luizDiv.classList.remove("reacao-feliz", "reacao-zangado", "reacao-confuso");
+                    emoji.textContent = "🤓";
+                }, 1500);
+            }
+        }
+
+        document.getElementById("entrada").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") enviar();
+        });
+    </script>
 </body>
 </html>
