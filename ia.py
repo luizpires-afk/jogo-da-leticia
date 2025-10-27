@@ -63,8 +63,37 @@ perguntas = [
     {"pergunta": "Quanto é 100 ÷ 10?", "resposta": ["10", "dez"]},
     {"pergunta": "Resolva: 2 x 12", "resposta": ["24", "vinte e quatro"]},
     {"pergunta": "Quanto é 7 + 8?", "resposta": ["15", "quinze"]},
-    {"pergunta": "Resolva: 11 x 11", "resposta": ["121", "cento e vinte e um"]}
+    {"pergunta": "Resolva: 11 x 11", "resposta": ["121", "cento e vinte e um"]},
+
+    {"pergunta": "Quanto é 14 + 9?", "resposta": ["23", "vinte e três"]},
+    {"pergunta": "Resolva: 8 x 7", "resposta": ["56", "cinquenta e seis"]},
+    {"pergunta": "Qual é o resultado de 81 ÷ 9?", "resposta": ["9", "nove"]},
+    {"pergunta": "Resolva: 15 - 6", "resposta": ["9", "nove"]},
+    {"pergunta": "Quanto é 11 + 14?", "resposta": ["25", "vinte e cinco"]},
+    {"pergunta": "Resolva: 3 x 15", "resposta": ["45", "quarenta e cinco"]},
+    {"pergunta": "Quanto é 144 ÷ 12?", "resposta": ["12", "doze"]},
+    {"pergunta": "Resolva: 25 + 36", "resposta": ["61", "sessenta e um"]},
+    {"pergunta": "Quanto é 13 x 3?", "resposta": ["39", "trinta e nove"]},
+    {"pergunta": "Resolva: 90 ÷ 5", "resposta": ["18", "dezoito"]},
+    {"pergunta": "Quanto é 7²?", "resposta": ["49", "quarenta e nove"]},
+    {"pergunta": "Resolva: 10 x 10", "resposta": ["100", "cem"]},
+    {"pergunta": "Qual é o dobro de 25?", "resposta": ["50", "cinquenta"]},
+    {"pergunta": "Qual é a metade de 80?", "resposta": ["40", "quarenta"]},
+    {"pergunta": "Resolva: 5 + 9 + 6", "resposta": ["20", "vinte"]},
+
+    # Perguntas sobre o Luiz 😎
+    {"pergunta": "Quem fica bravo quando você erra as contas?", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Qual é o nome do professor mais bravo, mas gente boa?", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Quem é o mestre dos desafios de matemática?", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Qual é o nome do criador desse jogo?", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Quem é o mais inteligente da sala? (Dica: começa com L)", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Quem fica feliz quando você acerta uma questão?", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Qual é o nome do seu maior rival em matemática?", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Quem é o Luiz?", "resposta": ["professor", "meu professor", "professor luiz"]},
+    {"pergunta": "Quem te desafia nesse jogo?", "resposta": ["luiz", "professor luiz"]},
+    {"pergunta": "Quem está de olho nas suas respostas agora mesmo?", "resposta": ["luiz", "professor luiz", "o luiz"]}
 ]
+
 
 # ----------------------------
 # HUMOR DO LUIZ
