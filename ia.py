@@ -1,158 +1,226 @@
 import random
-import operator
-import re
+import json
+import os
 
-fase_atual = {}
-nivel = 1
-acertos_seguidos = 0
-
-OPS = {
-    "+": operator.add,
-    "-": operator.sub,
-    "*": operator.mul,
-    "//": operator.floordiv
+# ----------------------------
+# ESTADO GLOBAL DO JOGO
+# ----------------------------
+estado = {
+    "nivel": 1,
+    "humor_level": 0,
+    "tentativas": 0,
+    "game_over": False,
+    "pontos": 0,
+    "fase": {},
+    "jogador": "Jogador"
 }
 
-EMOJIS_CORES = {
-    "vermelho": ["❤️", "🟥", "🍎", "🌹", "🚗", "🔥", "🎈", "📕", "🍓"],
-    "azul": ["💙", "🟦", "🐳", "🧢", "🌊", "💧", "🪣", "🫐"],
-    "verde": ["💚", "🟩", "🍀", "🌳", "🥦", "🐢", "🦎", "🍏"],
-    "amarelo": ["💛", "🟨", "🍋", "🐥", "🌻", "🌞", "⚡", "🧀"],
-    "roxo": ["💜", "🟪", "🍇", "🔮", "🪻", "👾"],
-    "laranja": ["🧡", "🟧", "🍊", "🦊", "🥕"],
-    "preto": ["🖤", "⬛", "🐈‍⬛", "🎩", "🕶️"],
-    "branco": ["🤍", "⬜", "🐑", "🥛", "❄️"]
-}
+RANKING_FILE = "ranking.json"
 
-CHARADAS_FACEIS = [
-    ("Tem dentes, mas não morde. O que é?", "pente"),
-    ("O que tem pescoço, mas não tem cabeça?", "garrafa"),
-    ("Quanto é 7 - 7?", "0"),
-    ("O que cai em pé e corre deitado?", "chuva"),
-    ("Quanto é 2 + 3?", "5"),
-    ("O que passa na frente do sol, mas não faz sombra?", "vento"),
+# ----------------------------
+# FUNÇÕES DE RANKING
+# ----------------------------
+def carregar_ranking():
+    if os.path.exists(RANKING_FILE):
+        try:
+            with open(RANKING_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+def salvar_ranking(ranking):
+    with open(RANKING_FILE, "w", encoding="utf-8") as f:
+        json.dump(ranking, f, ensure_ascii=False, indent=2)
+
+def atualizar_recorde(nome, pontos):
+    ranking = carregar_ranking()
+    recorde_antigo = ranking.get(nome, 0)
+    ranking[nome] = max(recorde_antigo, pontos)
+    salvar_ranking(ranking)
+    maior_global = max(ranking.values(), default=0)
+    novo_pessoal = pontos > recorde_antigo
+    novo_global = pontos >= maior_global
+    return novo_pessoal, novo_global, maior_global
+
+def recorde_global():
+    ranking = carregar_ranking()
+    if not ranking:
+        return "Ninguém ainda", 0
+    melhor = max(ranking.items(), key=lambda x: x[1])
+    return melhor
+
+# ----------------------------
+# BANCO DE PERGUNTAS
+# ----------------------------
+perguntas = [
+    {"pergunta": "Quanto é 3 + 4?", "resposta": ["7", "sete"]},
+    {"pergunta": "Resolva: 5 x 6", "resposta": ["30", "trinta"]},
+    {"pergunta": "Qual é o resultado de 12 ÷ 3?", "resposta": ["4", "quatro"]},
+    {"pergunta": "Resolva: 9 - 5", "resposta": ["4", "quatro"]},
+    {"pergunta": "Quanto é 8 + 7?", "resposta": ["15", "quinze"]},
+    {"pergunta": "Resolva: 9 x 9", "resposta": ["81", "oitenta e um"]},
+    {"pergunta": "Quanto é 100 ÷ 10?", "resposta": ["10", "dez"]},
+    {"pergunta": "Resolva: 2 x 12", "resposta": ["24", "vinte e quatro"]},
+    {"pergunta": "Quanto é 7 + 8?", "resposta": ["15", "quinze"]},
+    {"pergunta": "Resolva: 11 x 11", "resposta": ["121", "cento e vinte e um"]}
 ]
 
-# --- Funções auxiliares robustas --- #
+# ----------------------------
+# HUMOR DO LUIZ
+# ----------------------------
+def humor_reacao(level: int):
+    reacoes = {
+        0: ("🤓", random.choice([
+            "Essa foi moleza pra você 😏",
+            "Tô vendo potencial aí, hein 😎",
+            "Boa! Vamos ver se mantém o ritmo 👀"
+        ])),
+        1: ("😐", random.choice([
+            "Hmm... quase, mas ainda não 😅",
+            "Tenta outra vez, confio em você!",
+            "Errou, mas tá no caminho 😬"
+        ])),
+        2: ("😠", random.choice([
+            "Tá me testando, né? 😤",
+            "Não me faz perder a paciência 😡",
+            "Você quer me deixar careca? 😤"
+        ])),
+        3: ("😡", random.choice([
+            "Última chance, ein! 😡",
+            "Mais um erro e eu surto 😬",
+            "Luiz está prestes a explodir 💣"
+        ])),
+        4: ("💥", "💥 O Luiz explodiu de raiva! Game Over! 💥")
+    }
+    return reacoes.get(level, ("🤖", "Sem emoções... por enquanto 😏"))
 
-def clean_int_string(s):
-    """Limpa e converte uma string em inteiro, ignorando espaços e variações de traço."""
-    if not s:
-        return None
-    s = s.strip()
-    s = re.sub(r"[–—−]", "-", s)  # substitui travessões por hífen normal
-    s = re.sub(r"\s+", "", s)  # remove TODOS os espaços
-    try:
-        return int(s)
-    except ValueError:
-        return None
-
-
-import re
-
-def normalize_text(s: str) -> str:
-    """Remove espaços, pontuações e deixa tudo minúsculo."""
-    # Remove espaços e pontuações (versão compatível com o re padrão)
-    s = re.sub(r"[\s\W_]+", "", s.lower())  # \W remove tudo que não é letra ou número
-    return s
-
-
-
-# --- Geração de perguntas --- #
-
-def gerar_conta_inteira(nivel):
-    """Gera uma conta simples de inteiros com resultado inteiro."""
-    if nivel <= 2:
-        op = random.choice(["+", "-"])
-        a, b = random.randint(0, 9), random.randint(0, 9)
-    elif nivel == 3:
-        op = random.choice(["+", "-", "*"])
-        a, b = random.randint(-10, 10), random.randint(1, 10)
+# ----------------------------
+# AUXILIARES
+# ----------------------------
+def definir_jogador(nome):
+    if nome.strip():
+        estado["jogador"] = nome.strip().capitalize()
     else:
-        op = random.choice(["+", "-", "*", "//"])
-        if op == "//":
-            b = random.randint(1, 10)
-            a = b * random.randint(-10, 10)
-        else:
-            a = random.randint(-30, 30)
-            b = random.randint(-20, 20)
+        estado["jogador"] = "Jogador"
 
-    resultado = OPS[op](a, b)
-    return {"pergunta": f"Quanto é {a} {op} {b}?", "resposta": str(resultado), "tipo": "conta"}
-
-
-def gerar_pergunta_cor():
-    cor = random.choice(list(EMOJIS_CORES.keys()))
-    emoji = random.choice(EMOJIS_CORES[cor])
-    return {"pergunta": f"Qual é a cor deste emoji? {emoji}", "resposta": cor, "tipo": "cor"}
-
-
-def gerar_charada(nivel):
-    pergunta, resposta = random.choice(CHARADAS_FACEIS)
-    return {"pergunta": pergunta, "resposta": resposta, "tipo": "charada"}
-
-
-# --- Fluxo do jogo --- #
+def atualizar_humor(acertou: bool):
+    if acertou:
+        estado["humor_level"] = max(0, estado["humor_level"] - 1)
+    else:
+        estado["humor_level"] = min(4, estado["humor_level"] + 1)
 
 def proxima_pergunta():
-    global fase_atual, nivel
-    if nivel <= 2:
-        tipo = "conta"
-    elif nivel == 3:
-        tipo = random.choice(["conta", "cor"])
-    else:
-        tipo = random.choice(["conta", "cor", "charada"])
+    nivel = estado["nivel"]
+    pergunta = perguntas[(nivel - 1) % len(perguntas)]
+    estado["fase"] = pergunta
+    return pergunta["pergunta"]
 
-    if tipo == "conta":
-        fase_atual = gerar_conta_inteira(nivel)
-    elif tipo == "cor":
-        fase_atual = gerar_pergunta_cor()
-    else:
-        fase_atual = gerar_charada(nivel)
+def reset_game():
+    nome = estado["jogador"]
+    global_name, global_score = recorde_global()
+    estado.update({
+        "nivel": 1,
+        "humor_level": 0,
+        "tentativas": 0,
+        "game_over": False,
+        "pontos": 0
+    })
+    nova = proxima_pergunta()
+    return f"💥 O Luiz explodiu, mas já se recompôs.<br>Vamos de novo, {nome}? 😅<br>🏆 Recorde global: {global_name} ({global_score} pontos)<br>{nova}"
 
-    return fase_atual["pergunta"]
+def estado_atual():
+    return estado
 
+# ----------------------------
+# MECÂNICA PRINCIPAL
+# ----------------------------
+def verificar_resposta(tentativa: str):
+    tentativa = tentativa.lower().replace("*", "x").replace("÷", "/").strip()
+    nome = estado["jogador"]
 
-def verificar_resposta(tentativa):
-    global fase_atual, nivel, acertos_seguidos
+    if estado["game_over"]:
+        nova = reset_game()
+        return {
+            "reiniciar": True,
+            "nova_pergunta": nova,
+            "mensagem": f"💀 O Luiz teve um colapso, mas já voltou ao normal, {nome} 😅",
+            "nivel": 1,
+            "humor": 0
+        }
 
-    tentativa_int = clean_int_string(tentativa)
-    resposta_int = clean_int_string(fase_atual.get("resposta", ""))
+    if not estado["fase"]:
+        proxima_pergunta()
 
-    tentativa_norm = normalize_text(tentativa)
-    resposta_norm = normalize_text(fase_atual.get("resposta", ""))
+    resposta_certa = estado["fase"]["resposta"]
+    acertou = tentativa in resposta_certa
+    atualizar_humor(acertou)
 
-    acertou = False
-
-    # --- Comparação numérica segura ---
-    if tentativa_int is not None and resposta_int is not None:
-        acertou = tentativa_int == resposta_int
-    else:
-        acertou = tentativa_norm == resposta_norm
-
+    # ACERTO ✅
     if acertou:
-        acertos_seguidos += 1
-        if acertos_seguidos % 3 == 0:
-            nivel = min(nivel + 1, 5)
-        msg = random.choice([
-            "✅ Acertou! Luiz está orgulhoso! 😎",
-            "🎯 Boa! Subindo o nível!",
-            "👏 Mandou bem! Luiz curtiu!"
+        estado["pontos"] += 10
+        estado["nivel"] += 1
+        emoji, fala = humor_reacao(estado["humor_level"])
+        nova_pergunta = proxima_pergunta()
+        novo_pessoal, novo_global, recorde_global_pontos = atualizar_recorde(nome, estado["pontos"])
+
+        if novo_global:
+            mensagem_extra = f"🏆 Inacreditável, {nome}! Novo RECORDISTA GLOBAL com {estado['pontos']} pontos! 🎉"
+        elif novo_pessoal:
+            mensagem_extra = f"👏 Parabéns, {nome}! Você superou seu recorde pessoal! 🔥"
+        else:
+            mensagem_extra = random.choice([
+                f"Luiz: Mandou bem, {nome}! 👏",
+                f"Tá ficando esperto, hein {nome}? 😎",
+                f"O Luiz até ficou orgulhoso dessa, {nome} 😁"
+            ])
+
+        return {
+            "acertou": True,
+            "mensagem": f"{emoji} {fala}<br>{mensagem_extra}",
+            "nova_pergunta": nova_pergunta,
+            "nivel": estado["nivel"],
+            "humor": estado["humor_level"],
+            "pontos": estado["pontos"]
+        }
+
+    # ERRO ❌
+    else:
+        estado["pontos"] = max(0, estado["pontos"] - 2)
+        if estado["humor_level"] >= 4:
+            estado["game_over"] = True
+            emoji, fala = humor_reacao(4)
+            nome_global, pontos_global = recorde_global()
+            atualizar_recorde(nome, estado["pontos"])
+            return {
+                "reiniciar": True,
+                "nova_pergunta": reset_game(),
+                "mensagem": f"{emoji} {fala}<br>{nome}, você terminou com {estado['pontos']} pontos.<br>🏆 Recorde global: {nome_global} ({pontos_global} pontos).",
+                "nivel": 1,
+                "humor": 4,
+                "pontos": estado["pontos"]
+            }
+
+        emoji, fala = humor_reacao(estado["humor_level"])
+        sarcasmo = random.choice([
+            f"Luiz: sério isso, {nome}? 😂",
+            f"Hmm... {nome}, acho que você dormiu na aula 😅",
+            f"Isso doeu no raciocínio, {nome} 🧠💥"
         ])
-        return True, msg
+        dica = random.choice([
+            "💡 Dica: pensa com calma.",
+            "💡 Multiplicação não é adivinhação, hein? 😉",
+            "💡 Revê a conta, confia no raciocínio!"
+        ])
 
-    acertos_seguidos = 0
-    nivel = max(1, nivel - 0.2)
+        return {
+            "acertou": False,
+            "mensagem": f"{emoji} {fala}<br>{sarcasmo}<br>{dica}",
+            "nova_pergunta": estado["fase"]["pergunta"],
+            "nivel": estado["nivel"],
+            "humor": estado["humor_level"],
+            "pontos": estado["pontos"]
+        }
 
-    dica = {
-        "conta": "Revise o cálculo — lembre-se: espaços e sinais negativos contam! 😉",
-        "cor": "Olhe o emoji com calma e veja a cor principal 🌈",
-        "charada": "Pense fora da caixa! Luiz adora enigmas 🤓"
-    }.get(fase_atual.get("tipo"), "")
-
-    msg = random.choice([
-        f"❌ Errou! {dica}",
-        f"😅 Quase lá... {dica}",
-        f"❌ Não foi dessa vez. {dica}"
-    ])
-    return False, msg
+# Inicializa primeira pergunta
+proxima_pergunta()
