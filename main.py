@@ -1,39 +1,35 @@
 from flask import Flask, render_template, request, jsonify
-import ia
+import ia  # importa o arquivo ia.py
 
 app = Flask(__name__)
-fase_atual = ia.gerar_fase()
-tentativas = 0
-nivel = 1
+
+# Inicializa a primeira pergunta
+ia.proxima_pergunta()
 
 @app.route("/")
 def index():
-    return render_template("index.html", pergunta=fase_atual["pergunta"])
+    return render_template("index.html", pergunta=ia.fase_atual["pergunta"])
 
-@app.route("/responder", methods=["POST"])
-def responder():
-    global fase_atual, tentativas, nivel
+@app.route("/verificar", methods=["POST"])
+def verificar():
     data = request.get_json()
-    tentativa = data.get("resposta", "")
-    tentativas += 1
+    tentativa = data.get("tentativa", "").strip()
 
-    acertou, mensagem, _ = ia.avaliar_tentativa(fase_atual, tentativa, tentativas)
+    acertou, mensagem = ia.verificar_resposta(tentativa)
+
     if acertou:
-        nivel += 1
-        fase_atual = ia.gerar_fase()
-        tentativas = 0
+        nova_pergunta = ia.proxima_pergunta()
         return jsonify({
             "acertou": True,
             "mensagem": mensagem,
-            "nova_pergunta": fase_atual["pergunta"],
-            "nivel": nivel
+            "nova_pergunta": nova_pergunta
         })
-    return jsonify({
-        "acertou": False,
-        "mensagem": mensagem,
-        "nova_pergunta": fase_atual["pergunta"],
-        "nivel": nivel
-    })
+    else:
+        return jsonify({
+            "acertou": False,
+            "mensagem": mensagem,
+            "nova_pergunta": ia.fase_atual["pergunta"]
+        })
 
 if __name__ == "__main__":
     app.run(debug=True)

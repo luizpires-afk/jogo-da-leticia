@@ -1,138 +1,158 @@
 import random
-import math
+import operator
+import re
 
-# 🎨 Emojis coloridos por cor
-CORES_EMOJIS = {
-    "vermelho": ["❤️", "🟥", "🍎", "🌹", "🍓", "🎈", "🚗", "📕", "🧣"],
-    "verde": ["💚", "🟩", "🍀", "🌲", "🥦", "🐸", "🧤"],
-    "azul": ["💙", "🟦", "🌊", "🐳", "🧢", "🎽"],
-    "amarelo": ["💛", "🟨", "🌞", "🌻", "⭐", "🍋"],
-    "preto": ["🖤", "⬛", "🐈‍⬛", "🎩", "🕶️"],
-    "branco": ["🤍", "⬜", "🐑", "❄️"],
-    "roxo": ["💜", "🟪", "🍇", "🔮"],
-    "laranja": ["🟧", "🍊", "🦊", "🏀"],
-    "rosa": ["🌸", "🎀", "🩷", "🍑"],
-    "marrom": ["🟫", "🐻", "🥔", "🍫"],
+fase_atual = {}
+nivel = 1
+acertos_seguidos = 0
+
+OPS = {
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "//": operator.floordiv
 }
 
-# 🎲 Charadas e enigmas
-CHARADAS = [
-    {"pergunta": "O que é o que é: quanto mais se tira, maior fica?", "resposta": "buraco"},
-    {"pergunta": "Tem dentes, mas não morde. O que é?", "resposta": "pente"},
-    {"pergunta": "Quanto mais cresce, menos se vê. O que é?", "resposta": "escuridão"},
-    {"pergunta": "O que corre, mas não tem pernas?", "resposta": "rio"},
-    {"pergunta": "Qual é o animal que tem no meio do coração?", "resposta": "cavalo"},
+EMOJIS_CORES = {
+    "vermelho": ["❤️", "🟥", "🍎", "🌹", "🚗", "🔥", "🎈", "📕", "🍓"],
+    "azul": ["💙", "🟦", "🐳", "🧢", "🌊", "💧", "🪣", "🫐"],
+    "verde": ["💚", "🟩", "🍀", "🌳", "🥦", "🐢", "🦎", "🍏"],
+    "amarelo": ["💛", "🟨", "🍋", "🐥", "🌻", "🌞", "⚡", "🧀"],
+    "roxo": ["💜", "🟪", "🍇", "🔮", "🪻", "👾"],
+    "laranja": ["🧡", "🟧", "🍊", "🦊", "🥕"],
+    "preto": ["🖤", "⬛", "🐈‍⬛", "🎩", "🕶️"],
+    "branco": ["🤍", "⬜", "🐑", "🥛", "❄️"]
+}
+
+CHARADAS_FACEIS = [
+    ("Tem dentes, mas não morde. O que é?", "pente"),
+    ("O que tem pescoço, mas não tem cabeça?", "garrafa"),
+    ("Quanto é 7 - 7?", "0"),
+    ("O que cai em pé e corre deitado?", "chuva"),
+    ("Quanto é 2 + 3?", "5"),
+    ("O que passa na frente do sol, mas não faz sombra?", "vento"),
 ]
 
-# 🔢 Função que gera contas de acordo com a dificuldade
-def gerar_conta(dificuldade):
-    ops = ["+", "-", "*", "//", "**"]
-    op = random.choice(ops[:2] if dificuldade == "fácil" else ops[:3] if dificuldade == "médio" else ops)
+# --- Funções auxiliares robustas --- #
 
-    a, b = random.randint(-10, 20), random.randint(-10, 20)
+def clean_int_string(s):
+    """Limpa e converte uma string em inteiro, ignorando espaços e variações de traço."""
+    if not s:
+        return None
+    s = s.strip()
+    s = re.sub(r"[–—−]", "-", s)  # substitui travessões por hífen normal
+    s = re.sub(r"\s+", "", s)  # remove TODOS os espaços
+    try:
+        return int(s)
+    except ValueError:
+        return None
 
-    if op == "//":  # divisão inteira, garantir resultado inteiro
-        b = random.randint(1, 10)
-        a = b * random.randint(-10, 10)
-        resultado = a // b
-    elif op == "**":
-        a = random.randint(1, 5)
-        b = random.randint(2, 3)
-        resultado = a ** b
+
+import re
+
+def normalize_text(s: str) -> str:
+    """Remove espaços, pontuações e deixa tudo minúsculo."""
+    # Remove espaços e pontuações (versão compatível com o re padrão)
+    s = re.sub(r"[\s\W_]+", "", s.lower())  # \W remove tudo que não é letra ou número
+    return s
+
+
+
+# --- Geração de perguntas --- #
+
+def gerar_conta_inteira(nivel):
+    """Gera uma conta simples de inteiros com resultado inteiro."""
+    if nivel <= 2:
+        op = random.choice(["+", "-"])
+        a, b = random.randint(0, 9), random.randint(0, 9)
+    elif nivel == 3:
+        op = random.choice(["+", "-", "*"])
+        a, b = random.randint(-10, 10), random.randint(1, 10)
     else:
-        resultado = eval(f"{a}{op}{b}")
-
-    return {"tipo": "conta", "pergunta": f"Resolva: {a} {op} {b}", "resposta": str(resultado)}
-
-# 🔀 Gera fase infinita com progressão de dificuldade
-def gerar_fase(nivel=1):
-    if nivel < 5:
-        dificuldade = "fácil"
-    elif nivel < 10:
-        dificuldade = "médio"
-    else:
-        dificuldade = "difícil"
-
-    tipo = random.choices(["conta", "emoji", "charada"], weights=[60, 25, 15])[0]
-
-    if tipo == "conta":
-        return gerar_conta(dificuldade)
-    elif tipo == "emoji":
-        cor = random.choice(list(CORES_EMOJIS.keys()))
-        return {"tipo": "emoji", "pergunta": f"Digite um emoji {cor}.", "resposta": random.choice(CORES_EMOJIS[cor]), "cor": cor}
-    else:
-        return random.choice(CHARADAS)
-
-# 🎭 Reações inteligentes e sarcásticas do Luiz
-def gerar_reacao(tentativa, fase):
-    tentativa = tentativa.strip().lower()
-    resposta = fase["resposta"].strip().lower()
-    tipo = fase.get("tipo", "conta")
-
-    if tipo == "conta":
-        try:
-            tentativa_num = int(tentativa)
-            resposta_num = int(resposta)
-            diff = tentativa_num - resposta_num
-
-            if tentativa_num == resposta_num:
-                return "🤓 Luiz: Finalmente acertou! A matemática agradece. 📈"
-            elif abs(diff) <= 2:
-                return "🤓 Luiz: Quase lá, parece que a calculadora travou no último dígito. 🧮"
-            elif tentativa_num > resposta_num:
-                return "🤓 Luiz: Passou do ponto! Isso tá grande demais! 😅"
-            else:
-                return "🤓 Luiz: Tá muito baixo, nem o resultado te viu lá embaixo. 🕳️"
-        except:
-            return "🤓 Luiz: Isso é número ou foi inspirado em arte abstrata?"
-
-    elif tipo == "emoji":
-        cor_correta = fase["cor"]
-        for cor, lista in CORES_EMOJIS.items():
-            if tentativa in [e.lower() for e in lista]:
-                if cor == cor_correta:
-                    return f"🤓 Luiz: Boa! Isso sim é um emoji {cor}! 🌈"
-                else:
-                    return f"🤓 Luiz: Tá colorido, mas errou o tom... isso é {cor}, não {cor_correta}! 🎨"
-        return "🤓 Luiz: Isso... é um emoji? Ou uma tentativa de arte moderna?"
-
-    elif tipo == "charada":
-        if tentativa == resposta:
-            return "🤓 Luiz: Mandou bem! Acertou o enigma como um verdadeiro detetive 🕵️"
+        op = random.choice(["+", "-", "*", "//"])
+        if op == "//":
+            b = random.randint(1, 10)
+            a = b * random.randint(-10, 10)
         else:
-            return random.choice([
-                "🤓 Luiz: Essa resposta foi... criativa 😅",
-                "🤓 Luiz: Pensa diferente, o enigma é mais lógico do que parece!",
-                "🤓 Luiz: Tá frio, muito frio! ❄️",
-                "🤓 Luiz: Eu acreditava mais em você... mas ainda dá tempo!",
-                "🤓 Luiz: Não é isso, mas gostei da tentativa 😂"
-            ])
+            a = random.randint(-30, 30)
+            b = random.randint(-20, 20)
 
-    return "🤓 Luiz: Acho que bugou meu cérebro com essa resposta..."
+    resultado = OPS[op](a, b)
+    return {"pergunta": f"Quanto é {a} {op} {b}?", "resposta": str(resultado), "tipo": "conta"}
 
-# 🧩 Sistema de avaliação
-def avaliar_tentativa(fase, tentativa, tentativas):
-    resposta_correta = fase["resposta"].strip().lower()
-    tentativa_normalizada = tentativa.strip().lower()
 
-    acertou = tentativa_normalizada == resposta_correta
-    dica = gerar_reacao(tentativa, fase)
+def gerar_pergunta_cor():
+    cor = random.choice(list(EMOJIS_CORES.keys()))
+    emoji = random.choice(EMOJIS_CORES[cor])
+    return {"pergunta": f"Qual é a cor deste emoji? {emoji}", "resposta": cor, "tipo": "cor"}
+
+
+def gerar_charada(nivel):
+    pergunta, resposta = random.choice(CHARADAS_FACEIS)
+    return {"pergunta": pergunta, "resposta": resposta, "tipo": "charada"}
+
+
+# --- Fluxo do jogo --- #
+
+def proxima_pergunta():
+    global fase_atual, nivel
+    if nivel <= 2:
+        tipo = "conta"
+    elif nivel == 3:
+        tipo = random.choice(["conta", "cor"])
+    else:
+        tipo = random.choice(["conta", "cor", "charada"])
+
+    if tipo == "conta":
+        fase_atual = gerar_conta_inteira(nivel)
+    elif tipo == "cor":
+        fase_atual = gerar_pergunta_cor()
+    else:
+        fase_atual = gerar_charada(nivel)
+
+    return fase_atual["pergunta"]
+
+
+def verificar_resposta(tentativa):
+    global fase_atual, nivel, acertos_seguidos
+
+    tentativa_int = clean_int_string(tentativa)
+    resposta_int = clean_int_string(fase_atual.get("resposta", ""))
+
+    tentativa_norm = normalize_text(tentativa)
+    resposta_norm = normalize_text(fase_atual.get("resposta", ""))
+
+    acertou = False
+
+    # --- Comparação numérica segura ---
+    if tentativa_int is not None and resposta_int is not None:
+        acertou = tentativa_int == resposta_int
+    else:
+        acertou = tentativa_norm == resposta_norm
 
     if acertou:
-        return True, f"✅ {dica}", ""
+        acertos_seguidos += 1
+        if acertos_seguidos % 3 == 0:
+            nivel = min(nivel + 1, 5)
+        msg = random.choice([
+            "✅ Acertou! Luiz está orgulhoso! 😎",
+            "🎯 Boa! Subindo o nível!",
+            "👏 Mandou bem! Luiz curtiu!"
+        ])
+        return True, msg
 
-    if tentativas > 2:
-        dica_extra = gerar_dica_extra(fase)
-        dica += f" 🤔 Dica do Luiz: {dica_extra}"
+    acertos_seguidos = 0
+    nivel = max(1, nivel - 0.2)
 
-    return False, f"❌ {dica}", dica
+    dica = {
+        "conta": "Revise o cálculo — lembre-se: espaços e sinais negativos contam! 😉",
+        "cor": "Olhe o emoji com calma e veja a cor principal 🌈",
+        "charada": "Pense fora da caixa! Luiz adora enigmas 🤓"
+    }.get(fase_atual.get("tipo"), "")
 
-# 💡 Dicas adicionais do Luiz
-def gerar_dica_extra(fase):
-    if fase["tipo"] == "conta":
-        return "Use a lógica matemática e lembre-se: nada de vírgula, só inteiros!"
-    elif fase["tipo"] == "emoji":
-        return f"Tente algo realmente {fase['cor']}."
-    elif fase["tipo"] == "charada":
-        return "Pense com criatividade, mas não complique demais!"
-    return "A resposta é simples... se você for esperto o bastante 😏"
+    msg = random.choice([
+        f"❌ Errou! {dica}",
+        f"😅 Quase lá... {dica}",
+        f"❌ Não foi dessa vez. {dica}"
+    ])
+    return False, msg

@@ -1,225 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Desafio do Luiz 🤓</title>
-    <style>
-        body {
-            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-            color: white;
-            font-family: "Poppins", sans-serif;
-            text-align: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <title>Desafio do Luiz 🤓</title>
+  <style>
+    body {
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
+    .luiz-container {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
 
-        .luiz-container {
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: center;
-            margin-bottom: 20px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
+    .luiz {
+      font-size: 4rem;
+      animation: flutuar 3s ease-in-out infinite;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
 
-        .luiz {
-            font-size: 4rem;
-            animation: flutuar 3s ease-in-out infinite;
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-        }
+    .balon {
+      background: #ffffff22;
+      padding: 12px 20px;
+      border-radius: 25px;
+      max-width: 340px;
+      margin-bottom: 10px;
+      position: absolute;
+      bottom: 110px;
+      animation: aparecer 0.5s ease;
+      font-style: italic;
+      font-size: 0.95rem;
+    }
 
-        .balon {
-            background: #ffffff22;
-            padding: 12px 20px;
-            border-radius: 25px;
-            max-width: 340px;
-            margin-bottom: 10px;
-            position: absolute;
-            bottom: 110px;
-            animation: aparecer 0.5s ease;
-            font-style: italic;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
+    .balon::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 45px;
+      border-width: 12px;
+      border-style: solid;
+      border-color: #ffffff22 transparent transparent transparent;
+    }
 
-        .balon::after {
-            content: "";
-            position: absolute;
-            bottom: -12px;
-            left: 45px;
-            border-width: 12px;
-            border-style: solid;
-            border-color: #ffffff22 transparent transparent transparent;
-        }
+    @keyframes flutuar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
 
-        @keyframes aparecer {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      width: 220px;
+      font-size: 1rem;
+      text-align: center;
+      outline: none;
+    }
 
-        @keyframes flutuar {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #00BFFF;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-        input {
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-            width: 220px;
-            font-size: 1rem;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-        }
+    button:hover { background: #009ACD; }
+    #mensagem { margin-top: 15px; font-style: italic; }
 
-        input:focus {
-            box-shadow: 0 0 10px #00bfffaa;
-        }
+    .reacao-feliz .luiz { transform: rotate(5deg) scale(1.2); text-shadow: 0 0 12px #00ff88; }
+    .reacao-zangado .luiz { transform: rotate(-8deg) scale(1.15); text-shadow: 0 0 12px #ff0033; }
+    .reacao-confuso .luiz { transform: rotate(4deg) scale(1.1); text-shadow: 0 0 12px #ffff55; }
 
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            background: #00BFFF;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: #009ACD;
-            transform: scale(1.05);
-        }
-
-        .reacao-feliz .luiz {
-            transform: rotate(5deg) scale(1.2);
-            text-shadow: 0 0 12px #00ff88;
-        }
-        .reacao-zangado .luiz {
-            transform: rotate(-8deg) scale(1.15);
-            text-shadow: 0 0 12px #ff0033;
-        }
-        .reacao-confuso .luiz {
-            transform: rotate(4deg) scale(1.1);
-            text-shadow: 0 0 12px #ffff55;
-        }
-
-        .reacao-feliz .balon { background: #00ff8844; }
-        .reacao-zangado .balon { background: #ff335544; }
-        .reacao-confuso .balon { background: #ffee5544; }
-
-        #mensagem {
-            margin-top: 15px;
-            font-style: italic;
-        }
-
-        @keyframes piscar {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        #nivel-info {
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            background: #ffffff22;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #ddd;
-        }
-    </style>
+    .reacao-feliz .balon { background: #00ff8844; }
+    .reacao-zangado .balon { background: #ff335544; }
+    .reacao-confuso .balon { background: #ffee5544; }
+  </style>
 </head>
 <body>
-    <div id="nivel-info">Nível: <span id="nivel">1</span> 🎯</div>
+  <div id="luiz" class="luiz-container">
+    <div class="balon" id="pergunta">{{ pergunta }}</div>
+    <div class="luiz" id="emoji">🤓</div>
+  </div>
 
-    <div id="luiz" class="luiz-container">
-        <div class="balon" id="pergunta">{{ pergunta }}</div>
-        <div class="luiz" id="emoji">🤓</div>
-    </div>
+  <input id="entrada" type="text" placeholder="Digite aqui..." autocomplete="off">
+  <button id="enviarBtn">Enviar</button>
+  <div id="mensagem" class="balon" style="display:none; position:static; margin-top:15px;"></div>
 
-    <input id="entrada" type="text" placeholder="Digite aqui..." autocomplete="off">
-    <button onclick="enviar()">Enviar</button>
-    <div id="mensagem" class="balon" style="display:none; position:static; margin-top:15px;"></div>
+  <script>
+    const luizDiv = document.getElementById("luiz");
+    const emoji = document.getElementById("emoji");
+    const msgDiv = document.getElementById("mensagem");
+    const perguntaDiv = document.getElementById("pergunta");
+    const entrada = document.getElementById("entrada");
 
-    <!-- Sons -->
-    <audio id="somAcerto" src="https://cdn.pixabay.com/download/audio/2021/08/09/audio_8d6c0b6a63.mp3?filename=correct-2-46134.mp3"></audio>
-    <audio id="somErro" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5e7b2a72ef.mp3?filename=error-126627.mp3"></audio>
-    <audio id="somPensando" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c48d16e06b.mp3?filename=thinking-6013.mp3"></audio>
+    async function enviar() {
+      const tentativa = entrada.value.trim();
+      if (!tentativa) return;
 
-    <script>
-        const luizDiv = document.getElementById("luiz");
-        const emoji = document.getElementById("emoji");
-        const msgDiv = document.getElementById("mensagem");
-        const perguntaDiv = document.getElementById("pergunta");
-        const nivelSpan = document.getElementById("nivel");
-
-        const somAcerto = document.getElementById("somAcerto");
-        const somErro = document.getElementById("somErro");
-        const somPensando = document.getElementById("somPensando");
-
-        async function enviar() {
-            const tentativa = document.getElementById("entrada").value.trim();
-            if (!tentativa) return;
-
-            const res = await fetch("/responder", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ resposta: tentativa })
-            });
-
-            const data = await res.json();
-
-            msgDiv.style.display = "block";
-            msgDiv.innerHTML = data.mensagem;
-
-            luizDiv.classList.remove("reacao-feliz", "reacao-zangado", "reacao-confuso");
-
-            if (data.mensagem.includes("✅") || data.mensagem.includes("Boa")) {
-                luizDiv.classList.add("reacao-feliz");
-                emoji.textContent = "😎";
-                somAcerto.currentTime = 0;
-                somAcerto.play();
-            } else if (data.mensagem.includes("❌") || data.mensagem.includes("errou") || data.mensagem.includes("não")) {
-                luizDiv.classList.add("reacao-zangado");
-                emoji.textContent = "😠";
-                somErro.currentTime = 0;
-                somErro.play();
-            } else {
-                luizDiv.classList.add("reacao-confuso");
-                emoji.textContent = "😅";
-                somPensando.currentTime = 0;
-                somPensando.play();
-            }
-
-            if (data.acertou) {
-                msgDiv.style.animation = "piscar 1s ease 2";
-                setTimeout(() => {
-                    perguntaDiv.innerHTML = data.nova_pergunta;
-                    nivelSpan.textContent = data.nivel;
-                    msgDiv.style.display = "none";
-                    document.getElementById("entrada").value = "";
-                    luizDiv.classList.remove("reacao-feliz", "reacao-zangado", "reacao-confuso");
-                    emoji.textContent = "🤓";
-                }, 1500);
-            }
-        }
-
-        document.getElementById("entrada").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") enviar();
+      try {
+        const res = await fetch("/verificar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ tentativa })
         });
-    </script>
+
+        if (!res.ok) throw new Error("Erro na resposta do servidor");
+
+        const data = await res.json();
+        console.log("Resposta recebida:", data); // 👀 debug
+
+        msgDiv.style.display = "block";
+        msgDiv.textContent = data.mensagem;
+        luizDiv.classList.remove("reacao-feliz", "reacao-zangado", "reacao-confuso");
+
+        if (data.acertou) {
+          luizDiv.classList.add("reacao-feliz");
+          emoji.textContent = "😎";
+          setTimeout(() => {
+            perguntaDiv.textContent = data.nova_pergunta;
+            entrada.value = "";
+            msgDiv.style.display = "none";
+            emoji.textContent = "🤓";
+            luizDiv.classList.remove("reacao-feliz", "reacao-zangado", "reacao-confuso");
+          }, 1200);
+        } else {
+          luizDiv.classList.add("reacao-confuso");
+          emoji.textContent = "😅";
+        }
+      } catch (err) {
+        console.error("Erro:", err);
+        msgDiv.style.display = "block";
+        msgDiv.textContent = "❌ Erro de conexão com o Luiz 😢";
+        luizDiv.classList.add("reacao-zangado");
+      }
+    }
+
+    document.getElementById("enviarBtn").addEventListener("click", enviar);
+    entrada.addEventListener("keypress", e => { if (e.key === "Enter") enviar(); });
+  </script>
 </body>
 </html>
