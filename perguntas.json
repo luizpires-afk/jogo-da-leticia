@@ -1,0 +1,626 @@
+[
+  {
+    "texto": "Quanto é 10 + 10?",
+    "resposta": "20"
+  },
+  {
+    "texto": "Quanto é 20 - 17?",
+    "resposta": "3"
+  },
+  {
+    "texto": "Quem é o famoso encanador da Nintendo?",
+    "resposta": "mario"
+  },
+  {
+    "texto": "Quanto é 90 - 75?",
+    "resposta": "15"
+  },
+  {
+    "texto": "Corre mas não tem pernas. O que é?",
+    "resposta": "rio"
+  },
+  {
+    "texto": "Quanto é 63 ÷ 7?",
+    "resposta": "9"
+  },
+  {
+    "texto": "Quanto é 81 ÷ 9?",
+    "resposta": "9"
+  },
+  {
+    "texto": "Quanto é 72 ÷ 12?",
+    "resposta": "6"
+  },
+  {
+    "texto": "Quanto é 89 - 96?",
+    "resposta": "-7"
+  },
+  {
+    "texto": "Quanto é 80 + 8?",
+    "resposta": "88"
+  },
+  {
+    "texto": "Quem foi Napoleão Bonaparte?",
+    "resposta": "imperador francês"
+  },
+  {
+    "texto": "Quanto mais se seca, mais molhado fica. O que é?",
+    "resposta": "toalha"
+  },
+  {
+    "texto": "Não tem asas, mas voa. O que é?",
+    "resposta": "tempo"
+  },
+  {
+    "texto": "Quanto é 8 + 90?",
+    "resposta": "98"
+  },
+  {
+    "texto": "Resolva: 29 x 36",
+    "resposta": "1044"
+  },
+  {
+    "texto": "Resolva: 4 x 34",
+    "resposta": "136"
+  },
+  {
+    "texto": "Resolva: 89 x 59",
+    "resposta": "5251"
+  },
+  {
+    "texto": "Quanto é 15 ÷ 5?",
+    "resposta": "3"
+  },
+  {
+    "texto": "Quanto é 66 - 31?",
+    "resposta": "35"
+  },
+  {
+    "texto": "Quanto é 16 + 41?",
+    "resposta": "57"
+  },
+  {
+    "texto": "Quanto é 4 + 46?",
+    "resposta": "50"
+  },
+  {
+    "texto": "Quanto é 73 + 93?",
+    "resposta": "166"
+  },
+  {
+    "texto": "Qual é o planeta mais próximo do Sol?",
+    "resposta": "mercúrio"
+  },
+  {
+    "texto": "Quanto é 17 + 99?",
+    "resposta": "116"
+  },
+  {
+    "texto": "Quanto é 96 - 94?",
+    "resposta": "2"
+  },
+  {
+    "texto": "Quanto é 85 - 81?",
+    "resposta": "4"
+  },
+  {
+    "texto": "Quanto é 28 + 95?",
+    "resposta": "123"
+  },
+  {
+    "texto": "Resolva: 64 x 36",
+    "resposta": "2304"
+  },
+  {
+    "texto": "Quanto é 81 + 62?",
+    "resposta": "143"
+  },
+  {
+    "texto": "texto",
+    "resposta": "resposta"
+  },
+  {
+    "texto": "Resolva: 79 x 11",
+    "resposta": "869"
+  },
+  {
+    "texto": "Tem orelhas mas não ouve. O que é?",
+    "resposta": "milho"
+  },
+  {
+    "texto": "Quanto é 39 - 38?",
+    "resposta": "1"
+  },
+  {
+    "texto": "Quanto é 97 + 34?",
+    "resposta": "131"
+  },
+  {
+    "texto": "Quanto é 41 - 16?",
+    "resposta": "25"
+  },
+  {
+    "texto": "Quem descobriu o Brasil?",
+    "resposta": "pedro álvares cabral"
+  },
+  {
+    "texto": "Quanto é 34 - 48?",
+    "resposta": "-14"
+  },
+  {
+    "texto": "Qual é o estado físico da água no gelo?",
+    "resposta": "sólido"
+  },
+  {
+    "texto": "Quanto é 45 + 56?",
+    "resposta": "101"
+  },
+  {
+    "texto": "Resolva: 41 x 51",
+    "resposta": "2091"
+  },
+  {
+    "texto": "Quanto é 84 ÷ 12?",
+    "resposta": "7"
+  },
+  {
+    "texto": "texto",
+    "resposta": "resposta"
+  },
+  {
+    "texto": "Quanto é 35 ÷ 5?",
+    "resposta": "7"
+  },
+  {
+    "texto": "Resolva: 66 x 6",
+    "resposta": "396"
+  },
+  {
+    "texto": "Quanto é 20 ÷ 5?",
+    "resposta": "4"
+  },
+  {
+    "texto": "Resolva: 23 x 99",
+    "resposta": "2277"
+  },
+  {
+    "texto": "Resolva: 12 x 63",
+    "resposta": "756"
+  },
+  {
+    "texto": "Quanto é 78 - 67?",
+    "resposta": "11"
+  },
+  {
+    "texto": "O que é, o que é: quanto mais tira, maior fica?",
+    "resposta": "buraco"
+  },
+  {
+    "texto": "Resolva: 19 x 17",
+    "resposta": "323"
+  },
+  {
+    "texto": "Quanto é 4 + 46?",
+    "resposta": "50"
+  },
+  {
+    "texto": "Quanto é 76 + 76?",
+    "resposta": "152"
+  },
+  {
+    "texto": "Cai em pé e corre deitado. O que é?",
+    "resposta": "chuva"
+  },
+  {
+    "texto": "Resolva: 18 x 99",
+    "resposta": "1782"
+  },
+  {
+    "texto": "Quem é o protagonista de The Legend of Zelda?",
+    "resposta": "link"
+  },
+  {
+    "texto": "Quanto é 98 - 68?",
+    "resposta": "30"
+  },
+  {
+    "texto": "Resolva: 4 x 55",
+    "resposta": "220"
+  },
+  {
+    "texto": "Resolva: 43 x 51",
+    "resposta": "2193"
+  },
+  {
+    "texto": "Quanto é 80 - 58?",
+    "resposta": "22"
+  },
+  {
+    "texto": "Resolva: 27 x 91",
+    "resposta": "2457"
+  },
+  {
+    "texto": "Qual é o nome da princesa de Star Wars?",
+    "resposta": "leia"
+  },
+  {
+    "texto": "Quem é o vilão principal em Star Wars?",
+    "resposta": "darth vader"
+  },
+  {
+    "texto": "Quanto é 70 ÷ 7?",
+    "resposta": "10"
+  },
+  {
+    "texto": "Quem é o irmão do Mario?",
+    "resposta": "luigi"
+  },
+  {
+    "texto": "Qual é o órgão responsável por bombear sangue?",
+    "resposta": "coração"
+  },
+  {
+    "texto": "Qual é o deserto mais quente do mundo?",
+    "resposta": "saara"
+  },
+  {
+    "texto": "Quanto é 98 - 1?",
+    "resposta": "97"
+  },
+  {
+    "texto": "Quanto é 65 + 73?",
+    "resposta": "138"
+  },
+  {
+    "texto": "Tem dente, mas não morde. O que é?",
+    "resposta": "pente"
+  },
+  {
+    "texto": "Resolva: 99 x 44",
+    "resposta": "4356"
+  },
+  {
+    "texto": "Tem chaves, mas não abre portas. O que é?",
+    "resposta": "piano"
+  },
+  {
+    "texto": "Quanto é 8 ÷ 4?",
+    "resposta": "2"
+  },
+  {
+    "texto": "Quanto é 16 ÷ 8?",
+    "resposta": "2"
+  },
+  {
+    "texto": "Quanto é 79 + 1?",
+    "resposta": "80"
+  },
+  {
+    "texto": "Qual é o nome da escola de mutantes dos X-Men?",
+    "resposta": "xavier"
+  },
+  {
+    "texto": "Resolva: 53 x 8",
+    "resposta": "424"
+  },
+  {
+    "texto": "Qual país é conhecido como a Terra do Sol Nascente?",
+    "resposta": "japão"
+  },
+  {
+    "texto": "Qual é o metal mais leve do mundo?",
+    "resposta": "lítio"
+  },
+  {
+    "texto": "Resolva: 56 x 51",
+    "resposta": "2856"
+  },
+  {
+    "texto": "Quanto é 22 + 52?",
+    "resposta": "74"
+  },
+  {
+    "texto": "Quanto é 6 - 39?",
+    "resposta": "-33"
+  },
+  {
+    "texto": "Qual é o nome do mago em Harry Potter?",
+    "resposta": "dumbledore"
+  },
+  {
+    "texto": "Resolva: 24 x 73",
+    "resposta": "1752"
+  },
+  {
+    "texto": "Qual é o verdadeiro nome do Homem-Aranha?",
+    "resposta": "peter parker"
+  },
+  {
+    "texto": "Quanto é 2 + 87?",
+    "resposta": "89"
+  },
+  {
+    "texto": "Quanto é 10 + 1?",
+    "resposta": "11"
+  },
+  {
+    "texto": "Quanto é 4 ÷ 4?",
+    "resposta": "1"
+  },
+  {
+    "texto": "Quanto é 50 - 33?",
+    "resposta": "17"
+  },
+  {
+    "texto": "Qual é o idioma mais falado do mundo?",
+    "resposta": "inglês"
+  },
+  {
+    "texto": "Quanto é 63 + 2?",
+    "resposta": "65"
+  },
+  {
+    "texto": "texto",
+    "resposta": "resposta"
+  },
+  {
+    "texto": "Quem é o detetive da série 'Sherlock'?",
+    "resposta": "sherlock holmes"
+  },
+  {
+    "texto": "Quanto é 18 ÷ 3?",
+    "resposta": "6"
+  },
+  {
+    "texto": "Anda com os pés na cabeça. O que é?",
+    "resposta": "piolho"
+  },
+  {
+    "texto": "Quanto é 4 ÷ 1?",
+    "resposta": "4"
+  },
+  {
+    "texto": "Quanto é 51 - 58?",
+    "resposta": "-7"
+  },
+  {
+    "texto": "Quanto é 33 - 66?",
+    "resposta": "-33"
+  },
+  {
+    "texto": "Resolva: 3 x 53",
+    "resposta": "159"
+  },
+  {
+    "texto": "Quantas cores tem o arco-íris?",
+    "resposta": "7"
+  },
+  {
+    "texto": "Resolva: 3 x 6",
+    "resposta": "18"
+  },
+  {
+    "texto": "Quanto é 53 - 2?",
+    "resposta": "51"
+  },
+  {
+    "texto": "Quanto é 41 + 40?",
+    "resposta": "81"
+  },
+  {
+    "texto": "Quanto é 82 - 71?",
+    "resposta": "11"
+  },
+  {
+    "texto": "Quanto é 96 + 5?",
+    "resposta": "101"
+  },
+  {
+    "texto": "Quem é o líder dos Vingadores?",
+    "resposta": "capitão américa"
+  },
+  {
+    "texto": "Qual é o nome do robô dourado em Star Wars?",
+    "resposta": "c3po"
+  },
+  {
+    "texto": "Qual é o nome do mago em O Senhor dos Anéis?",
+    "resposta": "gandalf"
+  },
+  {
+    "texto": "Quanto é 1 ÷ 1?",
+    "resposta": "1"
+  },
+  {
+    "texto": "O que os humanos respiram para viver?",
+    "resposta": "oxigênio"
+  },
+  {
+    "texto": "Quanto é 62 - 85?",
+    "resposta": "-23"
+  },
+  {
+    "texto": "Quanto é 24 ÷ 3?",
+    "resposta": "8"
+  },
+  {
+    "texto": "Qual é o nome do planeta natal do Superman?",
+    "resposta": "krypton"
+  },
+  {
+    "texto": "Quem é o super-herói de Gotham City?",
+    "resposta": "batman"
+  },
+  {
+    "texto": "Quem canta 'Thriller'?",
+    "resposta": "michael jackson"
+  },
+  {
+    "texto": "Quanto é 60 + 80?",
+    "resposta": "140"
+  },
+  {
+    "texto": "Quanto é 79 - 81?",
+    "resposta": "-2"
+  },
+  {
+    "texto": "Resolva: 52 x 20",
+    "resposta": "1040"
+  },
+  {
+    "texto": "Que animal é conhecido por sua memória?",
+    "resposta": "elefante"
+  },
+  {
+    "texto": "Em que ano o homem pisou na Lua?",
+    "resposta": "1969"
+  },
+  {
+    "texto": "Qual é a capital da Alemanha?",
+    "resposta": "berlim"
+  },
+  {
+    "texto": "Qual é o maior oceano do planeta?",
+    "resposta": "pacífico"
+  },
+  {
+    "texto": "Resolva: 54 x 50",
+    "resposta": "2700"
+  },
+  {
+    "texto": "Resolva: 90 x 7",
+    "resposta": "630"
+  },
+  {
+    "texto": "Quanto é 51 - 87?",
+    "resposta": "-36"
+  },
+  {
+    "texto": "Quanto é 60 - 70?",
+    "resposta": "-10"
+  },
+  {
+    "texto": "Quanto é 53 - 51?",
+    "resposta": "2"
+  },
+  {
+    "texto": "texto",
+    "resposta": "resposta"
+  },
+  {
+    "texto": "Quem foi o primeiro presidente dos Estados Unidos?",
+    "resposta": "george washington"
+  },
+  {
+    "texto": "Resolva: 42 x 18",
+    "resposta": "756"
+  },
+  {
+    "texto": "Quanto mais cresce, menor fica. O que é?",
+    "resposta": "vela"
+  },
+  {
+    "texto": "Quanto é 48 ÷ 12?",
+    "resposta": "4"
+  },
+  {
+    "texto": "Resolva: 69 x 59",
+    "resposta": "4071"
+  },
+  {
+    "texto": "Quanto é 5 + 52?",
+    "resposta": "57"
+  },
+  {
+    "texto": "Pode ser de vidro, mas não é janela. O que é?",
+    "resposta": "garrafa"
+  },
+  {
+    "texto": "Qual é o nome do martelo do Thor?",
+    "resposta": "mjolnir"
+  },
+  {
+    "texto": "Quanto é 17 - 87?",
+    "resposta": "-70"
+  },
+  {
+    "texto": "Em que ano começou a Segunda Guerra Mundial?",
+    "resposta": "1939"
+  },
+  {
+    "texto": "Tem pescoço mas não tem cabeça. O que é?",
+    "resposta": "garrafa"
+  },
+  {
+    "texto": "Quanto é 48 - 4?",
+    "resposta": "44"
+  },
+  {
+    "texto": "Quanto é 55 ÷ 11?",
+    "resposta": "5"
+  },
+  {
+    "texto": "Quanto é 87 + 89?",
+    "resposta": "176"
+  },
+  {
+    "texto": "Qual é o símbolo químico da água?",
+    "resposta": "h2o"
+  },
+  {
+    "texto": "Quanto é 38 - 82?",
+    "resposta": "-44"
+  },
+  {
+    "texto": "Quem é o criador do Mickey Mouse?",
+    "resposta": "walt disney"
+  },
+  {
+    "texto": "Tem boca mas não fala. O que é?",
+    "resposta": "rio"
+  },
+  {
+    "texto": "Resolva: 23 x 27",
+    "resposta": "621"
+  },
+  {
+    "texto": "Quanto é 24 ÷ 3?",
+    "resposta": "8"
+  },
+  {
+    "texto": "Resolva: 20 x 31",
+    "resposta": "620"
+  },
+  {
+    "texto": "Em que continente fica o Egito?",
+    "resposta": "áfrica"
+  },
+  {
+    "texto": "Resolva: 74 x 65",
+    "resposta": "4810"
+  },
+  {
+    "texto": "Qual fruta é símbolo do amor?",
+    "resposta": "maçã"
+  },
+  {
+    "texto": "Quanto é 20 - 55?",
+    "resposta": "-35"
+  },
+  {
+    "texto": "Quanto é 28 + 48?",
+    "resposta": "76"
+  },
+  {
+    "texto": "Em que casa de Hogwarts está Harry Potter?",
+    "resposta": "grifinória"
+  },
+  {
+    "texto": "Quanto é 30 ÷ 6?",
+    "resposta": "5"
+  },
+  {
+    "texto": "É redondo, tem bola, mas não é jogo. O que é?",
+    "resposta": "olho"
+  }
+]

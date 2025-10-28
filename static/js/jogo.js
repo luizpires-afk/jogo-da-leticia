@@ -8,6 +8,7 @@ const voz = document.getElementById("voz");
 const hint = document.getElementById("hint");
 const status = document.getElementById("status");
 
+
 let lastReq = 0;
 
 // util: mostra balão com efeito de digitação (simples)

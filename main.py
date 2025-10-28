@@ -1,251 +1,171 @@
 from flask import Flask, render_template, request, jsonify
-import random
-import json
-import os
+import random, string, time
 
 app = Flask(__name__)
 
-# ----------------------------
-# ESTADO GLOBAL DO JOGO
-# ----------------------------
-estado = {
-    "nivel": 1,
-    "humor_level": 0,   # 0 = tranquilo, 4 = explodiu
-    "tentativas": 0,
-    "game_over": False,
-    "pontos": 0,
-    "fase": {},
-    "jogador": "Jogador"
+# ---------- BANCO DE DADOS SIMPLES (em memória) ----------
+ranking = []  # [(nome, pontuacao, tag)]
+
+# ---------- PERGUNTAS ----------
+perguntas = {
+    "facil": [
+        {"pergunta": "Quanto é 2 + 2?", "resposta": "4"},
+        {"pergunta": "Qual é o primeiro planeta do sistema solar?", "resposta": "Mercúrio"},
+        {"pergunta": "Qual a cor do céu em um dia ensolarado?", "resposta": "azul"},
+        {"pergunta": "Quanto é 10 - 7?", "resposta": "3"},
+        {"pergunta": "Qual animal é conhecido como o rei da selva?", "resposta": "leão"}
+    ],
+    "medio": [
+        {"pergunta": "Quanto é 12 x 3?", "resposta": "36"},
+        {"pergunta": "Qual é o maior oceano do mundo?", "resposta": "Pacífico"},
+        {"pergunta": "Quem pintou a Mona Lisa?", "resposta": "Leonardo da Vinci"},
+        {"pergunta": "Quanto é 15 ÷ 3?", "resposta": "5"},
+        {"pergunta": "Em que continente fica o Egito?", "resposta": "África"}
+    ],
+    "dificil": [
+        {"pergunta": "Quanto é 25 x 4 - 10?", "resposta": "90"},
+        {"pergunta": "Quem escreveu Dom Casmurro?", "resposta": "Machado de Assis"},
+        {"pergunta": "Qual é o elemento químico representado por 'Au'?", "resposta": "Ouro"},
+        {"pergunta": "Quantos ossos tem o corpo humano adulto?", "resposta": "206"},
+        {"pergunta": "Qual é o país com maior população do mundo?", "resposta": "China"}
+    ],
+    "pesadelo": [
+        {"pergunta": "Raiz quadrada de 529?", "resposta": "23"},
+        {"pergunta": "Qual o 7º planeta do sistema solar?", "resposta": "Urano"},
+        {"pergunta": "Quem descobriu o elétron?", "resposta": "Thomson"},
+        {"pergunta": "Qual o maior deserto do mundo?", "resposta": "Antártico"},
+        {"pergunta": "Quanto é 72 ÷ 9 + 8 x 2?", "resposta": "22"}
+    ]
 }
 
-RANKING_FILE = "ranking.json"
+# ---------- VARIÁVEIS DE ESTADO ----------
+estado = {
+    "pontuacao": 0,
+    "dificuldade": "facil",
+    "tempo": 30,
+    "perguntas_feitas": set(),
+    "modo_pesadelo": False,
+    "nome": "",
+}
 
-# ----------------------------
-# FUNÇÕES DE RANKING
-# ----------------------------
-def carregar_ranking():
-    if os.path.exists(RANKING_FILE):
-        try:
-            with open(RANKING_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            return {}
-    return {}
-
-def salvar_ranking(ranking):
-    with open(RANKING_FILE, "w", encoding="utf-8") as f:
-        json.dump(ranking, f, ensure_ascii=False, indent=2)
-
-def atualizar_recorde(nome, pontos):
-    ranking = carregar_ranking()
-    recorde_antigo = ranking.get(nome, 0)
-    ranking[nome] = max(recorde_antigo, pontos)
-    salvar_ranking(ranking)
-
-    maior_global = max(ranking.values(), default=0)
-    novo_pessoal = pontos > recorde_antigo
-    novo_global = pontos >= maior_global
-
-    return novo_pessoal, novo_global, maior_global
-
-def recorde_global():
-    ranking = carregar_ranking()
-    if not ranking:
-        return "Ninguém ainda", 0
-    melhor = max(ranking.items(), key=lambda x: x[1])
-    return melhor
-
-# ----------------------------
-# BANCO DE PERGUNTAS
-# ----------------------------
-perguntas = [
-    {"pergunta": "Quanto é 3 + 4?", "resposta": ["7", "sete"]},
-    {"pergunta": "Resolva: 5 x 6", "resposta": ["30", "trinta"]},
-    {"pergunta": "Qual é o resultado de 12 ÷ 3?", "resposta": ["4", "quatro"]},
-    {"pergunta": "Resolva: 9 - 5", "resposta": ["4", "quatro"]},
-    {"pergunta": "Quanto é 8 + 7?", "resposta": ["15", "quinze"]},
-    {"pergunta": "Resolva: 9 x 9", "resposta": ["81", "oitenta e um"]},
-    {"pergunta": "Quanto é 100 ÷ 10?", "resposta": ["10", "dez"]},
-    {"pergunta": "Resolva: 2 x 12", "resposta": ["24", "vinte e quatro"]},
-    {"pergunta": "Quanto é 7 + 8?", "resposta": ["15", "quinze"]},
-    {"pergunta": "Resolva: 11 x 11", "resposta": ["121", "cento e vinte e um"]},
-]
-
-# ----------------------------
-# HUMOR DO LUIZ
-# ----------------------------
-def humor_reacao(level: int):
-    reacoes = {
-        0: ("🤓", random.choice([
-            "Boa! Essa foi tranquila 😎",
-            "Mandou bem! Tá com o raciocínio em dia 💡",
-            "Acertou! Luiz tá orgulhoso 👏"
-        ])),
-        1: ("😐", random.choice([
-            "Hmm... quase lá 😅",
-            "Errou, mas ainda acredito em você 😬",
-            "Essa escapou por pouco 🤏"
-        ])),
-        2: ("😠", random.choice([
-            "Tá me testando, né? 😤",
-            "A paciência do Luiz tá no limite 😡",
-            "Melhor rever essa conta, hein? 👀"
-        ])),
-        3: ("😡", random.choice([
-            "Última chance, ein! 💣",
-            "Mais um erro e eu surto 😬",
-            "Luiz tá prestes a explodir 💥"
-        ])),
-        4: ("💥", "💥 O Luiz explodiu de raiva! Game Over! 💥")
-    }
-    return reacoes.get(level, ("🤖", "Sem emoções... por enquanto 😏"))
-
-# ----------------------------
-# FUNÇÕES AUXILIARES
-# ----------------------------
-def definir_jogador(nome):
-    if nome.strip():
-        estado["jogador"] = nome.strip().capitalize()
-    else:
-        estado["jogador"] = "Jogador"
-
-def atualizar_humor(acertou: bool):
-    if acertou:
-        estado["humor_level"] = max(0, estado["humor_level"] - 1)
-    else:
-        estado["humor_level"] = min(4, estado["humor_level"] + 1)
+# ---------- FUNÇÕES AUXILIARES ----------
+def gerar_tag(nome):
+    sufixo = ''.join(random.choices(string.digits, k=4))
+    return f"{nome}#{sufixo}"
 
 def proxima_pergunta():
-    pergunta = random.choice(perguntas)
-    estado["fase"] = pergunta
-    return pergunta["pergunta"]
+    nivel = estado["dificuldade"]
+    disponiveis = [p for i, p in enumerate(perguntas[nivel]) if i not in estado["perguntas_feitas"]]
+    if not disponiveis:
+        estado["perguntas_feitas"] = set()
+        disponiveis = perguntas[nivel]
+    pergunta = random.choice(disponiveis)
+    estado["perguntas_feitas"].add(perguntas[nivel].index(pergunta))
+    return pergunta
 
-def reset_game():
-    nome = estado["jogador"]
-    global_name, global_score = recorde_global()
-    estado.update({
-        "nivel": 1,
-        "humor_level": 0,
-        "tentativas": 0,
-        "game_over": False,
-        "pontos": 0
-    })
-    nova = proxima_pergunta()
-    return f"💥 O Luiz explodiu, mas já se recompôs. Vamos de novo, {nome}? 😅<br>🏆 Recorde global: {global_name} ({global_score} pontos)<br>{nova}"
-
-# ----------------------------
-# MECÂNICA PRINCIPAL
-# ----------------------------
-def verificar_resposta(tentativa: str):
-    tentativa = tentativa.lower().replace("*", "x").strip()
-    nome = estado["jogador"]
-
-    if estado["game_over"]:
-        nova = reset_game()
-        return {
-            "reiniciar": True,
-            "nova_pergunta": nova,
-            "mensagem": f"💀 O Luiz teve um colapso, mas já voltou ao normal, {nome} 😅",
-            "nivel": 1,
-            "humor": 0
-        }
-
-    if not estado["fase"]:
-        proxima_pergunta()
-
-    resposta_certa = estado["fase"]["resposta"]
-    acertou = tentativa in resposta_certa
-    atualizar_humor(acertou)
-
-    # --- ACERTO ---
-    if acertou:
-        estado["pontos"] += 10
-        estado["nivel"] += 1
-        emoji, fala = humor_reacao(estado["humor_level"])
-        nova_pergunta = proxima_pergunta()
-
-        novo_pessoal, novo_global, recorde_global_pontos = atualizar_recorde(nome, estado["pontos"])
-        if novo_global:
-            mensagem_extra = f"🏆 Inacreditável, {nome}! Novo RECORDISTA GLOBAL com {estado['pontos']} pontos! 🎉"
-        elif novo_pessoal:
-            mensagem_extra = f"👏 Parabéns, {nome}! Novo recorde pessoal 🔥"
-        else:
-            mensagem_extra = random.choice([
-                f"Luiz: Boa, {nome}! 👏",
-                f"Você tá afiado hoje, {nome}! 😎",
-                f"O Luiz até sorriu dessa vez 😁"
-            ])
-
-        return {
-            "acertou": True,
-            "mensagem": f"{emoji} {fala}<br>{mensagem_extra}<br>➡️ Próxima: {nova_pergunta}",
-            "nova_pergunta": nova_pergunta,
-            "nivel": estado["nivel"],
-            "humor": estado["humor_level"],
-            "pontos": estado["pontos"]
-        }
-
-    # --- ERRO ---
+def ajustar_tempo(acertou):
+    if estado["modo_pesadelo"]:
+        estado["tempo"] = 5
     else:
-        estado["pontos"] = max(0, estado["pontos"] - 2)
+        if acertou:
+            if estado["dificuldade"] == "facil":
+                estado["tempo"] += 8
+            elif estado["dificuldade"] == "medio":
+                estado["tempo"] += 5
+            elif estado["dificuldade"] == "dificil":
+                estado["tempo"] += 3
+        else:
+            estado["tempo"] -= 5
+            if estado["tempo"] < 5:
+                estado["tempo"] = 5
 
-        if estado["humor_level"] >= 4:
-            estado["game_over"] = True
-            emoji, fala = humor_reacao(4)
-            nome_global, pontos_global = recorde_global()
-            atualizar_recorde(nome, estado["pontos"])
-            return {
-                "reiniciar": True,
-                "nova_pergunta": reset_game(),
-                "mensagem": f"{emoji} {fala}<br>{nome}, você terminou com {estado['pontos']} pontos.<br>🏆 Recorde global: {nome_global} ({pontos_global} pontos).",
-                "nivel": 1,
-                "humor": 4,
-                "pontos": estado["pontos"]
-            }
+def proxima_dificuldade():
+    if estado["pontuacao"] >= 5 and estado["dificuldade"] == "facil":
+        estado["dificuldade"] = "medio"
+        estado["tempo"] = 25
+    elif estado["pontuacao"] >= 10 and estado["dificuldade"] == "medio":
+        estado["dificuldade"] = "dificil"
+        estado["tempo"] = 20
+    elif estado["pontuacao"] >= 10 and estado["dificuldade"] == "dificil":
+        return "modo_pesadelo"
+    return None
 
-        emoji, fala = humor_reacao(estado["humor_level"])
-        sarcasmo = random.choice([
-            f"Luiz: sério isso, {nome}? 😂",
-            f"Hmm... {nome}, acho que você dormiu na aula 😅",
-            f"Isso doeu no raciocínio, {nome} 🧠💥",
-            f"{nome}, tenta mais uma vez antes que eu perca a fé 😑"
-        ])
-        dica = random.choice([
-            "💡 Dica: tenta pensar com calma.",
-            "💡 Multiplicação não é adivinhação 😉",
-            "💡 Revê a conta, confia no raciocínio!",
-            "💡 Pode usar os dedos, eu não julgo 😏",
-            "💡 O Luiz ainda acredita em você 😬"
-        ])
+def expressao_luiz(acertou, tempo):
+    if acertou:
+        if tempo > 20:
+            return "😁 Uau, acertou rápido! Boa!"
+        elif tempo > 10:
+            return "😎 Mandou bem, amor!"
+        else:
+            return "😉 Foi por pouco, mas valeu!"
+    else:
+        if tempo > 15:
+            return "😠 Poxa, tenta de novo!"
+        elif tempo > 7:
+            return "😡 Assim não dá, hein!"
+        else:
+            return "💀 Luiz está furioso!"
 
-        return {
-            "acertou": False,
-            "mensagem": f"{emoji} {fala}<br>{sarcasmo}<br>{dica}",
-            "nova_pergunta": estado["fase"]["pergunta"],
-            "nivel": estado["nivel"],
-            "humor": estado["humor_level"],
-            "pontos": estado["pontos"]
-        }
-
-# ----------------------------
-# ROTAS FLASK
-# ----------------------------
+# ---------- ROTAS ----------
 @app.route("/")
 def index():
     pergunta = proxima_pergunta()
-    return render_template("index.html", pergunta=pergunta)
+    return render_template("index.html", pergunta=pergunta["pergunta"], tempo=estado["tempo"], dificuldade=estado["dificuldade"])
 
-@app.route("/definir_jogador", methods=["POST"])
-def definir_nome():
-    nome = request.json.get("nome", "Jogador")
-    definir_jogador(nome)
-    return jsonify({"status": "ok", "nome": nome})
+@app.route("/responder", methods=["POST"])
+def responder():
+    dados = request.get_json()
+    resposta = dados.get("resposta", "").strip().lower()
+    pergunta_atual = dados.get("pergunta_atual")
+    acertou = False
+    comentario = ""
 
-@app.route("/verificar", methods=["POST"])
-def verificar():
-    tentativa = request.json.get("tentativa", "")
-    resposta = verificar_resposta(tentativa)
-    return jsonify(resposta)
+    if resposta == "te amo":
+        acertou = True
+        comentario = "💖 Aw... Te amo também! Pode passar, vai. 😍"
+    else:
+        for p in perguntas[estado["dificuldade"]]:
+            if p["pergunta"] == pergunta_atual:
+                if resposta.lower() == p["resposta"].lower():
+                    acertou = True
+                break
+
+    if acertou:
+        estado["pontuacao"] += 1
+        ajustar_tempo(True)
+        comentario = comentario or expressao_luiz(True, estado["tempo"])
+        proximo = proxima_dificuldade()
+        if proximo == "modo_pesadelo":
+            return jsonify({"status": "transicao", "mensagem": "🔥 Chegou até aqui?! Quer entrar no modo PESADELO ou encerrar com orgulho?", "pontuacao": estado["pontuacao"]})
+    else:
+        ajustar_tempo(False)
+        comentario = expressao_luiz(False, estado["tempo"])
+        if estado["modo_pesadelo"] and not acertou:
+            return jsonify({"status": "fim", "mensagem": "💀 Luiz explodiu de raiva! Fim de jogo.", "pontuacao": estado["pontuacao"]})
+
+    if estado["tempo"] <= 0:
+        return jsonify({"status": "fim", "mensagem": "💥 Tempo esgotado! Luiz perdeu a paciência!", "pontuacao": estado["pontuacao"]})
+
+    prox = proxima_pergunta()
+    return jsonify({"status": "ok", "pergunta": prox["pergunta"], "tempo": estado["tempo"], "comentario": comentario, "dificuldade": estado["dificuldade"], "pontuacao": estado["pontuacao"]})
+
+@app.route("/modo_pesadelo", methods=["POST"])
+def modo_pesadelo():
+    estado["modo_pesadelo"] = True
+    estado["dificuldade"] = "pesadelo"
+    estado["tempo"] = 5
+    return jsonify({"status": "ok", "mensagem": "😈 Bem-vindo ao modo PESADELO! Boa sorte!"})
+
+@app.route("/salvar_ranking", methods=["POST"])
+def salvar_ranking():
+    dados = request.get_json()
+    nome = dados.get("nome", "Jogador")
+    pontuacao = dados.get("pontuacao", 0)
+    tag = gerar_tag(nome)
+    ranking.append((nome, pontuacao, tag))
+    ranking.sort(key=lambda x: x[1], reverse=True)
+    top10 = ranking[:10]
+    return jsonify({"status": "ok", "ranking": top10})
 
 if __name__ == "__main__":
     app.run(debug=True)
