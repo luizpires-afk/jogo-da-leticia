@@ -1,0 +1,254 @@
+[
+  {
+    "pergunta": "Qual é o animal mais rápido do mundo?",
+    "resposta": "Guepardo",
+    "dificuldade": "facil",
+    "tema": "curiosidades"
+  },
+  {
+    "pergunta": "Em que ano o homem pisou na Lua?",
+    "resposta": "1969",
+    "dificuldade": "pesadelo",
+    "tema": "pesadelo"
+  },
+  {
+    "pergunta": "Quanto é 45 ÷ 9?",
+    "resposta": "5",
+    "dificuldade": "medio",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Em que ano caiu o Império Romano do Ocidente?",
+    "resposta": "476",
+    "dificuldade": "pesadelo",
+    "tema": "pesadelo"
+  },
+  {
+    "pergunta": "Qual é o elemento químico representado por 'O'?",
+    "resposta": "Oxigênio",
+    "dificuldade": "medio",
+    "tema": "ciencias"
+  },
+  {
+    "pergunta": "Quantos ossos tem o corpo humano adulto?",
+    "resposta": "206",
+    "dificuldade": "medio",
+    "tema": "curiosidades"
+  },
+  {
+    "pergunta": "Em que oceano está Madagascar?",
+    "resposta": "Oceano Índico",
+    "dificuldade": "dificil",
+    "tema": "geografia"
+  },
+  {
+    "pergunta": "Qual é o elemento químico representado por 'Au'?",
+    "resposta": "Ouro",
+    "dificuldade": "dificil",
+    "tema": "ciencias"
+  },
+  {
+    "pergunta": "Qual é a raiz quadrada de 121?",
+    "resposta": "11",
+    "dificuldade": "dificil",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Qual é o gás que os humanos respiram?",
+    "resposta": "Oxigênio",
+    "dificuldade": "facil",
+    "tema": "ciencias"
+  },
+  {
+    "pergunta": "Quanto é 15 × 14?",
+    "resposta": "210",
+    "dificuldade": "dificil",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Qual é o maior órgão do corpo humano?",
+    "resposta": "Pele",
+    "dificuldade": "medio",
+    "tema": "ciencias"
+  },
+  {
+    "pergunta": "Em qual filme aparece o sabre de luz?",
+    "resposta": "Star Wars",
+    "dificuldade": "medio",
+    "tema": "cultura_pop"
+  },
+  {
+    "pergunta": "Qual é o maior país do mundo em extensão territorial?",
+    "resposta": "Rússia",
+    "dificuldade": "medio",
+    "tema": "geografia"
+  },
+  {
+    "pergunta": "Quem é o personagem principal de 'Bob Esponja'?",
+    "resposta": "Bob Esponja",
+    "dificuldade": "facil",
+    "tema": "cultura_pop"
+  },
+  {
+    "pergunta": "Qual é o dobro de 27?",
+    "resposta": "54",
+    "dificuldade": "medio",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Quem formulou a Teoria da Relatividade Geral?",
+    "resposta": "Albert Einstein",
+    "dificuldade": "pesadelo",
+    "tema": "pesadelo"
+  },
+  {
+    "pergunta": "Quem canta 'Shape of You'?",
+    "resposta": "Ed Sheeran",
+    "dificuldade": "medio",
+    "tema": "cultura_pop"
+  },
+  {
+    "pergunta": "Quem foi o primeiro presidente do Brasil?",
+    "resposta": "Deodoro da Fonseca",
+    "dificuldade": "facil",
+    "tema": "historia"
+  },
+  {
+    "pergunta": "Qual série tem o personagem Walter White?",
+    "resposta": "Breaking Bad",
+    "dificuldade": "dificil",
+    "tema": "cultura_pop"
+  },
+  {
+    "pergunta": "Em qual continente fica o Egito?",
+    "resposta": "África",
+    "dificuldade": "medio",
+    "tema": "geografia"
+  },
+  {
+    "pergunta": "Qual é o planeta mais próximo do Sol?",
+    "resposta": "Mercúrio",
+    "dificuldade": "facil",
+    "tema": "ciencias"
+  },
+  {
+    "pergunta": "Quem descobriu o Brasil?",
+    "resposta": "Pedro Álvares Cabral",
+    "dificuldade": "medio",
+    "tema": "historia"
+  },
+  {
+    "pergunta": "Em que ano começou a Segunda Guerra Mundial?",
+    "resposta": "1939",
+    "dificuldade": "dificil",
+    "tema": "historia"
+  },
+  {
+    "pergunta": "Quanto é 2 + 2?",
+    "resposta": "4",
+    "dificuldade": "facil",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Quantos anos tem um século?",
+    "resposta": "100",
+    "dificuldade": "dificil",
+    "tema": "curiosidades"
+  },
+  {
+    "pergunta": "Qual é o nome científico da água?",
+    "resposta": "H2O",
+    "dificuldade": "dificil",
+    "tema": "ciencias"
+  },
+  {
+    "pergunta": "Quanto é 12 × 3?",
+    "resposta": "36",
+    "dificuldade": "medio",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Qual é o número atômico do Urânio?",
+    "resposta": "92",
+    "dificuldade": "pesadelo",
+    "tema": "pesadelo"
+  },
+  {
+    "pergunta": "Quem dirigiu o filme 'Interestelar'?",
+    "resposta": "Christopher Nolan",
+    "dificuldade": "dificil",
+    "tema": "cultura_pop"
+  },
+  {
+    "pergunta": "Quantos planetas há no Sistema Solar?",
+    "resposta": "8",
+    "dificuldade": "medio",
+    "tema": "curiosidades"
+  },
+  {
+    "pergunta": "Quando terminou a Primeira Guerra Mundial?",
+    "resposta": "1918",
+    "dificuldade": "dificil",
+    "tema": "historia"
+  },
+  {
+    "pergunta": "Qual é a capital da Islândia?",
+    "resposta": "Reykjavik",
+    "dificuldade": "dificil",
+    "tema": "geografia"
+  },
+  {
+    "pergunta": "Qual é o nome do rato famoso da Disney?",
+    "resposta": "Mickey Mouse",
+    "dificuldade": "facil",
+    "tema": "cultura_pop"
+  },
+  {
+    "pergunta": "Qual o nome do cientista que descobriu o elétron?",
+    "resposta": "J. J. Thomson",
+    "dificuldade": "pesadelo",
+    "tema": "pesadelo"
+  },
+  {
+    "pergunta": "Quanto é 10 - 6?",
+    "resposta": "4",
+    "dificuldade": "facil",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Qual é a capital da França?",
+    "resposta": "Paris",
+    "dificuldade": "facil",
+    "tema": "geografia"
+  },
+  {
+    "pergunta": "Quanto é 5 + 3?",
+    "resposta": "8",
+    "dificuldade": "facil",
+    "tema": "matematica"
+  },
+  {
+    "pergunta": "Em que ano o Brasil proclamou a independência?",
+    "resposta": "1822",
+    "dificuldade": "medio",
+    "tema": "historia"
+  },
+  {
+    "pergunta": "Qual fruta é símbolo do amor?",
+    "resposta": "Maçã",
+    "dificuldade": "facil",
+    "tema": "curiosidades"
+  },
+  {
+    "pergunta": "Qual é a capital do Brasil?",
+    "resposta": "Brasília",
+    "dificuldade": "facil",
+    "tema": "geografia"
+  },
+  {
+    "pergunta": "Qual é o nome da galáxia em que vivemos?",
+    "resposta": "Via Láctea",
+    "dificuldade": "dificil",
+    "tema": "curiosidades"
+  }
+]

@@ -1,0 +1,782 @@
+[
+    {
+        "pergunta": "Quanto é 10 + 10?",
+        "resposta": "20",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 20 - 17?",
+        "resposta": "3",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quem é o famoso encanador da nintendo?",
+        "resposta": "mario",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 90 - 75?",
+        "resposta": "15",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Corre mas não tem pernas. o que é?",
+        "resposta": "rio",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 63 ÷ 7?",
+        "resposta": "9",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 81 ÷ 9?",
+        "resposta": "9",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 72 ÷ 12?",
+        "resposta": "6",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 89 - 96?",
+        "resposta": "-7",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 80 + 8?",
+        "resposta": "88",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quem foi napoleão bonaparte?",
+        "resposta": "imperador francês",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto mais se seca, mais molhado fica. o que é?",
+        "resposta": "toalha",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Não tem asas, mas voa. o que é?",
+        "resposta": "tempo",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 8 + 90?",
+        "resposta": "98",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 29 x 36",
+        "resposta": "1044",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 4 x 34",
+        "resposta": "136",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 89 x 59",
+        "resposta": "5251",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 15 ÷ 5?",
+        "resposta": "3",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 66 - 31?",
+        "resposta": "35",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 16 + 41?",
+        "resposta": "57",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 4 + 46?",
+        "resposta": "50",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 73 + 93?",
+        "resposta": "166",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o planeta mais próximo do sol?",
+        "resposta": "mercúrio",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 17 + 99?",
+        "resposta": "116",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 96 - 94?",
+        "resposta": "2",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 85 - 81?",
+        "resposta": "4",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 28 + 95?",
+        "resposta": "123",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 64 x 36",
+        "resposta": "2304",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 81 + 62?",
+        "resposta": "143",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Texto",
+        "resposta": "resposta",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 79 x 11",
+        "resposta": "869",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Tem orelhas mas não ouve. o que é?",
+        "resposta": "milho",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 39 - 38?",
+        "resposta": "1",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 97 + 34?",
+        "resposta": "131",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 41 - 16?",
+        "resposta": "25",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quem descobriu o brasil?",
+        "resposta": "pedro álvares cabral",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 34 - 48?",
+        "resposta": "-14",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o estado físico da água no gelo?",
+        "resposta": "sólido",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 45 + 56?",
+        "resposta": "101",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 41 x 51",
+        "resposta": "2091",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 84 ÷ 12?",
+        "resposta": "7",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Texto",
+        "resposta": "resposta",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 35 ÷ 5?",
+        "resposta": "7",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 66 x 6",
+        "resposta": "396",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 20 ÷ 5?",
+        "resposta": "4",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 23 x 99",
+        "resposta": "2277",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 12 x 63",
+        "resposta": "756",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 78 - 67?",
+        "resposta": "11",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "O que é, o que é: quanto mais tira, maior fica?",
+        "resposta": "buraco",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 19 x 17",
+        "resposta": "323",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 4 + 46?",
+        "resposta": "50",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 76 + 76?",
+        "resposta": "152",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Cai em pé e corre deitado. o que é?",
+        "resposta": "chuva",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 18 x 99",
+        "resposta": "1782",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quem é o protagonista de the legend of zelda?",
+        "resposta": "link",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 98 - 68?",
+        "resposta": "30",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 4 x 55",
+        "resposta": "220",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 43 x 51",
+        "resposta": "2193",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 80 - 58?",
+        "resposta": "22",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 27 x 91",
+        "resposta": "2457",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o nome da princesa de star wars?",
+        "resposta": "leia",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quem é o vilão principal em star wars?",
+        "resposta": "darth vader",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 70 ÷ 7?",
+        "resposta": "10",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quem é o irmão do mario?",
+        "resposta": "luigi",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é o órgão responsável por bombear sangue?",
+        "resposta": "coração",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é o deserto mais quente do mundo?",
+        "resposta": "saara",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 98 - 1?",
+        "resposta": "97",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 65 + 73?",
+        "resposta": "138",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Tem dente, mas não morde. o que é?",
+        "resposta": "pente",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 99 x 44",
+        "resposta": "4356",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Tem chaves, mas não abre portas. o que é?",
+        "resposta": "piano",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 8 ÷ 4?",
+        "resposta": "2",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 16 ÷ 8?",
+        "resposta": "2",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 79 + 1?",
+        "resposta": "80",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o nome da escola de mutantes dos x-men?",
+        "resposta": "xavier",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 53 x 8",
+        "resposta": "424",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual país é conhecido como a terra do sol nascente?",
+        "resposta": "japão",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Qual é o metal mais leve do mundo?",
+        "resposta": "lítio",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 56 x 51",
+        "resposta": "2856",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 22 + 52?",
+        "resposta": "74",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 6 - 39?",
+        "resposta": "-33",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o nome do mago em harry potter?",
+        "resposta": "dumbledore",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 24 x 73",
+        "resposta": "1752",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o verdadeiro nome do homem-aranha?",
+        "resposta": "peter parker",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 2 + 87?",
+        "resposta": "89",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 10 + 1?",
+        "resposta": "11",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 4 ÷ 4?",
+        "resposta": "1",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 50 - 33?",
+        "resposta": "17",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o idioma mais falado do mundo?",
+        "resposta": "inglês",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 63 + 2?",
+        "resposta": "65",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Texto",
+        "resposta": "resposta",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quem é o detetive da série 'sherlock'?",
+        "resposta": "sherlock holmes",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 18 ÷ 3?",
+        "resposta": "6",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Anda com os pés na cabeça. o que é?",
+        "resposta": "piolho",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 4 ÷ 1?",
+        "resposta": "4",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 51 - 58?",
+        "resposta": "-7",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 33 - 66?",
+        "resposta": "-33",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 3 x 53",
+        "resposta": "159",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quantas cores tem o arco-íris?",
+        "resposta": "7",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 3 x 6",
+        "resposta": "18",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 53 - 2?",
+        "resposta": "51",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 41 + 40?",
+        "resposta": "81",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 82 - 71?",
+        "resposta": "11",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 96 + 5?",
+        "resposta": "101",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quem é o líder dos vingadores?",
+        "resposta": "capitão américa",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é o nome do robô dourado em star wars?",
+        "resposta": "c3po",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é o nome do mago em o senhor dos anéis?",
+        "resposta": "gandalf",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 1 ÷ 1?",
+        "resposta": "1",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "O que os humanos respiram para viver?",
+        "resposta": "oxigênio",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Quanto é 62 - 85?",
+        "resposta": "-23",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 24 ÷ 3?",
+        "resposta": "8",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o nome do planeta natal do superman?",
+        "resposta": "krypton",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quem é o super-herói de gotham city?",
+        "resposta": "batman",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quem canta 'thriller'?",
+        "resposta": "michael jackson",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 60 + 80?",
+        "resposta": "140",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 79 - 81?",
+        "resposta": "-2",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 52 x 20",
+        "resposta": "1040",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Que animal é conhecido por sua memória?",
+        "resposta": "elefante",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Em que ano o homem pisou na lua?",
+        "resposta": "1969",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é a capital da alemanha?",
+        "resposta": "berlim",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é o maior oceano do planeta?",
+        "resposta": "pacífico",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Resolva: 54 x 50",
+        "resposta": "2700",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 90 x 7",
+        "resposta": "630",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 51 - 87?",
+        "resposta": "-36",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 60 - 70?",
+        "resposta": "-10",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 53 - 51?",
+        "resposta": "2",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Texto",
+        "resposta": "resposta",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quem foi o primeiro presidente dos estados unidos?",
+        "resposta": "george washington",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 42 x 18",
+        "resposta": "756",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto mais cresce, menor fica. o que é?",
+        "resposta": "vela",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 48 ÷ 12?",
+        "resposta": "4",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 69 x 59",
+        "resposta": "4071",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 5 + 52?",
+        "resposta": "57",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Pode ser de vidro, mas não é janela. o que é?",
+        "resposta": "garrafa",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Qual é o nome do martelo do thor?",
+        "resposta": "mjolnir",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 17 - 87?",
+        "resposta": "-70",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Em que ano começou a segunda guerra mundial?",
+        "resposta": "1939",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Tem pescoço mas não tem cabeça. o que é?",
+        "resposta": "garrafa",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 48 - 4?",
+        "resposta": "44",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 55 ÷ 11?",
+        "resposta": "5",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 87 + 89?",
+        "resposta": "176",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual é o símbolo químico da água?",
+        "resposta": "h2o",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Quanto é 38 - 82?",
+        "resposta": "-44",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quem é o criador do mickey mouse?",
+        "resposta": "walt disney",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Tem boca mas não fala. o que é?",
+        "resposta": "rio",
+        "dificuldade": "medio"
+    },
+    {
+        "pergunta": "Resolva: 23 x 27",
+        "resposta": "621",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 24 ÷ 3?",
+        "resposta": "8",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Resolva: 20 x 31",
+        "resposta": "620",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Em que continente fica o egito?",
+        "resposta": "áfrica",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Resolva: 74 x 65",
+        "resposta": "4810",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Qual fruta é símbolo do amor?",
+        "resposta": "maçã",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 20 - 55?",
+        "resposta": "-35",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Quanto é 28 + 48?",
+        "resposta": "76",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "Em que casa de hogwarts está harry potter?",
+        "resposta": "grifinória",
+        "dificuldade": "dificil"
+    },
+    {
+        "pergunta": "Quanto é 30 ÷ 6?",
+        "resposta": "5",
+        "dificuldade": "facil"
+    },
+    {
+        "pergunta": "É redondo, tem bola, mas não é jogo. o que é?",
+        "resposta": "olho",
+        "dificuldade": "medio"
+    }
+]

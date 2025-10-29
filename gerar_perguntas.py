@@ -1,135 +1,187 @@
 import json
+import os
 import random
+import re
 
-# Categorias variadas
-categorias = {
-    "matematica": [
-        ("Quanto é {a} + {b}?", lambda a, b: str(a + b)),
-        ("Resolva: {a} x {b}", lambda a, b: str(a * b)),
-        ("Quanto é {a} - {b}?", lambda a, b: str(a - b)),
-        ("Quanto é {a} ÷ {b}?", lambda a, b: str(int(a / b))),  # garantimos divisão inteira abaixo
-    ],
-    "geografia": [
-        ("Qual é a capital da Alemanha?", "berlim"),
-        ("Em que continente fica o Egito?", "áfrica"),
-        ("Qual país é conhecido como a Terra do Sol Nascente?", "japão"),
-        ("Qual é o maior oceano do planeta?", "pacífico"),
-        ("Qual é o deserto mais quente do mundo?", "saara"),
-        {"texto": "Qual é a capital do Canadá?", "resposta": "ottawa"},
-        {"texto": "Quem inventou a lâmpada?", "resposta": "thomas edison"},
-        {"texto": "Quem escreveu Dom Casmurro?", "resposta": "machado de assis"},
-        {"texto": "Qual é o maior animal terrestre?", "resposta": "elefante africano"}
-    ],
-    "ciencia": [
-        ("Qual é o planeta mais próximo do Sol?", "mercúrio"),
-        ("O que os humanos respiram para viver?", "oxigênio"),
-        ("Qual é o órgão responsável por bombear sangue?", "coração"),
-        ("Qual é o estado físico da água no gelo?", "sólido"),
-        ("Qual é o símbolo químico da água?", "h2o"),
-    ],
-    "historia": [
-        ("Quem descobriu o Brasil?", "pedro álvares cabral"),
-        ("Em que ano começou a Segunda Guerra Mundial?", "1939"),
-        ("Quem foi o primeiro presidente dos Estados Unidos?", "george washington"),
-        ("Em que ano o homem pisou na Lua?", "1969"),
-        ("Quem foi Napoleão Bonaparte?", "imperador francês"),
-    ],
-    "curiosidades": [
-        ("Quantas cores tem o arco-íris?", "7"),
-        ("Que animal é conhecido por sua memória?", "elefante"),
-        ("Qual fruta é símbolo do amor?", "maçã"),
-        ("Qual é o metal mais leve do mundo?", "lítio"),
-        ("Qual é o idioma mais falado do mundo?", "inglês"),
-    ],
-    "cultura_pop": [
-        ("Quem é o criador do Mickey Mouse?", "walt disney"),
-        ("Qual é o nome do mago em O Senhor dos Anéis?", "gandalf"),
-        ("Qual é o nome do mago em Harry Potter?", "dumbledore"),
-        ("Em que casa de Hogwarts está Harry Potter?", "grifinória"),
-        ("Qual é o nome do robô dourado em Star Wars?", "c3po"),
-        ("Quem canta 'Thriller'?", "michael jackson"),
-        ("Quem é o super-herói de Gotham City?", "batman"),
-        ("Qual é o verdadeiro nome do Homem-Aranha?", "peter parker"),
-        ("Quem é o vilão principal em Star Wars?", "darth vader"),
-        ("Qual é o nome do martelo do Thor?", "mjolnir"),
-        ("Quem é o líder dos Vingadores?", "capitão américa"),
-        ("Qual é o nome do planeta natal do Superman?", "krypton"),
-        ("Quem é o detetive da série 'Sherlock'?", "sherlock holmes"),
-        ("Qual é o nome da escola de mutantes dos X-Men?", "xavier"),
-        ("Qual é o nome da princesa de Star Wars?", "leia"),
-        ("Quem é o famoso encanador da Nintendo?", "mario"),
-        ("Quem é o irmão do Mario?", "luigi"),
-        ("Quem é o protagonista de The Legend of Zelda?", "link")
-    ],
-    "charadas": [
-        ("O que é, o que é: quanto mais tira, maior fica?", "buraco"),
-        ("Tem dente, mas não morde. O que é?", "pente"),
-        ("Tem pescoço mas não tem cabeça. O que é?", "garrafa"),
-        ("Quanto mais se seca, mais molhado fica. O que é?", "toalha"),
-        ("Cai em pé e corre deitado. O que é?", "chuva"),
-        ("Anda com os pés na cabeça. O que é?", "piolho"),
-        ("É redondo, tem bola, mas não é jogo. O que é?", "olho"),
-        ("Não tem asas, mas voa. O que é?", "tempo"),
-        ("Quanto mais cresce, menor fica. O que é?", "vela"),
-        ("Tem chaves, mas não abre portas. O que é?", "piano"),
-        ("Corre mas não tem pernas. O que é?", "rio"),
-        ("Tem boca mas não fala. O que é?", "rio"),
-        ("Tem orelhas mas não ouve. O que é?", "milho"),
-        ("Pode ser de vidro, mas não é janela. O que é?", "garrafa")
+# ---------------------------------------------
+# Caminhos
+# ---------------------------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CAMINHO_PERGUNTAS = os.path.join(BASE_DIR, "perguntas.json")
+
+# ---------------------------------------------
+# Função: classificar dificuldade
+# ---------------------------------------------
+def classificar_pergunta(texto: str) -> str:
+    """
+    Atribui dificuldade automaticamente com base no conteúdo da pergunta.
+    Retorna: 'facil', 'medio', 'dificil' ou 'pesadelo'
+    """
+    t = texto.lower()
+
+    faceis = [
+        "soma", "subtra", "adi", "cor", "animal", "capital", "multiplica",
+        "+", "-", "quanto é", "2 + 2", "1 + 1", "quantos", "nome do"
     ]
+    medias = [
+        "presidente", "história", "descobriu", "planeta", "data", "química",
+        "cientista", "energia", "fórmula", "multiplicação", "divisão"
+    ]
+    dificeis = [
+        "teorema", "física", "álgebra", "equação", "raiz quadrada", "potência",
+        "^", "log", "complexa", "derivada", "cálculo"
+    ]
+    pesadelo = [
+        "quantum", "relatividade", "tungstênio", "nuclear", "criptografia",
+        "história antiga", "imperador", "grego", "latim", "constante de planck"
+    ]
+
+    if any(p in t for p in pesadelo):
+        return "pesadelo"
+    elif any(p in t for p in dificeis):
+        return "dificil"
+    elif any(p in t for p in medias):
+        return "medio"
+    elif any(p in t for p in faceis):
+        return "facil"
+
+    # Heurísticas extras
+    if re.search(r"[0-9]+\s*[\+\-\*/]\s*[0-9]+", t):
+        return "facil"
+    if re.search(r"[0-9]+\s*[\*/]\s*[0-9]+\s*[\+\-]\s*[0-9]+", t):
+        return "medio"
+    if re.search(r"\^|√", t):
+        return "dificil"
+
+    # fallback aleatório
+    return random.choice(["facil", "medio", "dificil", "pesadelo"])
+
+# ---------------------------------------------
+# Banco base de perguntas automáticas
+# ---------------------------------------------
+temas = {
+    "facil": [
+        ("Qual é a capital do Brasil?", "Brasília", ["Rio de Janeiro", "São Paulo", "Salvador"]),
+        ("Quanto é 5 + 3?", "8", ["7", "9", "10"]),
+        ("Qual é o planeta mais próximo do Sol?", "Mercúrio", ["Vênus", "Terra", "Marte"]),
+    ],
+    "medio": [
+        ("Quem escreveu 'Dom Casmurro'?", "Machado de Assis", ["José de Alencar", "Monteiro Lobato", "Clarice Lispector"]),
+        ("Qual é o símbolo químico do ouro?", "Au", ["Ag", "Pt", "Pb"]),
+        ("Em que continente fica o Egito?", "África", ["Ásia", "Europa", "América"]),
+    ],
+    "dificil": [
+        ("Quem formulou as Leis de Newton?", "Isaac Newton", ["Einstein", "Galileu", "Kepler"]),
+        ("Em que ano caiu o Império Romano do Ocidente?", "476", ["1453", "1066", "800"]),
+        ("Qual é a capital da Islândia?", "Reykjavik", ["Oslo", "Helsinque", "Copenhague"]),
+    ],
+    "pesadelo": [
+        ("Qual é o número atômico do elemento Tungstênio?", "74", ["79", "47", "82"]),
+        ("Quem desenvolveu o primeiro algoritmo computacional conhecido?", "Ada Lovelace", ["Alan Turing", "Charles Babbage", "Grace Hopper"]),
+        ("Qual é o idioma mais falado na Suíça?", "Alemão", ["Francês", "Italiano", "Romanche"]),
+        ("Qual é a equação de Einstein que relaciona energia e massa?", "E=mc²", ["F=ma", "PV=nRT", "a²+b²=c²"]),
+    ],
 }
 
-# Lista final de perguntas (cada item: {"texto": ..., "resposta": ...})
-perguntas = []
+# ---------------------------------------------
+# Gera perguntas estruturadas
+# ---------------------------------------------
+def gerar_banco():
+    banco = []
+    for nivel, perguntas in temas.items():
+        for (texto, resposta_certa, erradas) in perguntas:
+            alternativas = [resposta_certa] + erradas
+            random.shuffle(alternativas)
+            banco.append({
+                "pergunta": texto,
+                "alternativas": alternativas,
+                "resposta": resposta_certa,
+                "dificuldade": nivel,
+                "categoria": "Geral",
+                "dica": f"Pergunta nível {nivel.title()}."
+            })
+    return banco
 
-# 1) Gerar muitas perguntas de matemática (variáveis) de forma segura
-math_templates = categorias.get("matematica", [])
-# Quantidade desejada; ajuste conforme necessário (ex: 2000)
-MATH_COUNT = 100
-
-for _ in range(MATH_COUNT):
-    formato, func = random.choice(math_templates)
-
-    # Gera valores a e b apropriados
-    # Para divisão, garantimos que o resultado seja inteiro: fazemos a = b * q
-    if "÷" in formato or "÷" in formato:
-        b = random.randint(1, 12)
-        q = random.randint(1, 12)
-        a = b * q
+# ---------------------------------------------
+# Atualiza / cria perguntas.json
+# ---------------------------------------------
+def salvar_banco(perguntas_novas):
+    if os.path.exists(CAMINHO_PERGUNTAS):
+        with open(CAMINHO_PERGUNTAS, "r", encoding="utf-8") as f:
+            try:
+                existentes = json.load(f)
+            except json.JSONDecodeError:
+                existentes = []
     else:
-        a = random.randint(1, 100)
-        b = random.randint(1, 100)
+        existentes = []
 
-    # Calcula resposta usando func (certificando-se que func é chamável)
-    if callable(func):
-        try:
-            resposta = func(a, b)
-        except Exception:
-            # fallback seguro
-            if "÷" in formato:
-                resposta = str(int(a / b))
-            else:
-                resposta = str(a + b)
+    textos_existentes = {p.get("pergunta", "").strip() for p in existentes}
+    novas = [p for p in perguntas_novas if p["pergunta"].strip() not in textos_existentes]
+
+    total = existentes + novas
+
+    with open(CAMINHO_PERGUNTAS, "w", encoding="utf-8") as f:
+        json.dump(total, f, ensure_ascii=False, indent=2)
+
+    print(f"✅ Banco atualizado com {len(novas)} novas perguntas ({len(total)} no total).")
+
+# ---------------------------------------------
+# Carrega e garante que todas tenham dificuldade
+# ---------------------------------------------
+def carregar_perguntas_com_dificuldade():
+    if not os.path.exists(CAMINHO_PERGUNTAS):
+        raise FileNotFoundError(f"Arquivo {CAMINHO_PERGUNTAS} não encontrado!")
+
+    with open(CAMINHO_PERGUNTAS, "r", encoding="utf-8") as f:
+        perguntas = json.load(f)
+
+    alterado = False
+    for p in perguntas:
+        if "dificuldade" not in p or p["dificuldade"] not in ["facil", "medio", "dificil", "pesadelo"]:
+            p["dificuldade"] = classificar_pergunta(p.get("pergunta", ""))
+            alterado = True
+
+    if alterado:
+        with open(CAMINHO_PERGUNTAS, "w", encoding="utf-8") as f:
+            json.dump(perguntas, f, indent=4, ensure_ascii=False)
+
+    return perguntas
+
+# ---------------------------------------------
+# Gerar pergunta aleatória
+# ---------------------------------------------
+def gerar_pergunta(dificuldade=None):
+    perguntas = carregar_perguntas_com_dificuldade()
+    if not perguntas:
+        raise ValueError("Nenhuma pergunta disponível!")
+
+    if dificuldade:
+        filtradas = [p for p in perguntas if p.get("dificuldade") == dificuldade]
+        if not filtradas:
+            print(f"[AVISO] Nenhuma pergunta para '{dificuldade}'. Usando todas.")
+            filtradas = perguntas
     else:
-        # caso inesperado, tratar como string
-        resposta = str(func)
+        filtradas = perguntas
 
-    texto = formato.format(a=a, b=b)
-    perguntas.append({"texto": texto, "resposta": str(resposta).lower()})
+    return random.choice(filtradas)
 
-# 2) Adicionar perguntas estáticas (uma vez cada)
-for categoria, lista in categorias.items():
-    if categoria == "matematica":
-        continue  # já geradas acima
-    for item in lista:
-        # cada item pode ser (texto, resposta) onde resposta é string
-        texto, resposta = item
-        perguntas.append({"texto": texto, "resposta": str(resposta).lower()})
+# ---------------------------------------------
+# Execução direta (teste rápido)
+# ---------------------------------------------
+if __name__ == "__main__":
+    novas = gerar_banco()
+    salvar_banco(novas)
 
-# 3) Embaralhar e salvar
-random.shuffle(perguntas)
+    todas = carregar_perguntas_com_dificuldade()
+    print(f"📚 Total de perguntas: {len(todas)}")
 
-with open("perguntas.json", "w", encoding="utf-8") as f:
-    json.dump(perguntas, f, ensure_ascii=False, indent=2)
-
-print(f"✅ Geradas {len(perguntas)} perguntas e salvas em 'perguntas.json'.")
+    for nivel in ["facil", "medio", "dificil", "pesadelo"]:
+        exemplo = gerar_pergunta(nivel)
+        texto = (
+            exemplo.get("pergunta")
+            or exemplo.get("Pergunta")
+            or exemplo.get("texto")
+            or exemplo.get("questao")
+            or str(exemplo)
+        )
+        print(f"\n[{nivel.upper()}] {texto}")

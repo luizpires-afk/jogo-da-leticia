@@ -1,0 +1,773 @@
+[2025-10-28T22:11:08.932659] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-28T22:11:08.933724] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-28T22:11:08.934432] Carregadas 156 perguntas de perguntas.json
+[2025-10-28T22:11:08.935104] Arquivo não encontrado: perguntas_extra.json
+[2025-10-28T22:11:08.935587] Arquivo não encontrado: perguntas.js
+[2025-10-28T22:11:08.935867] Total perguntas externas combinadas: 501
+[2025-10-28T22:11:08.936837] Perguntas externas normalizadas: 501
+[2025-10-28T22:11:08.937393] IA inicializada. Perguntas externas: 501
+[2025-10-28T22:11:08.937720] Próxima pergunta escolhida (facil): Quem canta 'thriller'?
+[2025-10-28T22:11:30.294389] Próxima pergunta escolhida (facil): Quanto é 90 - 75?
+[2025-10-28T22:11:35.610173] Ranking atualizado: Teste_final -> 5
+[2025-10-28T22:11:35.610562] Próxima pergunta escolhida (facil): Quanto é 15 ÷ 5?
+[2025-10-28T22:11:39.686548] Ranking atualizado: Teste_final -> 10
+[2025-10-28T22:11:39.686963] Próxima pergunta escolhida (facil): Quanto é 17 - 87?
+[2025-10-28T22:11:49.966586] Ranking atualizado: Teste_final -> 15
+[2025-10-28T22:11:49.967007] Próxima pergunta escolhida (facil): Quanto é 72 ÷ 12?
+[2025-10-28T22:11:51.541267] Ranking atualizado: Teste_final -> 20
+[2025-10-28T22:11:51.541592] Próxima pergunta escolhida (medio): É redondo, tem bola, mas não é jogo. o que é?
+[2025-10-28T22:11:52.957631] Ranking atualizado: Teste_final -> 25
+[2025-10-28T22:11:52.957963] Próxima pergunta escolhida (medio): Quanto mais se seca, mais molhado fica. o que é?
+[2025-10-28T22:11:53.509161] Ranking atualizado: Teste_final -> 30
+[2025-10-28T22:11:53.509489] Próxima pergunta escolhida (medio): Qual é o nome da escola de mutantes dos x-men?
+[2025-10-28T22:11:54.046236] Ranking atualizado: Teste_final -> 35
+[2025-10-28T22:11:54.046511] Próxima pergunta escolhida (medio): O que é, o que é: quanto mais tira, maior fica?
+[2025-10-28T22:11:54.567649] Ranking atualizado: Teste_final -> 40
+[2025-10-28T22:11:54.567962] Próxima pergunta escolhida (medio): Qual é o nome do robô dourado em star wars?
+[2025-10-28T22:11:55.069568] Ranking atualizado: Teste_final -> 45
+[2025-10-28T22:11:55.069849] Próxima pergunta escolhida (dificil): Resolva: 69 x 59
+[2025-10-28T22:11:56.284198] Próxima pergunta escolhida (dificil): Resolva: 54 x 50
+[2025-10-28T22:11:56.294870] Próxima pergunta escolhida (dificil): Quem foi o primeiro presidente do brasil?
+[2025-10-28T22:11:57.373666] Ranking atualizado: Teste_final -> 46
+[2025-10-28T22:11:57.373985] Próxima pergunta escolhida (dificil): Quem desenvolveu a teoria da relatividade?
+[2025-10-28T22:11:58.166000] Ranking atualizado: Teste_final -> 51
+[2025-10-28T22:11:58.166360] Próxima pergunta escolhida (dificil): Quanto é 78 - 67?
+[2025-10-28T22:12:01.172083] Próxima pergunta escolhida (dificil): Resolva: 41 x 51
+[2025-10-28T22:12:01.175882] Próxima pergunta escolhida (dificil): Quanto mais cresce, menor fica. O que é?
+[2025-10-28T22:12:01.884497] Próxima pergunta escolhida (dificil): Resolva: 89 x 59
+[2025-10-28T22:12:10.931626] Próxima pergunta escolhida (facil): Quem é o detetive da série 'sherlock'?
+[2025-10-28T22:12:12.091039] Próxima pergunta escolhida (facil): Quanto é 1 ÷ 1?
+[2025-10-28T22:12:12.108637] Próxima pergunta escolhida (facil): Quanto é 28 + 95?
+[2025-10-28T22:12:13.948035] Próxima pergunta escolhida (facil): Quanto é 96 - 94?
+[2025-10-28T22:12:13.951905] Próxima pergunta escolhida (facil): Quanto é 24 ÷ 3?
+[2025-10-28T22:12:17.716485] Ranking atualizado: Teste_final -> 0
+[2025-10-28T22:12:42.588222] Próxima pergunta escolhida (facil): Quanto é 53 - 51?
+[2025-10-28T22:12:43.900424] Próxima pergunta escolhida (facil): Quanto é 24 ÷ 3?
+[2025-10-28T22:12:43.918000] Próxima pergunta escolhida (facil): Resolva: 18 x 99
+[2025-10-28T22:12:45.316134] Próxima pergunta escolhida (facil): Quanto é 4 ÷ 4?
+[2025-10-28T22:12:45.320800] Próxima pergunta escolhida (facil): Quanto é 35 ÷ 5?
+[2025-10-28T22:12:45.916043] Ranking atualizado: Teste_final -> 0
+[2025-10-28T22:13:21.299899] Próxima pergunta escolhida (facil): Quanto é 78 - 67?
+[2025-10-28T22:13:28.309780] Ranking atualizado: d -> 5
+[2025-10-28T22:13:28.310163] Próxima pergunta escolhida (facil): Resolva: 90 x 7
+[2025-10-28T22:13:29.693069] Ranking atualizado: d -> 10
+[2025-10-28T22:13:29.693417] Próxima pergunta escolhida (facil): Quanto é 8 + 90?
+[2025-10-28T22:13:30.116731] Ranking atualizado: d -> 15
+[2025-10-28T22:13:30.117176] Próxima pergunta escolhida (facil): Resolva: 20 x 31
+[2025-10-28T22:13:30.556713] Ranking atualizado: d -> 20
+[2025-10-28T22:13:30.557079] Próxima pergunta escolhida (medio): Tem pescoço mas não tem cabeça. o que é?
+[2025-10-28T22:13:30.988024] Ranking atualizado: d -> 25
+[2025-10-28T22:13:30.988372] Próxima pergunta escolhida (medio): Em que ano começou a Segunda Guerra Mundial?
+[2025-10-28T22:13:31.412280] Ranking atualizado: d -> 30
+[2025-10-28T22:13:31.412605] Próxima pergunta escolhida (medio): Quem é o irmão do mario?
+[2025-10-28T22:13:31.828243] Ranking atualizado: d -> 35
+[2025-10-28T22:13:31.828579] Próxima pergunta escolhida (medio): Qual é o metal mais leve do mundo?
+[2025-10-28T22:13:32.253230] Ranking atualizado: d -> 40
+[2025-10-28T22:13:32.253633] Próxima pergunta escolhida (medio): Quanto é 2 + 87?
+[2025-10-28T22:13:32.740814] Ranking atualizado: d -> 45
+[2025-10-28T22:13:32.741184] Próxima pergunta escolhida (dificil): O que os humanos respiram para viver?
+[2025-10-28T22:13:33.277080] Ranking atualizado: d -> 50
+[2025-10-28T22:13:33.277443] Próxima pergunta escolhida (dificil): Resolva: 3 x 53
+[2025-10-28T22:13:33.812725] Ranking atualizado: d -> 55
+[2025-10-28T22:13:33.813098] Próxima pergunta escolhida (dificil): Quem foi o primeiro presidente do brasil?
+[2025-10-28T22:13:34.355746] Próxima pergunta escolhida (dificil): Em que continente fica o Egito?
+[2025-10-28T22:13:34.360828] Próxima pergunta escolhida (dificil): Quanto é 82 - 71?
+[2025-10-28T22:13:34.884619] Ranking atualizado: d -> 56
+[2025-10-28T22:13:34.884987] Próxima pergunta escolhida (dificil): Quem é o irmão do Mario?
+[2025-10-28T22:13:35.452257] Ranking atualizado: d -> 61
+[2025-10-28T22:13:35.452595] Próxima pergunta escolhida (dificil): Quanto é 63 ÷ 7?
+[2025-10-28T22:13:36.124596] Ranking atualizado: d -> 66
+[2025-10-28T22:13:36.124871] Próxima pergunta escolhida (dificil): É redondo, tem bola, mas não é jogo. O que é?
+[2025-10-28T22:13:36.692750] Ranking atualizado: d -> 71
+[2025-10-28T22:13:36.693102] Próxima pergunta escolhida (dificil): Quanto é 60 + 80?
+[2025-10-28T22:13:37.237193] Ranking atualizado: d -> 76
+[2025-10-28T22:13:37.237584] Próxima pergunta escolhida (dificil): Quanto é 4 + 46?
+[2025-10-28T22:13:37.740331] Ranking atualizado: d -> 81
+[2025-10-28T22:13:37.740695] Próxima pergunta escolhida (dificil): Qual é o nome da princesa de Star Wars?
+[2025-10-28T22:13:38.285002] Ranking atualizado: d -> 86
+[2025-10-28T22:13:38.285357] Próxima pergunta escolhida (dificil): Resolva: 66 x 6
+[2025-10-28T22:13:38.828555] Ranking atualizado: d -> 91
+[2025-10-28T22:13:38.828899] Próxima pergunta escolhida (dificil): Em que continente fica o egito?
+[2025-10-28T22:13:39.380838] Ranking atualizado: d -> 96
+[2025-10-28T22:13:39.381189] Próxima pergunta escolhida (dificil): Qual é o metal mais leve do mundo?
+[2025-10-28T22:13:39.940625] Ranking atualizado: d -> 101
+[2025-10-28T22:13:42.435229] Próxima pergunta escolhida (dificil): Quanto é 28 + 48?
+[2025-10-28T22:13:42.443579] Próxima pergunta escolhida (dificil): Qual é o nome do robô dourado em Star Wars?
+[2025-10-28T22:13:43.812019] Ranking atualizado: d -> 102
+[2025-10-28T22:13:43.812316] Próxima pergunta escolhida (dificil): Em que ano o homem pisou na lua pela primeira vez?
+[2025-10-28T22:13:45.068004] Ranking atualizado: d -> 107
+[2025-10-28T22:13:45.068321] Próxima pergunta escolhida (dificil): Quem desenvolveu a teoria da relatividade?
+[2025-10-28T22:13:45.668498] Ranking atualizado: d -> 112
+[2025-10-28T22:13:45.668878] Próxima pergunta escolhida (dificil): Quanto é 51 - 58?
+[2025-10-28T22:13:46.236489] Ranking atualizado: d -> 117
+[2025-10-28T22:13:46.236817] Próxima pergunta escolhida (dificil): Resolva: 23 x 27
+[2025-10-28T22:13:46.852155] Ranking atualizado: d -> 122
+[2025-10-28T22:13:46.852517] Próxima pergunta escolhida (dificil): Qual país é conhecido como a Terra do Sol Nascente?
+[2025-10-28T22:13:54.805281] Ranking atualizado: d -> 127
+[2025-10-28T22:13:54.805734] Próxima pergunta escolhida (dificil): Qual é a capital da Alemanha?
+[2025-10-28T22:13:55.396728] Ranking atualizado: d -> 132
+[2025-10-28T22:13:55.397256] Próxima pergunta escolhida (dificil): Em que casa de hogwarts está harry potter?
+[2025-10-28T22:13:55.916714] Ranking atualizado: d -> 137
+[2025-10-28T22:13:55.917065] Próxima pergunta escolhida (dificil): Em que ano começou a segunda guerra mundial?
+[2025-10-28T22:13:56.828660] Próxima pergunta escolhida (dificil): Quanto é 35 ÷ 5?
+[2025-10-28T22:17:09.415956] IA inicializada — 501 perguntas externas disponíveis
+[2025-10-28T22:17:10.780899] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-28T22:17:10.781631] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-28T22:17:10.782085] Carregadas 156 perguntas de perguntas.json
+[2025-10-28T22:17:10.782297] Arquivo não encontrado: perguntas_extra.json
+[2025-10-28T22:17:10.782495] Arquivo não encontrado: perguntas.js
+[2025-10-28T22:17:10.782657] Total perguntas externas combinadas: 501
+[2025-10-28T22:17:10.783424] Perguntas externas normalizadas: 501
+[2025-10-28T22:17:10.783615] IA inicializada. Perguntas externas: 501
+[2025-10-28T22:17:10.783862] Próxima pergunta escolhida (facil): Quanto é 51 - 58?
+[2025-10-28T22:17:16.176428] IA inicializada — 501 perguntas externas disponíveis
+[2025-10-28T22:17:35.649483] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-28T22:17:35.650220] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-28T22:17:35.650669] Carregadas 156 perguntas de perguntas.json
+[2025-10-28T22:17:35.650880] Arquivo não encontrado: perguntas_extra.json
+[2025-10-28T22:17:35.651076] Arquivo não encontrado: perguntas.js
+[2025-10-28T22:17:35.651275] Total perguntas externas combinadas: 501
+[2025-10-28T22:17:35.651971] Perguntas externas normalizadas: 501
+[2025-10-28T22:17:35.652153] IA inicializada. Perguntas externas: 501
+[2025-10-28T22:17:35.652387] Próxima pergunta escolhida (facil): Quanto é 80 - 58?
+[2025-10-28T23:11:03.244208] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-28T23:11:03.246382] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-28T23:11:03.249216] Carregadas 156 perguntas de perguntas.json
+[2025-10-28T23:11:03.249847] Arquivo não encontrado: perguntas_extra.json
+[2025-10-28T23:11:03.250052] Arquivo não encontrado: perguntas.js
+[2025-10-28T23:11:03.250229] Total perguntas externas: 501
+[2025-10-28T23:11:03.250899] IA inicializada. Perguntas externas: 501
+[2025-10-28T23:11:03.251165] próxima pergunta (facil): Quanto é 55 ÷ 11?
+[2025-10-28T23:11:25.919561] próxima pergunta (facil): Quanto é 51 - 87?
+[2025-10-28T23:11:28.263235] próxima pergunta (facil): Resolva: 64 x 36
+[2025-10-28T23:11:33.446844] próxima pergunta (facil): Resolva: 23 x 27
+[2025-10-28T23:11:39.159649] ranking atualizado: d -> 5
+[2025-10-28T23:11:39.160065] próxima pergunta (facil): Quanto é 10 + 1?
+[2025-10-28T23:11:51.927669] ranking atualizado: d -> 10
+[2025-10-28T23:11:51.928110] próxima pergunta (facil): Quem foi o primeiro presidente dos estados unidos?
+[2025-10-28T23:11:55.183164] ranking atualizado: d -> 15
+[2025-10-28T23:11:55.183486] próxima pergunta (facil): Quanto é 10 + 10?
+[2025-10-28T23:11:56.638582] ranking atualizado: d -> 20
+[2025-10-28T23:11:56.638873] próxima pergunta (medio): Quanto é 22 + 52?
+[2025-10-28T23:11:57.632036] ranking atualizado: d -> 25
+[2025-10-28T23:11:57.632677] próxima pergunta (medio): Tem boca mas não fala. o que é?
+[2025-10-28T23:11:58.758441] ranking atualizado: d -> 30
+[2025-10-28T23:11:58.758768] próxima pergunta (medio): Qual é a capital do brasil?
+[2025-10-28T23:12:00.295292] ranking atualizado: d -> 35
+[2025-10-28T23:12:00.295641] próxima pergunta (medio): Qual é o nome do planeta natal do superman?
+[2025-10-28T23:12:00.776223] ranking atualizado: d -> 40
+[2025-10-28T23:12:00.776638] próxima pergunta (medio): Pode ser de vidro, mas não é janela. o que é?
+[2025-10-28T23:12:01.311114] ranking atualizado: d -> 45
+[2025-10-28T23:12:01.311380] próxima pergunta (dificil): Quanto é 4 + 46?
+[2025-10-28T23:12:01.815354] ranking atualizado: d -> 50
+[2025-10-28T23:12:01.815736] próxima pergunta (dificil): Quanto é 63 ÷ 7?
+[2025-10-28T23:12:02.336013] ranking atualizado: d -> 55
+[2025-10-28T23:12:02.336381] próxima pergunta (dificil): Quanto mais cresce, menor fica. O que é?
+[2025-10-28T23:12:02.806758] ranking atualizado: d -> 60
+[2025-10-28T23:12:02.807044] próxima pergunta (dificil): Quem foi o primeiro presidente do brasil?
+[2025-10-28T23:12:03.247142] ranking atualizado: d -> 65
+[2025-10-28T23:12:03.247443] próxima pergunta (dificil): Quanto é 90 - 75?
+[2025-10-28T23:12:03.711812] ranking atualizado: d -> 70
+[2025-10-28T23:12:03.712217] próxima pergunta (dificil): Quem é o detetive da série 'Sherlock'?
+[2025-10-28T23:12:04.151170] ranking atualizado: d -> 75
+[2025-10-28T23:12:04.151552] próxima pergunta (dificil): Quanto é 82 - 71?
+[2025-10-28T23:12:04.574857] ranking atualizado: d -> 80
+[2025-10-28T23:12:04.575150] próxima pergunta (dificil): O que os humanos respiram para viver?
+[2025-10-28T23:12:05.014819] ranking atualizado: d -> 85
+[2025-10-28T23:12:05.015169] próxima pergunta (dificil): Resolva: 74 x 65
+[2025-10-28T23:12:05.471722] ranking atualizado: d -> 90
+[2025-10-28T23:12:05.472066] próxima pergunta (dificil): Quanto é 80 + 8?
+[2025-10-28T23:12:05.894942] ranking atualizado: d -> 95
+[2025-10-28T23:12:11.535799] próxima pergunta (dificil): Quanto é 28 + 48?
+[2025-10-28T23:12:13.854913] ranking atualizado: d -> 100
+[2025-10-28T23:12:13.855693] próxima pergunta (medio): Quanto é 38 - 82?
+[2025-10-28T23:12:16.463329] ranking atualizado: d -> 105
+[2025-10-28T23:12:16.464172] próxima pergunta (facil): Quanto é 90 - 75?
+[2025-10-28T23:12:17.511493] ranking atualizado: d -> 103
+[2025-10-28T23:18:18.998755] próxima pergunta (facil): Quem descobriu o brasil?
+[2025-10-28T23:18:22.430432] próxima pergunta (facil): Quanto é 34 - 48?
+[2025-10-28T23:18:24.046130] próxima pergunta (facil): Quanto é 66 - 31?
+[2025-10-28T23:18:25.111896] próxima pergunta (facil): Qual o menor país do mundo?
+[2025-10-28T23:25:18.414663] próxima pergunta (facil): Que animal é conhecido por sua memória?
+[2025-10-28T23:25:19.524045] próxima pergunta (facil): Quem é o líder dos vingadores?
+[2025-10-28T23:25:20.641769] próxima pergunta (facil): Cai em pé e corre deitado. O que é?
+[2025-10-28T23:25:21.755888] próxima pergunta (facil): Quanto é 41 - 16?
+[2025-10-28T23:25:22.886857] próxima pergunta (facil): Quanto é 2 + 87?
+[2025-10-28T23:28:30.756115] próxima pergunta (facil): Qual é a capital da alemanha?
+[2025-10-28T23:32:15.117464] próxima pergunta (facil): Não tem asas, mas voa. o que é?
+[2025-10-28T23:32:16.142543] próxima pergunta (facil): Quanto é 1 ÷ 1?
+[2025-10-28T23:32:22.012723] próxima pergunta (facil): Quanto é 18 ÷ 3?
+[2025-10-28T23:39:14.652658] próxima pergunta (facil): Quem é o líder dos vingadores?
+[2025-10-28T23:39:17.516348] próxima pergunta (facil): Resolva: 54 x 50
+[2025-10-28T23:39:23.212328] próxima pergunta (facil): Resolva: 53 x 8
+[2025-10-28T23:39:29.068598] ranking atualizado: a -> 5
+[2025-10-28T23:39:29.068939] próxima pergunta (facil): Quanto é 96 + 5?
+[2025-10-28T23:40:48.275778] próxima pergunta (facil): Quem canta 'thriller'?
+[2025-10-28T23:40:51.588064] próxima pergunta (facil): Quanto é 39 - 38?
+[2025-10-28T23:40:53.979914] próxima pergunta (facil): Texto
+[2025-10-28T23:40:57.580384] próxima pergunta (facil): Quanto é 60 - 70?
+[2025-10-28T23:43:29.724833] próxima pergunta (facil): Qual animal é conhecido como o rei da selva?
+[2025-10-28T23:46:16.915921] próxima pergunta (facil): Quanto é 78 - 67?
+[2025-10-28T23:46:25.547889] ranking atualizado: a -> 5
+[2025-10-28T23:46:25.548185] próxima pergunta (facil): Resolva: 99 x 44
+[2025-10-28T23:49:24.899875] próxima pergunta (facil): Quanto é 50 - 33?
+[2025-10-28T23:49:35.204526] ranking atualizado: a -> 5
+[2025-10-28T23:49:35.204898] próxima pergunta (facil): Texto
+[2025-10-28T23:49:38.731986] ranking atualizado: a -> 10
+[2025-10-28T23:49:38.732376] próxima pergunta (facil): Quantos dias tem uma semana?
+[2025-10-28T23:49:41.652495] ranking atualizado: a -> 15
+[2025-10-28T23:49:41.652914] próxima pergunta (facil): Resolva: 90 x 7
+[2025-10-28T23:49:43.763026] ranking atualizado: a -> 20
+[2025-10-28T23:49:43.763310] próxima pergunta (medio): Qual é o órgão responsável por bombear sangue?
+[2025-10-28T23:49:47.115636] ranking atualizado: a -> 25
+[2025-10-28T23:49:47.115999] próxima pergunta (medio): Quem é o detetive da série 'sherlock'?
+[2025-10-28T23:49:49.851176] ranking atualizado: a -> 30
+[2025-10-28T23:49:49.851458] próxima pergunta (medio): Em que continente está o egito?
+[2025-10-28T23:49:53.415557] ranking atualizado: a -> 35
+[2025-10-28T23:49:53.416704] próxima pergunta (medio): Quanto é 38 - 82?
+[2025-10-28T23:49:55.460407] ranking atualizado: a -> 40
+[2025-10-28T23:49:55.460700] próxima pergunta (medio): O que é h2o?
+[2025-10-28T23:49:59.252153] ranking atualizado: a -> 45
+[2025-10-28T23:49:59.252520] próxima pergunta (dificil): Quanto é 81 + 62?
+[2025-10-28T23:50:03.316112] ranking atualizado: a -> 50
+[2025-10-28T23:50:03.316479] próxima pergunta (dificil): Qual é a capital da Alemanha?
+[2025-10-28T23:50:11.380116] ranking atualizado: a -> 55
+[2025-10-28T23:50:11.380497] próxima pergunta (dificil): Quanto é 90 - 75?
+[2025-10-28T23:50:13.363066] próxima pergunta (dificil): Quanto é 17 + 99?
+[2025-10-28T23:50:16.171252] ranking atualizado: a -> 58
+[2025-10-28T23:50:16.171525] próxima pergunta (dificil): Quanto é 10 + 10?
+[2025-10-28T23:50:18.355812] ranking atualizado: a -> 63
+[2025-10-28T23:50:18.356177] próxima pergunta (dificil): texto
+[2025-10-28T23:50:19.523524] próxima pergunta (dificil): Quem é o irmão do Mario?
+[2025-10-28T23:50:21.891364] ranking atualizado: a -> 66
+[2025-10-28T23:50:21.891647] próxima pergunta (dificil): Quanto é 28 + 48?
+[2025-10-28T23:50:29.555198] próxima pergunta (facil): Qual é o planeta mais próximo do sol?
+[2025-10-28T23:50:31.043557] ranking atualizado: a -> 5
+[2025-10-28T23:50:31.043837] próxima pergunta (facil): Quanto é 16 + 41?
+[2025-10-28T23:50:32.659873] ranking atualizado: a -> 10
+[2025-10-28T23:50:32.660531] próxima pergunta (facil): Quanto é 41 + 40?
+[2025-10-28T23:50:34.491796] ranking atualizado: a -> 15
+[2025-10-28T23:50:34.492199] próxima pergunta (facil): Resolva: 89 x 59
+[2025-10-28T23:50:37.194996] ranking atualizado: a -> 20
+[2025-10-28T23:50:37.195258] próxima pergunta (medio): Quem pintou a mona lisa?
+[2025-10-28T23:50:38.292077] ranking atualizado: a -> 25
+[2025-10-28T23:50:38.292437] próxima pergunta (medio): Qual é o órgão responsável por bombear sangue?
+[2025-10-28T23:50:39.557194] ranking atualizado: a -> 30
+[2025-10-28T23:50:39.557604] próxima pergunta (medio): Quem é o criador do mickey mouse?
+[2025-10-28T23:50:40.780033] ranking atualizado: a -> 35
+[2025-10-28T23:50:40.780402] próxima pergunta (medio): Quem foi napoleão bonaparte?
+[2025-10-28T23:50:42.284615] ranking atualizado: a -> 40
+[2025-10-28T23:50:42.284997] próxima pergunta (medio): Quanto mais se seca, mais molhado fica. O que é?
+[2025-10-28T23:50:43.683748] próxima pergunta (medio): Tem orelhas mas não ouve. o que é?
+[2025-10-28T23:50:46.723257] ranking atualizado: a -> 43
+[2025-10-28T23:50:46.723517] próxima pergunta (dificil): Qual é a capital da Alemanha?
+[2025-10-28T23:50:48.892211] ranking atualizado: a -> 48
+[2025-10-28T23:50:48.892575] próxima pergunta (dificil): Não tem asas, mas voa. O que é?
+[2025-10-28T23:50:51.116400] ranking atualizado: a -> 53
+[2025-10-28T23:50:51.116787] próxima pergunta (dificil): Quem é o irmão do Mario?
+[2025-10-28T23:50:52.164950] ranking atualizado: a -> 58
+[2025-10-28T23:50:52.165326] próxima pergunta (dificil): Qual é o nome do robô dourado em Star Wars?
+[2025-10-28T23:50:52.995705] ranking atualizado: a -> 63
+[2025-10-28T23:50:52.996080] próxima pergunta (dificil): Em que casa de hogwarts está harry potter?
+[2025-10-28T23:50:54.555223] ranking atualizado: a -> 68
+[2025-10-28T23:50:54.555523] próxima pergunta (dificil): Quanto é 90 - 75?
+[2025-10-28T23:50:55.379820] ranking atualizado: a -> 73
+[2025-10-28T23:50:55.380230] próxima pergunta (dificil): Resolva: 69 x 59
+[2025-10-28T23:50:56.194461] ranking atualizado: a -> 78
+[2025-10-28T23:50:56.194729] próxima pergunta (dificil): Tem chaves, mas não abre portas. O que é?
+[2025-10-28T23:50:56.923974] ranking atualizado: a -> 83
+[2025-10-28T23:50:56.924265] próxima pergunta (dificil): Quanto é 76 + 76?
+[2025-10-28T23:50:58.324003] ranking atualizado: a -> 88
+[2025-10-28T23:50:58.324849] próxima pergunta (dificil): texto
+[2025-10-28T23:50:59.714901] ranking atualizado: a -> 93
+[2025-10-28T23:51:04.004281] ranking atualizado: a -> 98
+[2025-10-28T23:51:05.379875] ranking atualizado: a -> 103
+[2025-10-28T23:51:06.299691] ranking atualizado: a -> 108
+[2025-10-28T23:51:07.139767] ranking atualizado: a -> 113
+[2025-10-28T23:51:08.154346] ranking atualizado: a -> 118
+[2025-10-28T23:51:10.285040] ranking atualizado: a -> 123
+[2025-10-28T23:53:29.595457] próxima pergunta (facil): Quanto é 16 + 41?
+[2025-10-28T23:53:36.476467] ranking atualizado: a -> 5
+[2025-10-28T23:53:36.476846] próxima pergunta (facil): Quanto é 98 - 68?
+[2025-10-28T23:53:45.307050] ranking atualizado: a -> 10
+[2025-10-28T23:53:45.307335] próxima pergunta (facil): Quanto é 60 - 70?
+[2025-10-28T23:54:04.124178] ranking atualizado: a -> 15
+[2025-10-28T23:54:04.124644] próxima pergunta (facil): Resolva: 29 x 36
+[2025-10-28T23:58:21.945783] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-28T23:58:21.946631] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-28T23:58:21.947129] Carregadas 156 perguntas de perguntas.json
+[2025-10-28T23:58:21.947362] Arquivo não encontrado: perguntas_extra.json
+[2025-10-28T23:58:21.947561] Arquivo não encontrado: perguntas.js
+[2025-10-28T23:58:21.947833] Total perguntas externas: 501
+[2025-10-28T23:58:21.948484] IA inicializada. Perguntas externas: 501
+[2025-10-28T23:58:21.948826] próxima pergunta (facil): Quanto é 34 - 48?
+[2025-10-29T00:04:58.230843] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:04:58.231586] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:04:58.232055] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:04:58.232281] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:04:58.232527] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:04:58.232729] Total perguntas externas: 501
+[2025-10-29T00:04:58.233464] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:04:58.233777] próxima pergunta (facil): Quanto é 80 - 58?
+[2025-10-29T00:04:58.526039] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:04:58.526847] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:04:58.527388] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:04:58.527616] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:04:58.527871] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:04:58.528048] Total perguntas externas: 501
+[2025-10-29T00:04:58.528679] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:04:58.528919] próxima pergunta (facil): Resolva: 90 x 7
+[2025-10-29T00:05:44.025719] próxima pergunta (facil): Quem foi o primeiro presidente dos estados unidos?
+[2025-10-29T00:05:53.842484] ranking atualizado: a -> 5
+[2025-10-29T00:05:53.842793] próxima pergunta (facil): Qual é a capital da alemanha?
+[2025-10-29T00:06:01.978728] ranking atualizado: a -> 10
+[2025-10-29T00:06:01.979157] próxima pergunta (facil): Quanto é 60 - 70?
+[2025-10-29T00:06:03.307268] ranking atualizado: a -> 15
+[2025-10-29T00:06:03.307683] próxima pergunta (facil): Resolva: 64 x 36
+[2025-10-29T00:06:04.890465] ranking atualizado: a -> 20
+[2025-10-29T00:06:04.890737] próxima pergunta (medio): Quanto é 8 ÷ 4?
+[2025-10-29T00:06:05.473676] ranking atualizado: a -> 25
+[2025-10-29T00:06:05.473933] próxima pergunta (medio): Quanto mais se seca, mais molhado fica. o que é?
+[2025-10-29T00:06:06.338017] ranking atualizado: a -> 30
+[2025-10-29T00:06:06.338388] próxima pergunta (medio): Quem é o líder dos vingadores?
+[2025-10-29T00:06:07.210556] ranking atualizado: a -> 35
+[2025-10-29T00:06:07.210923] próxima pergunta (medio): Quem foi napoleão bonaparte?
+[2025-10-29T00:06:08.018937] ranking atualizado: a -> 40
+[2025-10-29T00:06:08.019216] próxima pergunta (medio): Resolva: 99 x 44
+[2025-10-29T00:06:08.794445] ranking atualizado: a -> 45
+[2025-10-29T00:06:08.794808] próxima pergunta (dificil): Qual é o maior oceano do planeta?
+[2025-10-29T00:06:09.498423] ranking atualizado: a -> 50
+[2025-10-29T00:06:09.498797] próxima pergunta (dificil): Quanto é 81 ÷ 9?
+[2025-10-29T00:06:10.250509] ranking atualizado: a -> 55
+[2025-10-29T00:06:10.250866] próxima pergunta (dificil): Resolva: 90 x 7
+[2025-10-29T00:06:10.914292] ranking atualizado: a -> 60
+[2025-10-29T00:06:10.914653] próxima pergunta (dificil): Em que casa de Hogwarts está Harry Potter?
+[2025-10-29T00:06:11.530358] ranking atualizado: a -> 65
+[2025-10-29T00:06:11.530728] próxima pergunta (dificil): Em que casa de hogwarts está harry potter?
+[2025-10-29T00:06:12.275310] ranking atualizado: a -> 70
+[2025-10-29T00:06:12.275685] próxima pergunta (dificil): Quanto é 82 - 71?
+[2025-10-29T00:06:13.170340] ranking atualizado: a -> 75
+[2025-10-29T00:06:13.170729] próxima pergunta (dificil): Em que ano começou a segunda guerra mundial?
+[2025-10-29T00:06:13.795562] ranking atualizado: a -> 80
+[2025-10-29T00:06:13.795944] próxima pergunta (dificil): Em que continente fica o egito?
+[2025-10-29T00:06:14.522982] ranking atualizado: a -> 85
+[2025-10-29T00:06:14.523357] próxima pergunta (dificil): Qual é a capital da Alemanha?
+[2025-10-29T00:06:15.218424] ranking atualizado: a -> 90
+[2025-10-29T00:06:15.218809] próxima pergunta (dificil): Resolva: 42 x 18
+[2025-10-29T00:06:15.851219] ranking atualizado: a -> 95
+[2025-10-29T00:06:19.130699] ranking atualizado: a -> 100
+[2025-10-29T00:06:20.034302] ranking atualizado: a -> 105
+[2025-10-29T00:06:20.834412] ranking atualizado: a -> 110
+[2025-10-29T00:06:21.411515] ranking atualizado: a -> 115
+[2025-10-29T00:06:21.938328] ranking atualizado: a -> 120
+[2025-10-29T00:06:22.457734] ranking atualizado: a -> 125
+[2025-10-29T00:06:22.994152] ranking atualizado: a -> 130
+[2025-10-29T00:06:23.450469] ranking atualizado: a -> 135
+[2025-10-29T00:06:23.979514] ranking atualizado: a -> 140
+[2025-10-29T00:06:24.417599] ranking atualizado: a -> 145
+[2025-10-29T00:06:24.802144] ranking atualizado: a -> 150
+[2025-10-29T00:06:25.161552] ranking atualizado: a -> 155
+[2025-10-29T00:06:25.689725] próxima pergunta (dificil): O que os humanos respiram para viver?
+[2025-10-29T00:06:28.538213] próxima pergunta (dificil): Não tem asas, mas voa. O que é?
+[2025-10-29T00:07:02.612563] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:07:02.613409] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:07:02.613997] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:07:02.614251] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:07:02.614525] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:07:02.614735] Total perguntas externas: 501
+[2025-10-29T00:07:02.615576] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:07:02.615823] próxima pergunta (facil): Qual é o símbolo químico da água?
+[2025-10-29T00:07:14.343671] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:07:14.344552] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:07:14.345103] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:07:14.345356] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:07:14.345669] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:07:14.345914] Total perguntas externas: 501
+[2025-10-29T00:07:14.346600] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:07:14.346898] próxima pergunta (facil): Quanto é 81 ÷ 9?
+[2025-10-29T00:07:14.629956] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:07:14.630770] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:07:14.631345] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:07:14.631605] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:07:14.631892] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:07:14.632127] Total perguntas externas: 501
+[2025-10-29T00:07:14.632801] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:07:14.633145] próxima pergunta (facil): Que animal é conhecido por sua memória?
+[2025-10-29T00:07:17.193466] próxima pergunta (facil): Quanto é 2 + 87?
+[2025-10-29T00:07:33.672474] próxima pergunta (facil): Quem é o irmão do mario?
+[2025-10-29T00:07:44.097243] próxima pergunta (facil): Quanto é 87 + 89?
+[2025-10-29T00:09:28.648532] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:09:28.649308] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:09:28.649813] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:09:28.650067] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:09:28.650326] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:09:28.650497] Total perguntas externas: 501
+[2025-10-29T00:09:28.651185] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:09:28.651602] próxima pergunta (facil): Quanto é 60 + 80?
+[2025-10-29T00:09:32.464875] próxima pergunta (facil): Qual é a capital da austrália?
+[2025-10-29T00:09:33.801220] próxima pergunta (facil): Resolva: 4 x 34
+[2025-10-29T00:09:40.418192] ranking atualizado: a -> 5
+[2025-10-29T00:09:40.418622] próxima pergunta (facil): Quem é o vilão principal em star wars?
+[2025-10-29T00:09:42.177700] ranking atualizado: a -> 10
+[2025-10-29T00:09:42.178072] próxima pergunta (facil): Quanto é 45 + 56?
+[2025-10-29T00:09:44.168950] ranking atualizado: a -> 15
+[2025-10-29T00:09:44.169263] próxima pergunta (facil): Quanto é 89 - 96?
+[2025-10-29T00:09:46.905018] ranking atualizado: a -> 20
+[2025-10-29T00:09:46.905285] próxima pergunta (medio): Qual é o nome do mago em Harry Potter?
+[2025-10-29T00:09:47.865504] ranking atualizado: a -> 25
+[2025-10-29T00:09:47.865776] próxima pergunta (medio): É redondo, tem bola, mas não é jogo. o que é?
+[2025-10-29T00:09:50.658066] ranking atualizado: a -> 30
+[2025-10-29T00:09:50.658439] próxima pergunta (medio): O que é, o que é: quanto mais tira, maior fica?
+[2025-10-29T00:09:52.370194] ranking atualizado: a -> 35
+[2025-10-29T00:09:52.370609] próxima pergunta (medio): Qual é o nome do planeta natal do superman?
+[2025-10-29T00:09:53.674971] ranking atualizado: a -> 40
+[2025-10-29T00:09:53.675357] próxima pergunta (medio): Qual é o nome do mago em o senhor dos anéis?
+[2025-10-29T00:09:54.929414] ranking atualizado: a -> 45
+[2025-10-29T00:09:54.929685] próxima pergunta (dificil): Resolva: 4 x 34
+[2025-10-29T00:09:56.098058] ranking atualizado: a -> 50
+[2025-10-29T00:09:56.098416] próxima pergunta (dificil): Quem foi o primeiro presidente do brasil?
+[2025-10-29T00:09:57.034073] ranking atualizado: a -> 55
+[2025-10-29T00:09:57.034446] próxima pergunta (dificil): Quanto é 30 ÷ 6?
+[2025-10-29T00:09:58.065805] ranking atualizado: a -> 60
+[2025-10-29T00:09:58.066087] próxima pergunta (dificil): Quanto é 81 ÷ 9?
+[2025-10-29T00:09:59.218757] ranking atualizado: a -> 65
+[2025-10-29T00:09:59.219129] próxima pergunta (dificil): Resolva: 89 x 59
+[2025-10-29T00:10:00.121659] ranking atualizado: a -> 70
+[2025-10-29T00:10:00.121934] próxima pergunta (dificil): Qual país é conhecido como a Terra do Sol Nascente?
+[2025-10-29T00:10:00.961210] ranking atualizado: a -> 75
+[2025-10-29T00:10:00.961496] próxima pergunta (dificil): Quanto é 81 + 62?
+[2025-10-29T00:10:01.962466] ranking atualizado: a -> 80
+[2025-10-29T00:10:01.962846] próxima pergunta (dificil): Resolva: 69 x 59
+[2025-10-29T00:10:02.986084] ranking atualizado: a -> 85
+[2025-10-29T00:10:02.986376] próxima pergunta (dificil): Quanto é 10 + 10?
+[2025-10-29T00:10:03.913236] ranking atualizado: a -> 90
+[2025-10-29T00:10:03.913548] próxima pergunta (dificil): É redondo, tem bola, mas não é jogo. O que é?
+[2025-10-29T00:10:05.385044] ranking atualizado: a -> 95
+[2025-10-29T00:10:08.394398] ranking atualizado: a -> 100
+[2025-10-29T00:10:09.345158] ranking atualizado: a -> 105
+[2025-10-29T00:12:53.114505] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:12:53.115347] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:12:53.115815] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:12:53.116049] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:12:53.116252] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:12:53.116559] Total perguntas externas: 501
+[2025-10-29T00:12:53.117209] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:12:53.117438] erro proxima_pergunta init: 'IA' object has no attribute 'obter_perguntas_por_dificuldade'
+[2025-10-29T00:23:11.743034] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:23:11.743835] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:23:11.744313] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:23:11.744538] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:23:11.744813] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:23:11.745012] Total perguntas externas: 501
+[2025-10-29T00:23:11.745651] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:23:11.745913] erro proxima_pergunta init: 'list' object has no attribute 'add'
+[2025-10-29T00:23:42.801237] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:23:42.802002] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:23:42.802476] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:23:42.802699] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:23:42.802901] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:23:42.803098] Total perguntas externas: 501
+[2025-10-29T00:23:42.803797] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:23:42.804151] erro proxima_pergunta init: 'list' object has no attribute 'add'
+[2025-10-29T00:23:43.088249] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:23:43.089148] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:23:43.089658] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:23:43.089943] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:23:43.090189] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:23:43.090445] Total perguntas externas: 501
+[2025-10-29T00:23:43.091151] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:23:43.091593] erro proxima_pergunta init: 'list' object has no attribute 'add'
+[2025-10-29T00:24:20.648878] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:24:20.649789] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:24:20.650280] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:24:20.650517] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:24:20.650780] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:24:20.651071] Total perguntas externas: 501
+[2025-10-29T00:24:20.651850] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:24:20.652372] erro proxima_pergunta init: 'list' object has no attribute 'add'
+[2025-10-29T00:25:53.410642] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:25:53.411544] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:25:53.412072] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:25:53.412380] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:25:53.412713] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:25:53.412966] Total perguntas externas: 501
+[2025-10-29T00:25:53.413742] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:25:53.414073] erro proxima_pergunta init: 'list' object has no attribute 'add'
+[2025-10-29T00:26:09.984147] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:26:09.984881] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:26:09.985339] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:26:09.985552] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:26:09.985753] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:26:09.985924] Total perguntas externas: 501
+[2025-10-29T00:26:09.986895] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:26:09.987240] erro proxima_pergunta init: 'list' object has no attribute 'add'
+[2025-10-29T00:33:36.741259] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:33:36.742086] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:33:36.742582] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:33:36.742806] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:33:36.743032] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:33:36.743209] Total perguntas externas: 501
+[2025-10-29T00:33:36.743854] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:33:37.034627] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:33:37.035457] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:33:37.035948] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:33:37.036168] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:33:37.036371] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:33:37.036559] Total perguntas externas: 501
+[2025-10-29T00:33:37.037341] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:35:32.971155] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:35:32.972017] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:35:32.972537] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:35:32.972769] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:35:32.973003] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:35:32.973206] Total perguntas externas: 501
+[2025-10-29T00:35:32.973846] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:36:20.889249] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:36:20.890210] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:36:20.890814] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:36:20.891083] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:36:20.891377] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:36:20.891640] Total perguntas externas: 501
+[2025-10-29T00:36:20.892371] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:36:21.191511] Carregadas 170 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:36:21.192349] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:36:21.192931] Carregadas 156 perguntas de perguntas.json
+[2025-10-29T00:36:21.193191] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:36:21.193485] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:36:21.193739] Total perguntas externas: 501
+[2025-10-29T00:36:21.194407] IA inicializada. Perguntas externas: 501
+[2025-10-29T00:36:29.007786] ranking atualizado: a -> 5
+[2025-10-29T00:36:31.527125] ranking atualizado: a -> 10
+[2025-10-29T00:36:33.143816] ranking atualizado: a -> 15
+[2025-10-29T00:36:34.918725] ranking atualizado: a -> 20
+[2025-10-29T00:36:37.016259] ranking atualizado: a -> 25
+[2025-10-29T00:36:39.311810] ranking atualizado: a -> 30
+[2025-10-29T00:36:41.902758] ranking atualizado: a -> 35
+[2025-10-29T00:36:44.087265] ranking atualizado: a -> 40
+[2025-10-29T00:37:17.294924] ranking atualizado: Teste_final -> 5
+[2025-10-29T00:37:26.144521] ranking atualizado: Teste_final -> 10
+[2025-10-29T00:37:27.182356] ranking atualizado: Teste_final -> 15
+[2025-10-29T00:37:28.639858] ranking atualizado: Teste_final -> 20
+[2025-10-29T00:37:29.359794] ranking atualizado: Teste_final -> 25
+[2025-10-29T00:37:29.831744] ranking atualizado: Teste_final -> 30
+[2025-10-29T00:37:30.303456] ranking atualizado: Teste_final -> 35
+[2025-10-29T00:37:30.799723] ranking atualizado: Teste_final -> 40
+[2025-10-29T00:37:31.247810] ranking atualizado: Teste_final -> 45
+[2025-10-29T00:37:31.663556] ranking atualizado: Teste_final -> 50
+[2025-10-29T00:37:32.103232] ranking atualizado: Teste_final -> 55
+[2025-10-29T00:37:34.215547] ranking atualizado: Teste_final -> 56
+[2025-10-29T00:37:34.999091] ranking atualizado: Teste_final -> 61
+[2025-10-29T00:37:35.647530] ranking atualizado: Teste_final -> 66
+[2025-10-29T00:37:36.328443] ranking atualizado: Teste_final -> 71
+[2025-10-29T00:37:36.991546] ranking atualizado: Teste_final -> 76
+[2025-10-29T00:37:37.648261] ranking atualizado: Teste_final -> 81
+[2025-10-29T00:37:38.535737] ranking atualizado: Teste_final -> 86
+[2025-10-29T00:37:39.119455] ranking atualizado: Teste_final -> 91
+[2025-10-29T00:37:40.063382] ranking atualizado: Teste_final -> 96
+[2025-10-29T00:37:41.064141] ranking atualizado: Teste_final -> 101
+[2025-10-29T00:37:43.607722] ranking atualizado: Teste_final -> 106
+[2025-10-29T00:37:44.408591] ranking atualizado: Teste_final -> 111
+[2025-10-29T00:37:45.198308] ranking atualizado: Teste_final -> 116
+[2025-10-29T00:37:45.998743] ranking atualizado: Teste_final -> 121
+[2025-10-29T00:37:46.704989] ranking atualizado: Teste_final -> 126
+[2025-10-29T00:37:47.431662] ranking atualizado: Teste_final -> 131
+[2025-10-29T00:37:50.768067] ranking atualizado: Teste_final -> 134
+[2025-10-29T00:37:51.463238] ranking atualizado: Teste_final -> 139
+[2025-10-29T00:37:52.103120] ranking atualizado: Teste_final -> 144
+[2025-10-29T00:37:52.672299] ranking atualizado: Teste_final -> 149
+[2025-10-29T00:37:53.200536] ranking atualizado: Teste_final -> 154
+[2025-10-29T00:37:53.687718] ranking atualizado: Teste_final -> 159
+[2025-10-29T00:37:54.151180] ranking atualizado: Teste_final -> 164
+[2025-10-29T00:37:54.598813] ranking atualizado: Teste_final -> 169
+[2025-10-29T00:37:55.022370] ranking atualizado: Teste_final -> 174
+[2025-10-29T00:37:55.479545] ranking atualizado: Teste_final -> 179
+[2025-10-29T00:37:56.088139] ranking atualizado: Teste_final -> 184
+[2025-10-29T00:37:57.463603] ranking atualizado: Teste_final -> 189
+[2025-10-29T00:37:58.039373] ranking atualizado: Teste_final -> 194
+[2025-10-29T00:37:58.606629] ranking atualizado: Teste_final -> 199
+[2025-10-29T00:37:59.127896] ranking atualizado: Teste_final -> 204
+[2025-10-29T00:51:19.805169] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:51:19.806151] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:51:19.806731] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T00:51:19.807156] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:51:19.807443] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:51:19.807784] Total perguntas externas: 530
+[2025-10-29T00:51:19.819158] IA inicializada. Perguntas externas: 530
+[2025-10-29T00:51:20.115290] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:51:20.116167] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:51:20.116810] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T00:51:20.117077] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:51:20.117420] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:51:20.117657] Total perguntas externas: 530
+[2025-10-29T00:51:20.118445] IA inicializada. Perguntas externas: 530
+[2025-10-29T00:55:06.532210] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:55:06.533075] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:55:06.533614] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T00:55:06.533837] Arquivo não encontrado: perguntas_extra.json
+[2025-10-29T00:55:06.534039] Arquivo não encontrado: perguntas.js
+[2025-10-29T00:55:06.534228] Total perguntas externas: 530
+[2025-10-29T00:55:06.534931] IA inicializada. Perguntas externas: 530
+[2025-10-29T00:56:47.269072] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T00:56:47.269832] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T00:56:47.270337] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T00:56:47.271078] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:01:58.809739] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:01:58.810617] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:01:58.811246] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:01:58.812079] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:01:59.094657] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:01:59.095492] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:01:59.096083] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:01:59.096836] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:05:36.588819] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:05:36.589597] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:05:36.590125] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:05:36.590875] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:09:04.801680] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:09:04.802563] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:09:04.803200] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:09:04.803994] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:09:05.082416] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:09:05.083223] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:09:05.083812] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:09:05.084639] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:13:27.263309] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:13:27.264326] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:13:27.264932] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:13:27.265732] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:13:27.614635] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:13:27.615477] Carregadas 175 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:13:27.616074] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:13:27.616915] IA inicializada. Perguntas externas: 530
+[2025-10-29T01:16:22.487185] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:16:22.497665] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:16:22.498491] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:16:22.499152] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:16:22.797435] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:16:22.797865] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:16:22.798758] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:16:22.799384] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:18:52.975322] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:18:52.975840] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:18:52.976842] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:18:52.977704] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:20:05.564640] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:20:05.565061] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:20:05.565806] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:20:05.566444] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:20:17.643340] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:20:17.643893] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:20:17.644733] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:20:17.645382] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:20:17.930649] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:20:17.931161] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:20:17.931962] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:20:17.932677] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:22:24.094069] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:22:24.094724] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:22:24.095628] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:22:24.096309] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:22:24.447236] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:22:24.447675] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:22:24.448483] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:22:24.449114] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:25:28.818621] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:25:28.819162] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:25:28.820074] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:25:28.820811] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:25:29.153214] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:25:29.153797] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:25:29.154645] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:25:29.155373] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:26:27.101350] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:26:27.101907] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:26:27.102685] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:26:27.103403] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:26:27.400674] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:26:27.401120] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:26:27.401855] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:26:27.402515] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:29:31.525488] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:29:31.526114] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:29:31.527290] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:29:31.528020] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:29:35.467106] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:29:35.467551] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:29:35.468254] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:29:35.468902] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:29:35.749694] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:29:35.750251] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:29:35.751119] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:29:35.751813] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:31:49.790301] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:31:49.790729] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:31:49.791458] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:31:49.792056] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:31:54.047462] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:31:54.047907] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:31:54.048639] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:31:54.049288] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:31:54.330980] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:31:54.331506] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:31:54.332339] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:31:54.333032] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:35:25.641092] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:35:25.642173] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:35:25.643512] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:35:25.644657] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:35:33.055643] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:35:33.056169] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:35:33.056979] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:35:33.057678] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:35:33.342437] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:35:33.342979] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:35:33.343833] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:35:33.344563] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:38:41.565665] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:38:41.566125] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:38:41.566990] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:38:41.567644] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:38:42.964454] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:38:42.965167] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:38:42.966337] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:38:42.967461] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:38:45.346130] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:38:45.346549] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:38:45.347268] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:38:45.347893] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:38:53.147440] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:38:53.147988] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:38:53.148970] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:38:53.149649] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:38:53.436382] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:38:53.436939] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:38:53.437782] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:38:53.438451] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:39:12.924409] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:39:12.924867] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:39:12.925598] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:39:12.926266] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:42:48.271901] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:42:48.272368] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:42:48.273302] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:42:48.273986] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:43:11.861235] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:43:11.861885] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:43:11.862772] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:43:11.863499] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:43:12.145459] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:43:12.145979] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:43:12.146818] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:43:12.147566] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:45:24.072165] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:45:24.072618] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:45:24.073344] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:45:24.073934] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:46:08.680747] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:46:08.681324] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:46:08.682201] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:46:08.682907] IA inicializada. Perguntas externas: 397
+[2025-10-29T01:46:08.969390] Carregadas 186 perguntas de perguntas_atualizadas.json
+[2025-10-29T01:46:08.969900] Carregadas 42 perguntas de perguntas_balanceadas.json
+[2025-10-29T01:46:08.970670] Carregadas 169 perguntas de perguntas.json
+[2025-10-29T01:46:08.971361] IA inicializada. Perguntas externas: 397

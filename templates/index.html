@@ -1,317 +1,430 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Desafio do Luiz 🤓</title>
 <style>
+  :root {
+    --bg1: #0a192f;
+    --accent: #00bfff;
+    --good: #00ff99;
+    --warn: #ffeb3b;
+    --bad: #ff4444;
+    --font: "Poppins", sans-serif;
+  }
+  * { box-sizing: border-box; }
   body {
-    background: radial-gradient(circle at top, #142850, #000);
+    margin: 0;
+    background: radial-gradient(circle at center, var(--bg1), #000);
     color: #fff;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    height: 100vh;
+    font-family: var(--font);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
     overflow: hidden;
-    transition: background 0.5s ease;
   }
 
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+  .app {
+    width: 95%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  input, button {
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: none;
-    margin: 5px;
-    font-size: 1rem;
-  }
-
-  button {
-    background: #00BFFF;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  button:hover { background: #0096c7; }
-
+  /* Luiz */
   .luiz-container {
-    position: relative;
-    margin-bottom: 20px;
-    transition: transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    min-height: 200px;
   }
 
   .balon {
-    background: rgba(255,255,255,0.2);
-    padding: 10px 18px;
-    border-radius: 25px;
-    max-width: 400px;
-    margin-bottom: 12px;
-    min-height: 40px;
+    background: rgba(255,255,255,.1);
+    padding: 14px 18px;
+    border-radius: 22px;
     font-style: italic;
-    animation: fadeIn 0.3s ease;
+    max-width: 720px;
+    min-height: 48px;
+    font-size: 1.1rem;
+    transition: all .4s ease;
+    opacity: 0;
+    transform: scale(0.8);
   }
 
-  @keyframes fadeIn {
-    from {opacity:0; transform:translateY(10px);}
-    to {opacity:1; transform:translateY(0);}
+  .balon.show {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .luiz {
     font-size: 4rem;
-    transition: transform 0.3s, text-shadow 0.3s;
+    margin-top: 8px;
+    transition: transform 0.3s ease, filter 0.3s ease, opacity .3s;
   }
 
-  .feliz .luiz { text-shadow: 0 0 15px #00ff99; transform: scale(1.1); }
-  .orgulhoso .luiz { text-shadow: 0 0 15px #00bfff; transform: scale(1.2); }
-  .animado .luiz { text-shadow: 0 0 20px #00ffff; transform: scale(1.3); }
-  .confuso .luiz { text-shadow: 0 0 15px #ffeb3b; transform: scale(1.05); }
-  .zangado .luiz { text-shadow: 0 0 18px #ff4444; transform: scale(1.2); }
-  .furioso .luiz { text-shadow: 0 0 25px #ff0000; transform: scale(1.3); }
-  .explosao .luiz { animation: explode 0.8s forwards; }
-
-  @keyframes explode {
-    0% {transform: scale(1); opacity: 1;}
-    100% {transform: scale(3); opacity: 0;}
+  input, button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-family: var(--font);
   }
+
+  input { width: 240px; text-align: center; }
+
+  button {
+    cursor: pointer;
+    background: var(--accent);
+    color: #fff;
+    transition: 0.2s;
+  }
+
+  button:hover, button:focus { filter: brightness(1.2); }
 
   .timer-bar {
-    width: 80%;
-    height: 18px;
-    background-color: #ffffff33;
+    width: 280px;
+    height: 12px;
+    background: rgba(255,255,255,0.15);
     border-radius: 10px;
-    overflow: hidden;
-    margin-top: 15px;
-  }
-  #barra-tempo {
-    height: 100%;
-    width: 100%;
-    background-color: #00ff99;
-    transition: width 0.9s linear;
-  }
-
-  #tempo-texto { margin-top: 5px; font-weight: bold; }
-
-  #dificuldade {
     margin-top: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #00bfff;
+    overflow: hidden;
   }
 
-  #tela-gameover {
-    display:none;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    position:absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.9);
-    text-align:center;
-    animation: fadeIn 0.8s ease;
+  #tempo-barra {
+    height: 100%;
+    background: linear-gradient(90deg, var(--good), var(--warn), var(--bad));
+    width: 100%;
+    transition: width 0.1s linear;
   }
 
-  #tela-gameover h1 { color:#ff5555; font-size:2.5rem; text-shadow:0 0 20px #ff0000; }
+  .meta {
+    font-size: 1rem;
+    margin-top: 12px;
+  }
 
-  #ranking {
-    margin-top: 15px;
-    text-align: left;
-    background: rgba(255,255,255,0.1);
-    padding: 10px 20px;
+  /* Reações */
+  .anim-feliz { transform: scale(1.1); filter: drop-shadow(0 0 8px var(--good)); }
+  .anim-irritado { transform: scale(1.1) rotate(-5deg); filter: drop-shadow(0 0 6px var(--bad)); }
+  .anim-triste { transform: scale(0.9); opacity: 0.8; }
+  .anim-curioso { transform: scale(1.05); filter: brightness(1.3); }
+  .anim-expectativa { animation: balanco 2s infinite ease-in-out; }
+
+  @keyframes balanco {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @media (max-width:600px) {
+    .luiz { font-size: 3rem; }
+    .balon { font-size: 0.95rem; }
+  }
+
+  .tremer { animation: tremer 0.3s infinite alternate; }
+  @keyframes tremer { 0% { transform: translateX(-2px); } 100% { transform: translateX(2px); } }
+
+  /* 👁️ Piscadas automáticas */
+  @keyframes piscar {
+    0%, 90%, 100% { opacity: 1; transform: scaleY(1); }
+    95% { opacity: 0.3; transform: scaleY(0.2); }
+  }
+  .piscando { animation: piscar 4s infinite; }
+
+  /* 🩸 Estilo modo pesadelo */
+  .alerta-pesadelo {
+    background: rgba(255,0,0,0.1);
+    border: 1px solid #ff4444;
     border-radius: 12px;
-    max-width: 300px;
+    padding: 16px;
+    margin-top: 12px;
   }
-
-  #ranking h2 { color: #00bfff; margin-bottom: 5px; }
+  .botao-pesadelo {
+    background: #ff0000;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .botao-pesadelo:hover { filter: brightness(1.3); }
 </style>
 </head>
-<script src="{{ url_for('static', filename='perguntas.js') }}"></script>
 <body>
-  <div id="luiz" class="luiz-container feliz">
-    <div class="balon" id="fala-luiz">Oi! Eu sou o Luiz 🤓<br>Qual é o seu nome?</div>
-    <div class="luiz" id="emoji">🤓</div>
-  </div>
+  <div class="app">
+    <div id="luiz" class="luiz-container">
+      <div id="fala-luiz" class="balon show">Oi! Eu sou o Luiz 🤓<br>Qual é o seu nome?</div>
+      <div id="expressao-luiz" class="luiz piscando">🤓</div>
+    </div>
 
-  <div id="tela-nome">
-    <input id="nome" placeholder="Digite seu nome...">
-    <button onclick="iniciarJogo()">Começar</button>
-  </div>
+    <!-- Tela inicial -->
+    <div id="tela-nome">
+      <input id="nome" type="text" placeholder="Digite seu nome..." autofocus />
+      <button id="btn-iniciar">Começar</button>
+    </div>
 
-  <div id="tela-jogo" style="display:none;flex-direction:column;align-items:center;">
-    <h1 id="pergunta"></h1>
-    <input id="entrada" placeholder="Digite sua resposta...">
-    <button onclick="enviar()">Enviar</button>
-    <div id="dificuldade"></div>
-    <div class="timer-bar"><div id="barra-tempo"></div></div>
-    <div id="tempo-texto">⏳ 30s</div>
-  </div>
+    <!-- Tela do jogo -->
+    <div id="tela-jogo" style="display:none;flex-direction:column;align-items:center;">
+      <h2 id="pergunta" style="transition:opacity .3s;"></h2>
+      <input id="resposta" placeholder="Digite sua resposta..." />
+      <button id="btn-responder">Enviar</button>
 
-  <div id="tela-gameover">
-    <h1 id="titulo-fim">💥 Você Perdeu!</h1>
-    <p id="texto-fim"></p>
-    <div id="ranking"></div>
-    <button onclick="reiniciar()">Reiniciar</button>
+      <div class="timer-bar"><div id="tempo-barra"></div></div>
+      <div id="tempo-texto">⏳ 30s</div>
+
+      <div class="meta">
+        Pontuação: <span id="pontos">0</span> · Nível: <span id="nivel">1</span>
+      </div>
+
+      <!-- ⚡️ Aqui entra o painel do modo pesadelo -->
+      <div id="pesadelo-container"></div>
+    </div>
+
+    <!-- Tela de fim -->
+    <div id="tela-gameover" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,.85);">
+      <div style="background:rgba(255,255,255,.06);padding:20px;border-radius:12px;text-align:center;">
+        <h1 id="titulo-fim">💥 Você Perdeu!</h1>
+        <p id="texto-fim"></p>
+        <div id="ranking"></div>
+        <button id="btn-reiniciar">Reiniciar</button>
+      </div>
+    </div>
   </div>
 
 <script>
-  const perguntas = window.bancoPerguntas;
+let tempoRestante = 30;
+let tempoBase = 30;
+let temporizador;
+let jogoAtivo = false;
+let modoPesadelo = false;
+let perguntaAtual = "";
+let nivelAtual = 1;
+let pontuacaoAtual = 0;
+let tempoUltimaAtividade = Date.now();
+let humorTimer;
 
-  let nome="", pontuacao=0, tempo=30, intervalo, humor=0, acertos=0, modoPesadelo=false, usadas=[];
-  const fala=document.getElementById("fala-luiz");
-  const emoji=document.getElementById("emoji");
-  const barra=document.getElementById("barra-tempo");
-  const textoTempo=document.getElementById("tempo-texto");
-  const dif=document.getElementById("dificuldade");
+const falaLuiz = document.getElementById("fala-luiz");
+const expressaoLuiz = document.getElementById("expressao-luiz");
+const nomeJogador = document.getElementById("nome");
+const campoResposta = document.getElementById("resposta");
+const botaoResponder = document.getElementById("btn-responder");
+const tempoBarra = document.getElementById("tempo-barra");
+const tempoTexto = document.getElementById("tempo-texto");
+const pontosDisplay = document.getElementById("pontos");
+const nivelDisplay = document.getElementById("nivel");
+const telaNome = document.getElementById("tela-nome");
+const telaJogo = document.getElementById("tela-jogo");
+const telaGameover = document.getElementById("tela-gameover");
+const perguntaEl = document.getElementById("pergunta");
 
-  function iniciarJogo(){
-    nome=document.getElementById("nome").value||"Jogador";
-    document.getElementById("tela-nome").style.display="none";
-    document.getElementById("tela-jogo").style.display="flex";
-    fala.innerHTML=`Vamos ver do que você é capaz, ${nome}! 😎`;
-    usadas=[];
-    novaPergunta();
-  }
+function animarLuiz(tipo, expressao = null) {
+  expressaoLuiz.classList.remove("anim-feliz","anim-irritado","anim-triste","anim-curioso","anim-expectativa","tremer");
+  void expressaoLuiz.offsetWidth;
+  expressaoLuiz.classList.add(tipo);
+  if (expressao) expressaoLuiz.textContent = expressao;
+  setTimeout(() => expressaoLuiz.classList.remove(tipo), 1200);
+}
 
-  function definirDificuldade(){
-    if(modoPesadelo) return "pesadelo";
-    if(pontuacao<5) return "facil";
-    if(pontuacao<10) return "medio";
-    return "dificil";
-  }
+function falar(texto) {
+  falaLuiz.classList.remove("show");
+  setTimeout(() => {
+    falaLuiz.innerHTML = texto;
+    falaLuiz.classList.add("show");
+  }, 200);
+}
 
-  function novaPergunta(){
-    clearInterval(intervalo);
-    const nivel=definirDificuldade();
-    const lista=perguntas.filter(p=>p.dificuldade===nivel && !usadas.includes(p.texto));
-    if(lista.length===0){usadas=[]; return novaPergunta();}
-    const q=lista[Math.floor(Math.random()*lista.length)];
-    usadas.push(q.texto);
-    document.getElementById("pergunta").textContent=q.texto;
-    const e=document.getElementById("entrada");
-    e.value="";
-    e.dataset.resposta=q.resposta;
-    e.dataset.dica=q.dica;
-    e.dataset.nivel=nivel;
-    dif.textContent=`🎯 Dificuldade: ${modoPesadelo?"PESADELO 😈":nivel.toUpperCase()}`;
-    iniciarTempo();
-  }
+async function iniciarJogo() {
+  const nome = nomeJogador.value.trim() || "Jogador";
+  const formData = new FormData();
+  formData.append("nome", nome);
 
-  function iniciarTempo(){
-    clearInterval(intervalo);
-    const max=modoPesadelo?5:30;
-    intervalo=setInterval(()=>{
-      tempo--;
-      barra.style.width=`${(tempo/max)*100}%`;
-      textoTempo.textContent=`⏳ ${tempo}s`;
-      if(tempo<=0) fim("raiva");
-    },1000);
-  }
+  const res = await fetch("/iniciar", { method: "POST", body: formData });
+  const data = await res.json();
 
-  function enviar(){
-    const e=document.getElementById("entrada");
-    const r=e.value.toLowerCase().trim();
-    const c=e.dataset.resposta;
-    const dica=e.dataset.dica;
-    const nivel=e.dataset.nivel;
+  jogoAtivo = true;
+  modoPesadelo = false;
+  nivelAtual = data.nivel || 1;
+  pontuacaoAtual = data.pontos || 0;
+  perguntaAtual = data.pergunta;
 
-    if(!r) return;
+  tempoBase = 30;
+  tempoRestante = tempoBase;
 
-    if(r==="te amo"){
-      fala.innerHTML="🥰 Eu também te amo! Pode avançar!";
-      pontuacao++; humor=Math.max(0,humor-2); acertos++;
-      tempo+=3;
-      setTimeout(()=>avancar(nivel),800);
-      return;
+  telaNome.style.display = "none";
+  telaJogo.style.display = "flex";
+
+  falar("Preparado, " + nome + "? Vamos começar!");
+  expressaoLuiz.textContent = "🤓";
+
+  mostrarPergunta(perguntaAtual);
+  iniciarTemporizador();
+  iniciarHumorLuiz();
+}
+
+function iniciarTemporizador() {
+  clearInterval(temporizador);
+  atualizarTempo();
+  temporizador = setInterval(() => {
+    if (!jogoAtivo) return;
+    tempoRestante -= 0.1;
+    atualizarTempo();
+    if (tempoRestante <= 0)
+      fimDeJogo("⏰ O tempo acabou! Luiz venceu!", pontuacaoAtual, "😈");
+  }, 100);
+}
+
+function atualizarTempo() {
+  tempoTexto.textContent = `⏳ ${tempoRestante.toFixed(1)}s`;
+  tempoBarra.style.width = `${(tempoRestante / tempoBase) * 100}%`;
+}
+
+function mostrarPergunta(texto) {
+  perguntaEl.style.opacity = 0;
+  setTimeout(() => {
+    perguntaEl.textContent = texto;
+    perguntaEl.style.opacity = 1;
+  }, 250);
+}
+
+async function enviarResposta() {
+  if (!jogoAtivo) return;
+  tempoUltimaAtividade = Date.now();
+  const resposta = campoResposta.value.trim();
+  if (!resposta) return;
+
+  const formData = new FormData();
+  formData.append("tentativa", resposta);
+  const res = await fetch("/responder", { method: "POST", body: formData });
+  const data = await res.json();
+  processarResposta(data, resposta);
+}
+
+function processarResposta(data, resposta) {
+  if (data.fim)
+    return fimDeJogo(data.mensagem, data.pontuacao_final, data.expressao);
+
+  // 🩸 Verifica se o backend liberou o modo PESADELO
+  verificarModoPesadelo(data);
+
+  if (data.modo_pesadelo_opcao) {
+    modoPesadelo = true;
+    falar("😈 Modo PESADELO ativado!");
+    animarLuiz("anim-irritado", "👿");
+    tempoBase = 5; tempoRestante = 5;
+  } else {
+    falar(data.mensagem);
+    if (data.acertou || resposta.toLowerCase() === "te amo") {
+      animarLuiz("anim-feliz", "😁");
+      const bonus = Math.max(1, 5 - Math.floor(nivelAtual / 3));
+      tempoRestante = Math.min(tempoRestante + bonus, tempoBase);
+    } else {
+      animarLuiz("anim-irritado", "😠");
     }
+  }
 
-    if(r===c){
-      pontuacao++; acertos++; humor=Math.max(0,humor-1);
-      const luiz=document.getElementById("luiz");
-      luiz.className="luiz-container feliz";
-      emoji.textContent="😁";
+  pontuacaoAtual = data.pontos || pontuacaoAtual;
+  nivelAtual = data.nivel || nivelAtual;
+  pontosDisplay.textContent = pontuacaoAtual;
+  nivelDisplay.textContent = nivelAtual;
 
-      fala.innerHTML=["Boa! 👏","Mandou bem! 🔥","Acertou, genial! 😎"][Math.floor(Math.random()*3)];
+  if (data.nova_pergunta) {
+    mostrarPergunta(data.nova_pergunta);
+    perguntaAtual = data.nova_pergunta;
+  }
 
-      let ganho=0;
-      if(nivel==="facil") ganho=6;
-      if(nivel==="medio") ganho=4;
-      if(nivel==="dificil") ganho=2;
-      if(modoPesadelo) ganho=1;
-      tempo=Math.min(modoPesadelo?5:30,tempo+ganho);
+  if (!modoPesadelo)
+    tempoBase = Math.max(10, 30 - nivelAtual * 1.3);
+  campoResposta.value = "";
+}
 
-      setTimeout(()=>avancar(nivel),800);
-    }else{
-      fala.innerHTML=`Errou 😅 Dica: ${dica}`;
-      acertos=0; humor++;
-      tempo=modoPesadelo?0:Math.max(1,tempo-3);
-      atualizarHumor();
+// 😈 Função de ativação do modo pesadelo
+function verificarModoPesadelo(resposta) {
+  if (resposta.modo_pesadelo_opcao) {
+    const container = document.getElementById("pesadelo-container");
+    if (container) {
+      container.innerHTML = `
+        <div class="alerta-pesadelo">
+          <h3>☠️ MODO PESADELO DISPONÍVEL!</h3>
+          <p>Você provou seu valor... deseja desafiar o impossível?</p>
+          <button id="entrarPesadeloBtn" class="botao-pesadelo">Entrar no PESADELO</button>
+        </div>
+      `;
+      document.getElementById("entrarPesadeloBtn").addEventListener("click", confirmarModoPesadelo);
     }
   }
+}
 
-  function avancar(nivel){
-    if(nivel==="dificil" && pontuacao>=10 && !modoPesadelo){
-      if(confirm("😈 Deseja entrar no MODO PESADELO (5s e sem errar)?")){
-        modoPesadelo=true;
-        fala.innerHTML="🔥 Bem-vindo ao MODO PESADELO!";
-        tempo=5;
-      }else{
-        fim("orgulho");
-        return;
-      }
-    }
-    novaPergunta();
-  }
+// 🔥 Confirmar modo pesadelo
+function confirmarModoPesadelo() {
+  fetch("/confirmar_pesadelo", { method: "POST" })
+    .then(res => res.json())
+    .then(dados => {
+      const container = document.getElementById("pesadelo-container");
+      if (container) container.innerHTML = "";
+      if (dados.mensagem) alert(dados.mensagem);
+      if (dados.pergunta) mostrarPergunta(dados.pergunta);
+    })
+    .catch(err => console.error("Erro ao ativar modo pesadelo:", err));
+}
 
-  function atualizarHumor(){
-    const luiz=document.getElementById("luiz");
-    luiz.className="luiz-container";
-    if(humor<=2){luiz.classList.add("confuso");emoji.textContent="😐";}
-    else if(humor<=4){luiz.classList.add("zangado");emoji.textContent="😠";}
-    else if(humor<=6){luiz.classList.add("furioso");emoji.textContent="😡";}
-    else{fim("raiva");}
-  }
+function fimDeJogo(mensagem, pontuacao, expressao) {
+  jogoAtivo = false;
+  clearInterval(temporizador);
+  clearInterval(humorTimer);
+  falar(mensagem);
+  expressaoLuiz.textContent = expressao;
+  telaJogo.style.display = "none";
+  telaGameover.style.display = "flex";
+  document.getElementById("texto-fim").textContent = `Sua pontuação: ${pontuacao}`;
+  carregarRanking();
+}
 
-  function fim(tipo){
-    clearInterval(intervalo);
-    document.getElementById("tela-jogo").style.display="none";
-    document.getElementById("tela-gameover").style.display="flex";
-    const t=document.getElementById("titulo-fim");
-    const p=document.getElementById("texto-fim");
-    if(tipo==="raiva"){t.textContent="💥 Você Perdeu!";p.textContent="O Luiz explodiu de raiva! 😡";}
-    else if(tipo==="orgulho"){t.textContent="🏆 Fim com Orgulho!";p.textContent="O Luiz está orgulhoso de você! 😎";}
-    else{t.textContent="🏁 Fim de jogo!";p.textContent="Parabéns!";}
-
-    salvarRanking();
-  }
-
-  function salvarRanking(){
-    const id="#" + Math.random().toString(36).substring(2,8).toUpperCase();
-    const registro={nome,pontuacao,id};
-    let ranking=JSON.parse(localStorage.getItem("rankingLuiz")||"[]");
-    ranking.push(registro);
-    ranking.sort((a,b)=>b.pontuacao-a.pontuacao);
-    ranking=ranking.slice(0,10);
-    localStorage.setItem("rankingLuiz",JSON.stringify(ranking));
-    exibirRanking(ranking);
-  }
-
-  function exibirRanking(r){
-    const div=document.getElementById("ranking");
-    div.innerHTML="<h2>🏅 Top 10 Jogadores</h2>"+r.map((j,i)=>`<p>${i+1}. ${j.nome} (${j.pontuacao}) ${j.id}</p>`).join("");
-  }
-
-  function reiniciar(){window.location.reload();}
-
-  document.getElementById("entrada").addEventListener("keypress",e=>{
-    if(e.key==="Enter") enviar();
+async function carregarRanking() {
+  const res = await fetch("/ranking");
+  const data = await res.json();
+  const ranking = document.getElementById("ranking");
+  ranking.innerHTML = "<h3>🏆 Ranking Global</h3>";
+  data.slice(0, 10).forEach(([nome, pontos], i) => {
+    const item = document.createElement("div");
+    item.textContent = `${i + 1}. ${nome}: ${pontos} pts`;
+    ranking.appendChild(item);
   });
-  
+}
 
+// === Humor e Expectativa do Luiz ===
+function iniciarHumorLuiz() {
+  clearInterval(humorTimer);
+  humorTimer = setInterval(() => {
+    if (!jogoAtivo) return;
+    const tempoSemAção = (Date.now() - tempoUltimaAtividade) / 1000;
+    if (tempoSemAção > 3 && tempoSemAção < 6) {
+      expressaoLuiz.textContent = "🤔";
+      animarLuiz("anim-curioso");
+      falar("Hmm... pensando bem? 😏");
+    } else if (tempoSemAção >= 6 && tempoSemAção < 10) {
+      expressaoLuiz.textContent = "😐";
+      animarLuiz("anim-expectativa");
+      falar("Tô esperando, viu...");
+    } else if (tempoSemAção >= 10) {
+      expressaoLuiz.textContent = "😒";
+      animarLuiz("anim-irritado");
+      falar("Vai demorar muito? 😤");
+    }
+  }, 2000);
+}
+
+document.getElementById("btn-iniciar").addEventListener("click", iniciarJogo);
+botaoResponder.addEventListener("click", enviarResposta);
+campoResposta.addEventListener("keydown", (e) => { if (e.key === "Enter") enviarResposta(); tempoUltimaAtividade = Date.now(); });
+document.getElementById("btn-reiniciar").addEventListener("click", () => location.reload());
 </script>
 </body>
 </html>

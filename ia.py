@@ -1,293 +1,310 @@
+# ia.py
+# Backend do "Desafio do Luiz" — versão otimizada para comportamento progressivo,
+# temporizador fluido, modo PESADELO (5s), reações do Luiz e ranking persistente.
+
 import random
 import json
 import os
 import time
+from datetime import datetime
 
 # ----------------------------
-# ESTADO GLOBAL DO JOGO
+# Configurações
 # ----------------------------
-estado = {
-    "nivel": 1,
-    "humor_level": 0,
-    "tentativas": 0,
-    "game_over": False,
-    "pontos": 0,
-    "fase": {},
-    "jogador": "Jogador",
-    "tempo_restante": 60,
-    "inicio_tempo": time.time(),
-    "modo_pesadelo": False
+ARQUIVOS_PERGUNTAS = [
+    "perguntas_atualizadas.json",
+    "perguntas_balanceadas.json",
+    "perguntas.json",
+    "perguntas_extra.json",
+    "perguntas.js"
+]
+RANKING_FILE = "ranking.json"
+LOG_FILE = "ia_log.txt"
+
+TEMPO_TETO = {
+    "facil": 30,
+    "medio": 22,
+    "dificil": 14,
+    "pesadelo": 5
 }
 
-RANKING_FILE = "ranking.json"
+# ----------------------------
+# Utilitários
+# ----------------------------
+def log(msg):
+    try:
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(f"[{datetime.utcnow().isoformat()}] {msg}\n")
+    except Exception:
+        pass
+
+def safe_lower_trim(s):
+    return (s or "").strip().lower()
 
 # ----------------------------
-# FUNÇÕES DE RANKING
+# Classe IA
 # ----------------------------
-def carregar_ranking():
-    if os.path.exists(RANKING_FILE):
-        try:
-            with open(RANKING_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            return {}
-    return {}
+class IA:
+    def __init__(self):
+        self.estado = {
+            "nivel": 1,
+            "humor_level": 0,
+            "tentativas": 0,
+            "game_over": False,
+            "pontos": 0,
+            "fase": {},
+            "jogador": "Jogador",
+            "tempo_restante": TEMPO_TETO["facil"],
+            "inicio_tempo": time.time(),
+            "modo_pesadelo": False,
+            "acertos_consecutivos_dificil": 0,
+            "acertos_consecutivos": 0
+        }
 
-def salvar_ranking(ranking):
-    with open(RANKING_FILE, "w", encoding="utf-8") as f:
-        json.dump(ranking, f, ensure_ascii=False, indent=2)
+        self.perguntas_feitas = []
+        self.PERGUNTAS_EXTERNAS = self._carregar_perguntas_externas()
+        self.PERGUNTAS_BACKUP = self._perguntas_backup()
+        self._normalize_perguntas()
+        log(f"IA inicializada. Perguntas externas: {len(self.PERGUNTAS_EXTERNAS)}")
 
-def atualizar_recorde(nome, pontos):
-    ranking = carregar_ranking()
-    recorde_antigo = ranking.get(nome, 0)
-    ranking[nome] = max(recorde_antigo, pontos)
-    salvar_ranking(ranking)
+    # ----------------------------
+    def obter_perguntas_por_dificuldade(self, dificuldade):
+        perguntas = self.PERGUNTAS_EXTERNAS if self.PERGUNTAS_EXTERNAS else self.PERGUNTAS_BACKUP
+        filtradas = [p for p in perguntas if (p.get("dificuldade") or "medio") == dificuldade]
+        return filtradas or perguntas
 
-    # Top 10
-    ranking_ordenado = sorted(ranking.items(), key=lambda x: x[1], reverse=True)[:10]
-    maior_global = ranking_ordenado[0][1] if ranking_ordenado else 0
-    novo_pessoal = pontos > recorde_antigo
-    novo_global = pontos >= maior_global
-    return novo_pessoal, novo_global, maior_global
-
-def recorde_global():
-    ranking = carregar_ranking()
-    if not ranking:
-        return "Ninguém ainda", 0
-    melhor = max(ranking.items(), key=lambda x: x[1])
-    return melhor
-
-# ----------------------------
-# CARREGAR BANCO DE PERGUNTAS EXTERNAS
-# ----------------------------
-def carregar_perguntas_externas():
-    arquivos = ["perguntas.json", "perguntas_extra.json", "perguntas.js"]
-    perguntas = []
-
-    for arq in arquivos:
-        if os.path.exists(arq):
+    # ----------------------------
+    def _carregar_perguntas_externas(self):
+        todas = []
+        for arquivo in ARQUIVOS_PERGUNTAS:
+            if not os.path.exists(arquivo):
+                continue
             try:
-                with open(arq, "r", encoding="utf-8") as f:
+                with open(arquivo, "r", encoding="utf-8") as f:
                     conteudo = f.read().strip()
-                    if arq.endswith(".js"):
+                    if arquivo.endswith(".js"):
                         conteudo = conteudo.replace("window.bancoPerguntas =", "").rstrip(";").strip()
                     dados = json.loads(conteudo)
-                    perguntas.extend(dados)
-                    print(f"✅ {len(dados)} perguntas carregadas de {arq}")
+                    if isinstance(dados, list):
+                        todas.extend(dados)
+                        log(f"Carregadas {len(dados)} perguntas de {arquivo}")
             except Exception as e:
-                print(f"⚠️ Erro ao carregar {arq}: {e}")
-        else:
-            print(f"❌ Arquivo não encontrado: {arq}")
+                log(f"Erro ao ler {arquivo}: {e}")
+        return todas
 
-    if perguntas:
-        print(f"📊 Total de perguntas combinadas: {len(perguntas)}")
-    else:
-        print("⚠️ Nenhum arquivo de perguntas encontrado.")
+    # ----------------------------
+    def _normalize_perguntas(self):
+        norm = []
+        for p in self.PERGUNTAS_EXTERNAS:
+            try:
+                if not isinstance(p, dict):
+                    continue
+                texto = (p.get("pergunta") or p.get("texto") or "").strip()
+                raw = p.get("resposta") or p.get("respostas") or ""
+                if isinstance(raw, list):
+                    respostas = [safe_lower_trim(x) for x in raw if x]
+                else:
+                    respostas = [safe_lower_trim(str(raw))]
+                dif = (p.get("dificuldade") or p.get("nivel") or "").strip().lower()
+                if dif not in ("facil", "medio", "dificil", "pesadelo"):
+                    t = texto.lower()
+                    dif = "facil" if any(sym in t for sym in ["+", "-", "x", "/", "*", "quanto é"]) else "medio"
+                dica = p.get("dica") or ""
+                if texto and respostas:
+                    norm.append({
+                        "pergunta": texto,
+                        "resposta": respostas,
+                        "dificuldade": dif,
+                        "dica": dica
+                    })
+            except Exception as e:
+                log(f"Erro normalizar pergunta: {e}")
+        self.PERGUNTAS_EXTERNAS = norm
 
-    return perguntas
+    # ----------------------------
+    def _perguntas_backup(self):
+        return [
+            {"pergunta": "Quanto é 2 + 2?", "resposta": ["4", "quatro"], "dificuldade": "facil"},
+            {"pergunta": "Qual é a capital do Brasil?", "resposta": ["brasilia"], "dificuldade": "facil"},
+            {"pergunta": "Quem pintou a Mona Lisa?", "resposta": ["leonardo da vinci"], "dificuldade": "medio"},
+            {"pergunta": "Em que ano o homem pisou na Lua pela primeira vez?", "resposta": ["1969"], "dificuldade": "dificil"},
+        ]
 
-PERGUNTAS_EXTERNAS = carregar_perguntas_externas()
+    # ----------------------------
+    def carregar_ranking(self):
+        if os.path.exists(RANKING_FILE):
+            try:
+                with open(RANKING_FILE, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+        return {}
 
-# ----------------------------
-# BANCO DE PERGUNTAS INTERNO (BACKUP)
-# ----------------------------
-PERGUNTAS_GERADOR = {
-    "matematica": [
-        {"pergunta": "Quanto é 3 + 4?", "resposta": ["7", "sete"]},
-        {"pergunta": "Resolva: 5 x 6", "resposta": ["30", "trinta"]},
-        {"pergunta": "Qual é o resultado de 12 ÷ 3?", "resposta": ["4", "quatro"]},
-        {"pergunta": "Quanto é 8 + 7?", "resposta": ["15", "quinze"]},
-        {"pergunta": "Resolva: 9 x 9", "resposta": ["81", "oitenta e um"]},
-    ],
-    "curiosidades": [
-        {"pergunta": "Qual é a capital da França?", "resposta": ["paris"]},
-        {"pergunta": "Quem pintou a Mona Lisa?", "resposta": ["leonardo da vinci", "da vinci"]},
-        {"pergunta": "Qual é o maior mamífero do mundo?", "resposta": ["baleia azul"]},
-    ],
-    "charadas": [
-        {"pergunta": "Quanto mais você tira, mais cresce. O que é?", "resposta": ["buraco"]},
-        {"pergunta": "O que é, o que é: tem dentes mas não morde?", "resposta": ["pente"]},
-        {"pergunta": "Tem pescoço, mas não tem cabeça. O que é?", "resposta": ["garrafa"]},
-    ],
-    "sobre_luiz": [
-        {"pergunta": "Quem é o professor mais bravo quando erram contas?", "resposta": ["luiz", "professor luiz"]},
-        {"pergunta": "Quem dá as dicas e faz piadas enquanto você joga?", "resposta": ["luiz", "professor luiz"]},
-    ],
-}
+    def salvar_ranking(self, rank):
+        try:
+            with open(RANKING_FILE, "w", encoding="utf-8") as f:
+                json.dump(rank, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            log(f"erro salvar ranking: {e}")
 
-# ----------------------------
-# GERAR NOVAS PERGUNTAS
-# ----------------------------
-perguntas_feitas = []
+    def atualizar_recorde(self, nome, pontos):
+        rank = self.carregar_ranking()
+        rank[nome] = max(rank.get(nome, 0), int(pontos))
+        ordenado = dict(sorted(rank.items(), key=lambda x: x[1], reverse=True)[:100])
+        self.salvar_ranking(ordenado)
 
-def proxima_pergunta():
-    global perguntas_feitas
-    if PERGUNTAS_EXTERNAS:
-        todas_perguntas = [{"pergunta": p["texto"], "resposta": [p["resposta"]]} for p in PERGUNTAS_EXTERNAS]
-    else:
-        todas_perguntas = [p for grupo in PERGUNTAS_GERADOR.values() for p in grupo]
+    # ----------------------------
+    def dificuldade_por_nivel(self):
+        if self.estado["modo_pesadelo"]:
+            return "pesadelo"
+        n = self.estado["nivel"]
+        if n < 5:
+            return "facil"
+        if n < 10:
+            return "medio"
+        return "dificil"
 
-    if len(perguntas_feitas) == len(todas_perguntas):
-        perguntas_feitas.clear()
+    # ----------------------------
+    def ganho_por_acerto(self, dif):
+        base = 6 if dif == "facil" else 4 if dif == "medio" else 2
+        decaimento = (self.estado["nivel"] - 1) // 5
+        return max(1, base - decaimento)
 
-    pergunta = random.choice([p for p in todas_perguntas if p not in perguntas_feitas])
-    perguntas_feitas.append(pergunta)
+    # ----------------------------
+    def proxima_pergunta(self, dificuldade_forcada=None):
+        dificuldade = "dificil" if self.estado.get("modo_pesadelo") else (dificuldade_forcada or self.dificuldade_por_nivel())
+        perguntas = self.obter_perguntas_por_dificuldade(dificuldade)
+        restantes = [p for p in perguntas if p["pergunta"] not in self.perguntas_feitas]
+        if not restantes:
+            self.perguntas_feitas.clear()
+            restantes = perguntas
+        pergunta = random.choice(restantes)
+        self.perguntas_feitas.append(pergunta["pergunta"])
 
-    # Ajuste de tempo baseado na dificuldade
-    base = 60 if not estado["modo_pesadelo"] else 5
-    ganho = 8 if estado["nivel"] < 5 else (5 if estado["nivel"] < 10 else 3)
-    estado["tempo_restante"] = max(5, base - (estado["nivel"] * 2) + ganho)
-    estado["fase"] = pergunta
-    estado["inicio_tempo"] = time.time()
+        self.estado["tempo_restante"] = TEMPO_TETO["pesadelo"] if self.estado["modo_pesadelo"] else max(10, 30 - min(self.estado["nivel"] * 0.7, 20))
 
-    return pergunta["pergunta"]
+        if self.estado.get("modo_pesadelo") and not pergunta.get("alternativas"):
+            todas_respostas = [p["resposta"][0] for p in perguntas if p.get("resposta")]
+            alternativas = random.sample(todas_respostas, min(3, len(todas_respostas)))
+            if pergunta["resposta"][0] not in alternativas:
+                alternativas[random.randrange(len(alternativas))] = pergunta["resposta"][0]
+            pergunta["alternativas"] = alternativas
 
-# ----------------------------
-# HUMOR DO LUIZ
-# ----------------------------
-def humor_reacao(level: int):
-    reacoes = {
-        0: ("🤓", random.choice(["Boa! 😎", "Mandou bem!", "Excelente!", "Arrasou!"])),
-        1: ("😐", random.choice(["Hmm... quase 😅", "Tenta outra vez!", "Por pouco!", "Falta foco, hein!"])),
-        2: ("😠", random.choice(["Tá me testando, né? 😤", "Concentra, vai!", "Não acredito nisso 😡"])),
-        3: ("😡", random.choice(["Última chance! 😡", "Mais um erro e eu explodo! 💣", "😬 Controla essa cabeça!"])),
-        4: ("💥", "💥 O Luiz explodiu de raiva! Game Over! 💥")
-    }
-    return reacoes.get(level, ("🤖", "Sem emoções... por enquanto 😏"))
-
-# ----------------------------
-# AUXILIARES
-# ----------------------------
-def definir_jogador(nome):
-    estado["jogador"] = nome.strip().capitalize() if nome.strip() else "Jogador"
-
-def atualizar_humor(acertou):
-    estado["humor_level"] = max(0, estado["humor_level"] - 1) if acertou else min(4, estado["humor_level"] + 1)
-
-def tempo_restante():
-    decorrido = time.time() - estado["inicio_tempo"]
-    return max(0, estado["tempo_restante"] - int(decorrido))
-
-def reset_game():
-    nome = estado["jogador"]
-    global_name, global_score = recorde_global()
-    estado.update({
-        "nivel": 1,
-        "humor_level": 0,
-        "tentativas": 0,
-        "game_over": False,
-        "pontos": 0,
-        "modo_pesadelo": False
-    })
-    nova = proxima_pergunta()
-    return f"💥 O Luiz explodiu, mas já se recompôs.<br>Vamos de novo, {nome}? 😅<br>🏆 Recorde global: {global_name} ({global_score} pontos)<br>{nova}"
-
-# ----------------------------
-# MECÂNICA PRINCIPAL
-# ----------------------------
-def verificar_resposta(tentativa):
-    tentativa = tentativa.lower().strip()
-    nome = estado["jogador"]
-
-    # Palavra-chave especial ❤️
-    if tentativa == "te amo":
-        estado["pontos"] += 10
-        estado["nivel"] += 1
-        emoji, fala = random.choice([
-            ("😍", "Ah... você sabe como me desarmar 💕"),
-            ("😊", "Tá trapaceando, mas eu deixo 😏"),
-            ("🥰", "Eu também te amo! ❤️ Bora pra próxima!")
-        ])
+        self.estado["fase"] = pergunta
         return {
-            "acertou": True,
-            "mensagem": f"{emoji} {fala}<br>🎁 +10 pontos pelo amor!",
-            "nova_pergunta": proxima_pergunta(),
-            "tempo_restante": estado["tempo_restante"],
-            "nivel": estado["nivel"],
-            "pontos": estado["pontos"]
+            "pergunta": pergunta["pergunta"],
+            "alternativas": pergunta.get("alternativas", []),
+            "dificuldade": dificuldade
         }
 
-    # Tempo esgotado
-    if tentativa == "__tempo_esgotado__":
-        atualizar_humor(False)
-        emoji, fala = humor_reacao(estado["humor_level"])
+    # ----------------------------
+    def reacao_luiz(self):
+        hl = self.estado["humor_level"]
+        if hl <= 0: return "🤓 Tranquilo e confiante!"
+        if hl == 1: return "🙂 Tá indo bem!"
+        if hl == 2: return "😐 Meio chateado..."
+        if hl == 3: return "😠 Tá ficando bravo..."
+        if hl == 4: return "😡 Muito zangado!"
+        return "💥 Luiz explodiu de raiva!"
+
+    # ----------------------------
+    def entrar_pesadelo(self):
+        self.estado.update({
+            "modo_pesadelo": True,
+            "nivel": 999,
+            "tempo_restante": TEMPO_TETO["pesadelo"],
+            "acertos_consecutivos_dificil": 0,
+            "humor_level": 0,
+            "game_over": False
+        })
+        pergunta = self.proxima_pergunta(dificuldade_forcada="dificil")
         return {
-            "acertou": False,
-            "mensagem": f"{emoji} {fala}<br>⏰ Tempo esgotado, {nome}! 😅",
-            "nova_pergunta": proxima_pergunta(),
-            "tempo_restante": estado["tempo_restante"],
-            "nivel": estado["nivel"],
-            "pontos": estado["pontos"]
+            "mensagem": "🔥 Bem-vindo ao MODO PESADELO! Agora é tudo ou nada...",
+            "pergunta": pergunta,
+            "tempo_restante": self.estado["tempo_restante"],
+            "pontos": self.estado["pontos"],
+            "nivel": "∞",
+            "dificuldade": "pesadelo"
         }
 
-    # Game over
-    if estado["game_over"]:
-        return {"reiniciar": True, "nova_pergunta": reset_game(), "mensagem": "💀 Luiz teve um colapso, mas já voltou 😅"}
+    # ----------------------------
+    def _handle_tempo_esgotado(self):
+        self.estado["humor_level"] += 1
+        self.estado["acertos_consecutivos"] = 0
+        self.estado["acertos_consecutivos_dificil"] = 0
+        self.estado["tentativas"] += 1
 
-    resposta_certa = estado["fase"]["resposta"]
-    acertou = tentativa in resposta_certa
-    atualizar_humor(acertou)
+        if self.estado["modo_pesadelo"]:
+            self.estado["game_over"] = True
+            self.atualizar_recorde(self.estado["jogador"], self.estado["pontos"])
+            return {"acertou": False, "mensagem": "⏰ Tempo esgotado no PESADELO!", "fim": True, "pontuacao_final": self.estado["pontos"]}
 
-    if acertou:
-        estado["pontos"] += 10
-        estado["nivel"] += 1
-        emoji, fala = humor_reacao(estado["humor_level"])
-        atualizar_recorde(nome, estado["pontos"])
+        if self.estado["humor_level"] >= 5:
+            self.estado["game_over"] = True
+            self.atualizar_recorde(self.estado["jogador"], self.estado["pontos"])
+            return {"acertou": False, "mensagem": "⏰ Tempo esgotado! Fim de jogo.", "fim": True}
 
-        # Modo pesadelo
-        if estado["nivel"] >= 20 and not estado["modo_pesadelo"]:
-            estado["modo_pesadelo"] = True
-            return {
-                "modo_pesadelo": True,
-                "mensagem": "😈 Você chegou longe... Bem-vindo ao MODO PESADELO! ⏱️",
-                "nova_pergunta": proxima_pergunta(),
-                "tempo_restante": 5,
-                "nivel": estado["nivel"],
-                "pontos": estado["pontos"]
-            }
+        proxima = self.proxima_pergunta()
+        return {"acertou": False, "mensagem": "⏰ Tempo esgotado!", "nova_pergunta": proxima}
 
-        return {
-            "acertou": True,
-            "mensagem": f"{emoji} {fala}<br>🎯 +10 pontos! 🔥",
-            "nova_pergunta": proxima_pergunta(),
-            "tempo_restante": estado["tempo_restante"],
-            "nivel": estado["nivel"],
-            "pontos": estado["pontos"]
-        }
+    # ----------------------------
+    def verificar_resposta(self, tentativa_raw: str):
+        tentativa = safe_lower_trim(tentativa_raw)
+        if tentativa == "__TEMPO_ESGOTADO__":
+            return self._handle_tempo_esgotado()
+        if self.estado["game_over"]:
+            return {"acertou": False, "mensagem": "Jogo terminado.", "fim": True}
 
-    else:
-        estado["pontos"] = max(0, estado["pontos"] - 2)
-        if estado["modo_pesadelo"]:
-            estado["game_over"] = True
-            emoji, fala = humor_reacao(4)
-            nome_global, pontos_global = recorde_global()
-            atualizar_recorde(nome, estado["pontos"])
-            return {
-                "reiniciar": True,
-                "nova_pergunta": reset_game(),
-                "mensagem": f"{emoji} {fala}<br>{nome}, errou no modo PESADELO! 💀",
-            }
+        fase = self.estado.get("fase", {})
+        respostas = [safe_lower_trim(r) for r in fase.get("resposta", [])]
 
-        if estado["humor_level"] >= 4:
-            estado["game_over"] = True
-            emoji, fala = humor_reacao(4)
-            nome_global, pontos_global = recorde_global()
-            atualizar_recorde(nome, estado["pontos"])
-            return {
-                "reiniciar": True,
-                "nova_pergunta": reset_game(),
-                "mensagem": f"{emoji} {fala}<br>{nome}, você terminou com {estado['pontos']} pontos.<br>🏆 Recorde global: {nome_global} ({pontos_global})",
-            }
+        if tentativa in ("te amo", "eu te amo", "amo voce", "amo você"):
+            self.estado["pontos"] += 5
+            self.estado["nivel"] += 1
+            self.estado["humor_level"] = max(0, self.estado["humor_level"] - 1)
+            self.atualizar_recorde(self.estado["jogador"], self.estado["pontos"])
+            proxima = self.proxima_pergunta()
+            return {"acertou": True, "mensagem": "🥰 Eu também te amo!", "nova_pergunta": proxima}
 
-        emoji, fala = humor_reacao(estado["humor_level"])
-        return {
-            "acertou": False,
-            "mensagem": f"{emoji} {fala}<br>😬 Errou! Foco, {nome}!",
-            "nova_pergunta": estado["fase"]["pergunta"],
-            "tempo_restante": tempo_restante(),
-            "nivel": estado["nivel"],
-            "pontos": estado["pontos"]
-        }
+        acertou = tentativa in respostas
+        if acertou:
+            self.estado["pontos"] += 10
+            self.estado["nivel"] += 1
+            self.estado["humor_level"] = max(0, self.estado["humor_level"] - 1)
+            self.atualizar_recorde(self.estado["jogador"], self.estado["pontos"])
+            proxima = self.proxima_pergunta()
+            return {"acertou": True, "mensagem": "✅ Correto!", "nova_pergunta": proxima}
 
-# Inicializa primeira pergunta
-proxima_pergunta()
+        self.estado["pontos"] = max(0, self.estado["pontos"] - 2)
+        self.estado["humor_level"] += 1
+        proxima = self.proxima_pergunta()
+        return {"acertou": False, "mensagem": f"❌ Errou! Dica: {fase.get('dica','')}", "nova_pergunta": proxima}
+
+    # ----------------------------
+    def _formatar_resposta(self, resposta_dict):
+        if isinstance(resposta_dict, dict) and "nova_pergunta" in resposta_dict:
+            if isinstance(resposta_dict["nova_pergunta"], dict):
+                resposta_dict["nova_pergunta"] = resposta_dict["nova_pergunta"].get("pergunta", "")
+        return resposta_dict
+
+
+# ======================================================
+# 🔧 GARANTIA DE TEXTO LIMPO (EVITA [object Object])
+# ======================================================
+def _garantir_texto_pergunta(pergunta):
+    if isinstance(pergunta, dict):
+        return pergunta.get("pergunta") or pergunta.get("texto") or str(pergunta)
+    return str(pergunta)
+
+
+if hasattr(IA, "proxima_pergunta_original") is False:
+    IA.proxima_pergunta_original = IA.proxima_pergunta
+
+    def proxima_pergunta_segura(self, dificuldade_forcada=None):
+        p = self.proxima_pergunta_original(dificuldade_forcada)
+        # Garante que a pergunta é string limpa
+        if isinstance(p, dict) and "pergunta" in p:
+            p["pergunta"] = _garantir_texto_pergunta(p["pergunta"])
+        return p
+
+    IA.proxima_pergunta = proxima_pergunta_segura
